@@ -1,0 +1,113 @@
+/*
+
+
+
+style attr    style tag     id     class      tag     [attr]     *
+      0           0          1       2        1         0        0
+      0           0          1       2        1         0        0 !important
+
+
+
+*/
+
+/* .par.foo.bar {
+    color: blue;
+}
+
+p#par2.par.text {
+    color: red;
+}
+
+.par {
+    color: green;
+}
+
+#par2 {
+    color: cadetblue;
+} */
+
+/* color
+background-color
+widht
+height */
+
+.container {
+    color: red;
+    width: 200px;
+    /* height: 200px; */
+    background-color: aquamarine;
+
+    margin: 40px;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    margin: 40px 40px;
+
+    margin: 40px 30px 70px 45px;
+    margin-left: 10px;
+}
+
+/* 
+
+#par1, #par2, #par3 {
+    font-size: 20px;
+    color: black;
+} */
+
+/* .btn {
+    background-color: blanchedalmond;
+    color: black;
+}
+
+
+.btn:hover {
+    background-color: red;
+    color: white;
+}
+
+
+.container p:first-child {
+    font-size: 30px;
+}
+
+
+.container p:last-child {
+    font-weight: bold;
+}
+
+
+.container p:nth-child(3) {
+    text-decoration: underline;
+}
+
+
+.container p:not(.btn) {
+    opacity: 0.5;
+} */
+
+.demo-text {
+    color: black;
+}
+
+.demo-text::first-letter {
+    color: red;
+}
+
+.demo-text::first-line {
+    text-decoration: underline;
+}
+
+
+.demo-text::before {
+    content: '*';
+}
+
+
+
+.demo-text::after {
+    content: '$';
+}
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="../forms.css">
+    </head>
+
+    <body>
+        <ul>
+            <li>
+                <a href="../index.html">Home</a>
+            </li>
+            <li>
+                <a href="./1.html">Page_1</a>
+            </li>
+            <li>
+                <a href="./2.html">Page_2</a>
+            </li>
+        </ul>
+
+        <h1>FORMS</h1>
+
+        <iframe width="200" height="150" src="//www.google.com/"></iframe>
+
+        <form>
+            <fieldset>
+                <legend>Якась певна група філдів</legend>
+                <label for="myInput">
+                    Text Input:
+                    <input id="myInput" type="text" name="text-input">
+                </label>
+
+                <br>
+                <br>
+                <label for="number-input">
+                    Number Input:
+                    <input id="number-input" type="number" name="number-input">
+                </label>
+                <br>
+                <br>
+                <label for="big-text">
+                    Text Input:
+                    <textarea id="big-text" name="my-textarea"></textarea>
+                </label>
+                <br>
+                <br>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Інша група філдів</legend>
+                <label for="fruit">
+                    Fruits:
+                    <select id="fruit" name="fruit">
+                        <option value="apple">Яблуко</option>
+                        <option value="banana">Банан</option>
+                        <option value="orange">Апельсин</option>
+                    </select>
+                </label>
+
+                <br>
+                <br>
+
+                <label for="gender">
+                    Gender:
+                    <input type="radio" name="gender" value="male"> Чоловік
+                    <input type="radio" name="gender" value="female"> Жінка
+                </label>
+
+                <br>
+                <br>
+
+                <label for="variants">
+                    Variants:
+                    <input type="checkbox" name="variant" value="1"> 1
+                    <input type="checkbox" name="variant" value="2"> 2
+                    <input type="checkbox" name="variant" value="3"> 3
+                    <input type="checkbox" name="variant" value="4"> 4
+                </label>
+
+                <br>
+                <br>
+            </fieldset>
+            <br>
+
+            <button type="submit">Some Button</button>
+        </form>
+
+    </body>
+
+</html>

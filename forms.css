@@ -1,0 +1,126 @@
+/* Загальний селектор */
+* {
+    color: green;
+}
+
+/* Селектор тега */
+a {
+    color: blue;
+}
+
+p {
+    color: palevioletred;
+}
+
+/* Селектор по айді */
+
+#par2 {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Times New Roman", Times, serif;
+}
+
+#par1 {
+    font-size: 14px;
+}
+
+/* Селектор по класу */
+
+.left {
+    color: red;
+}
+
+.right {
+    color: violet;
+}
+
+/* Селектор по атрибуту */
+
+[title="Sub Page"] {
+    font-size: 24px;
+}
+
+/* 
+#par1 {
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    margin: 20px;
+    margin-top: 50px;
+    padding-left: 50px;
+    background-color: darkcyan;
+    overflow: hidden;
+} */
+
+.par1 {
+    width: 300px;
+    /* height: 200px; */
+    color: #ffffff;
+    font-size: 32px;
+    float: left;
+    margin-right: 10px;
+
+    text-align: justify;
+
+    text-decoration: underline;
+    text-transform: lowercase;
+    /* background-color: #1e95c4;
+    background-image: url('./images/parrot.jpeg');
+    background-size: 250px 250px;
+    background-repeat: no-repeat;
+    background-position: 10% 200px; */
+
+    background: #1e95c4 url("./images/parrot.jpeg") no-repeat;
+    background-position: center center;
+    background-size: 250px 250px;
+
+    /* height: 400px; */
+
+    border-width: 15px;
+    border-style: double;
+    border-color: green;
+
+    font-size: 24px;
+    line-height: 1.15;
+    /* font-weight: 400; normal */
+    font-weight: 900;
+
+    font-style: normal;
+    /* 24px + 12px; */
+    /* border: 10px dashed red; */
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.clear {
+    clear: both;
+}
+/* HEX */
+/* 0123456789abcdef */
+
+/* font-family
+font-size
+font-weight */
+
+ul {
+    list-style: circle;
+    list-style: square;
+    list-style-position: inside;
+}
+
+li {
+    color: black;
+}
+
+
+.container {
+    background: paleturquoise;
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* 
+input {
+
+} */
