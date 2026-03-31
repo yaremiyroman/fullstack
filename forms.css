@@ -6,6 +6,8 @@
 /* Селектор тега */
 a {
     color: red;
+    width: 500px;
+    height: 200px;
 }
 
 p {
