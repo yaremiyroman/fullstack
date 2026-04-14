@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Playwrite";
+    src:
+        url("../fonts/PlaywriteIE-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "PlaywriteThin";
+    src:
+        url("../fonts/PlaywriteIE-Thin.woff2") format("woff2");
+}
+

@@ -1,0 +1,55 @@
+* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-boxi;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    background: green;
+    display: flex;
+    height: 400px;
+}
+
+.block {
+    width: 250px;
+    min-width: 250px;
+    height: 200px;
+    font-size: 40px;
+    font-weight: 900;
+    flex-wrap: wrap;
+}
+
+.block-1 {
+    background-color: palegoldenrod;
+}
+
+.block-2 {
+    background-color: palevioletred;
+}
+
+.block-3 {
+    background-color: palegreen;
+}
+
+.block-4 {
+    background-color: navy;
+    display: flex;
+    padding: 5px;
+}
+
+.sub-block:first-child {
+    background-color: blueviolet;
+}
+
+.sub-block:last-child {
+    background-color: tomato;
+}
+
+.block-5 {
+    background-color: violet;
+}

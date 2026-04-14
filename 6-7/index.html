@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .mondrian-table {
+            border-collapse: collapse;
+            border: 8px solid black;
+            width: 600px;
+            height: 600px;
+            background-color: red;
+        }
+
+        .mondrian-table td {
+            border: 4px solid black;
+            padding: 0;
+        }
+
+        .white {
+            background-color: #ffffff;
+        }
+
+        .red {
+            background-color: #ff0000;
+        }
+
+        .blue {
+            background-color: #0000ff;
+        }
+
+        .yellow {
+            background-color: #ffcc00;
+        }
+
+        .black {
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+<table class='mondrian-table'>
+    <tr>
+        <td class="white"></td>
+        <td class="white" colspan="2"></td>
+        <td class="yellow" colspan="2"></td>
+        <td class="white" rowspan="4"></td>
+    </tr>
+
+    <tr>
+        <td class="white"></td>
+        <td class="red" colspan="2" rowspan="2"></td>
+        <td class="yellow" colspan="2"></td>
+    </tr>
+
+    <tr>
+        <td class="white" rowspan="2"></td>
+        <td class="white"></td>
+        <td class="white"></td>
+    </tr>
+
+    <tr>
+        <td class="black" rowspan="2"></td>
+        <td class="white"></td>
+        <td class="white" colspan="2"></td>
+    </tr>
+
+    <tr>
+        <td class="yellow" rowspan="3"></td>
+        <td class="white"></td>
+        <td class="blue" colspan="2" rowspan="2"></td>
+    </tr>
+    <tr>
+        <td rowspan="2" class="white"></td>
+        <td class="black"></td>
+    </tr>
+    <tr>
+        <td colspan="3" class="white"></td>
+    </tr>
+</table>
+</body>
+</html>

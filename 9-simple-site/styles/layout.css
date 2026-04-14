@@ -1,0 +1,29 @@
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1110px;
+}
+
+.header {
+    background-color: #eeeff1;
+}
+
+.hero {
+    background-color: #eeeff1;
+}
+
+.about {
+    background-color: #fff;
+}
+
+.projects {
+    background-color: #34547a;
+}
+
+.video {
+    background-color: #eeeff1;
+}
+
+.footer {
+    background-color: #34547a;
+}

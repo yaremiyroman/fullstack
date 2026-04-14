@@ -1,0 +1,35 @@
+.content {
+    height: 100px;
+    /* width: 350px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container:nth-child(1) .content {
+    background-color: palevioletred;
+}
+
+.container:nth-child(2) .content {
+    background-color: paleturquoise;
+    height: auto;
+}
+
+.container:nth-child(3) .content {
+    background-color: violet;
+}
+
+.container:nth-child(4) .content {
+    background-color: palegoldenrod;
+}
+
+.container:nth-child(5) .content {
+    background-color: hotpink;
+}
+
+.sample-text {
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.simple-text {
+    font-family: "PlaywriteThin", sans-serif;
+}
