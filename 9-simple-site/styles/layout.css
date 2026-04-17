@@ -4,6 +4,27 @@
     width: 1110px;
 }
 
+@media (max-width: 1200px) {
+    .content {
+        width: 960px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content {
+        width: 768px;
+    }
+}
+
+@media (max-width: 792px) {
+    .content {
+        width: 100%;
+    }
+}
+
+
+
+
 .header {
     background-color: #eeeff1;
 }

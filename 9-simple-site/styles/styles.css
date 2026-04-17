@@ -121,3 +121,149 @@ body {
 .video .video-player .play-button {
     position: absolute;
 }
+
+.projects .content {
+    display: flex;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    justify-content: space-between;
+}
+
+.projects .project {
+    width: 141px;
+    position: relative;
+    padding-left: 70px;
+}
+
+.projects .project .logo {
+    position: absolute;
+    left: 0;
+}
+
+.projects .project .title {
+    color: white;
+    font-weight: 500;
+    font-size: 21px;
+    margin-bottom: 5px;
+    padding-top: 4px;
+}
+
+.projects .project .description {
+    color: white;
+    padding-bottom: 4px;
+}
+
+.footer .content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.author {
+    color: white;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 21px;
+    margin-bottom: 16px;
+}
+
+.copyright {
+    color: white;
+    font-size: 13px;
+    line-height: 164%;
+}
+
+@media (max-width: 1200px) {
+    .video .video-player .video-preview {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header .content {
+        padding-top: calc(79px / 2);
+        padding-bottom: calc(79px / 2);
+    }
+
+    .projects .content {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .hero .content {
+        padding-top: 25px;
+        padding-bottom: 70px;
+    }
+
+    .about .content {
+        padding-top: 61px;
+        padding-bottom: 50px;
+    }
+
+    .projects .content {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .video .content {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .projects .content {
+        column-gap: 70px;
+        justify-content: space-around;
+    }
+
+    .projects .project {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 792px) {
+    body {
+        font-size: 14px;
+    }
+
+    .content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .main-menu .menu-links {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .hero .title {
+        font-size: 38px;
+        margin-bottom: 40px;
+    }
+
+    .hero .description {
+        width: 80%;
+        margin-bottom: 52px;
+    }
+
+    .about .title,
+    .video .title {
+        width: 100%;
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .about .description,
+    .video .description {
+        width: 100%;
+    }
+
+    .projects .content {
+        column-gap: 72px;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 400px) {
+    .projects .content {
+        column-gap: 25px;
+    }
+}
