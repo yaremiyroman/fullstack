@@ -1,0 +1,13 @@
+.btn-secondary, .btn-primary, .btn-basic {
+  margin: 10px 15px;
+  outline: none;
+  display: flex;
+  cursor: default;
+}
+
+.btn-basic {
+  border: 3px solid red;
+  border-radius: 15px;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,14 @@
+.btn-basic {
+    @extend %buttonClass;
+    @include border();
+}
+
+
+.btn-primary {
+    @extend %buttonClass;
+}
+
+
+.btn-secondary {
+    @extend %buttonClass;
+}
