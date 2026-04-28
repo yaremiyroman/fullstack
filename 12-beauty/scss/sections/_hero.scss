@@ -1,0 +1,54 @@
+#spec-element {
+    fill: yellow;
+}
+
+.hero {
+    background-color: $highlight;
+    color: $white;
+    overflow: hidden;
+
+    .content {
+        padding: 192px 0 193px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .title {
+        @include bold;
+        font-size: 48px;
+        margin-bottom: 50px;
+    }
+
+    .description {
+        margin-bottom: 30px;
+        width: 264px;
+    }
+
+    .cta {
+        display: flex;
+        padding: 13px 75px 12px;
+        border: 2px solid $white;
+        border-radius: 40px;
+        letter-spacing: 5%;
+        width: fit-content;
+        color: $white;
+    }
+
+    .product {
+        border: 85px solid #f57699;
+        background: #f9adc2;
+        border-radius: 50%;
+        width: 900px;
+        height: 900px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: -50px;
+
+        // clip-path: polygon(50% 5%, 95% 95%, 5% 95%);
+        
+    }
+}

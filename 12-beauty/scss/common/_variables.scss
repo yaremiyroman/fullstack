@@ -1,5 +1,11 @@
 // breakpoints
+$dt-breakpoint: 1110px;
+$mobile-breakpoint: 792px;
+
+// content width
 $desktop: 1110px;
+$tablet: 792px;
+$mobile: 768px;
 
 // font colors
 $black: black;
@@ -9,3 +15,4 @@ $white: white;
 
 // colors
 $highlight: rgb(241, 60, 110);
+$gray-bg: #efefef;
