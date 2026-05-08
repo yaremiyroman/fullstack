@@ -1,0 +1,143 @@
+.container .content {
+  width: 1110px;
+  margin: 0 auto;
+}
+@media (max-width: 1110px) {
+  .container .content {
+    width: 792px;
+  }
+}
+@media (max-width: 792px) {
+  .container .content {
+    width: 768px;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 141%;
+  color: #333333;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: 100px 1fr 100px;
+  grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+}
+.layout header {
+  background: palegoldenrod;
+  grid-area: header;
+}
+.layout nav {
+  background: palegreen;
+  grid-area: nav;
+}
+.layout main {
+  background: palevioletred;
+  grid-area: main;
+}
+.layout aside {
+  background: palegoldenrod;
+  grid-area: aside;
+}
+.layout footer {
+  background: powderblue;
+  grid-area: footer;
+}
+
+.some-class {
+  background-color: black !important;
+}
+
+.magic-class {
+  outline: 3px solid palevioletred;
+}
+
+.header {
+  border-bottom: 1px solid #efefef;
+}
+.header .content {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+.header .logo {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header .logo-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 36px;
+  letter-spacing: 10%;
+  text-transform: uppercase;
+  color: rgb(241, 60, 110);
+}
+.header .tel {
+  font-size: 16px;
+}
+.header .callback {
+  margin-left: 40px;
+  display: flex;
+  padding: 13px 55px 12px;
+  border: 2px solid rgb(241, 60, 110);
+  border-radius: 40px;
+  color: black;
+}
+
+#spec-element {
+  fill: yellow;
+}
+
+.hero {
+  background-color: rgb(241, 60, 110);
+  color: white;
+  overflow: hidden;
+}
+.hero .content {
+  padding: 192px 0 193px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero .title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 48px;
+  margin-bottom: 50px;
+}
+.hero .description {
+  margin-bottom: 30px;
+  width: 264px;
+}
+.hero .cta {
+  display: flex;
+  padding: 13px 75px 12px;
+  border: 2px solid white;
+  border-radius: 40px;
+  letter-spacing: 5%;
+  width: fit-content;
+  color: white;
+}
+.hero .product {
+  border: 85px solid #f57699;
+  background: #f9adc2;
+  border-radius: 50%;
+  width: 900px;
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -50px;
+}
+
+/*# sourceMappingURL=styles.css.map */
