@@ -1,7 +1,27 @@
 .container .content {
-  width: 1110px;
+  width: 1600px;
   margin: 0 auto;
   background-color: red;
+}
+@media (max-width: 1680px) {
+  .container .content {
+    width: 1320px;
+  }
+}
+@media (max-width: 1400px) {
+  .container .content {
+    width: 904px;
+  }
+}
+@media (max-width: 984px) {
+  .container .content {
+    width: 648px;
+  }
+}
+@media (max-width: 728px) {
+  .container .content {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

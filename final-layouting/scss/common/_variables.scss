@@ -1,8 +1,19 @@
 // breakpoints
-// $dt-breakpoint: 1110px;
+$breakpoints: (
+    mobile: 728px,
+    tablet: 984px,
+    tablet-lg: 1400px,
+    desktop: 1680px
+);
 
 // content width
-$desktop: 1110px;
+$content-width: (
+    mobile: 100%,
+    tablet: 648px,
+    tablet-lg: 904px,
+    desktop: 1320px,
+    desktop-lg: 1600px
+);
 
 // font colors
 // $black: black;
