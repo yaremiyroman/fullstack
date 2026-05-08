@@ -2,13 +2,14 @@
     .content {
         width: $desktop;
         margin: 0 auto;
+        background-color: red;
 
-        @media (max-width: $dt-breakpoint) {
-            width: $tablet;
-        }
+        // @media (max-width: $dt-breakpoint) {
+        //     width: $tablet;
+        // }
 
-        @media (max-width: $mobile-breakpoint) {
-            width: $mobile;
-        }
+        // @media (max-width: $mobile-breakpoint) {
+        //     width: $mobile;
+        // }
     }
 }
