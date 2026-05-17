@@ -1,0 +1,118 @@
+.features {
+    .content {
+        padding: {
+            top: 60px;
+            bottom: 60px;
+        }
+
+        ;
+    }
+
+    &__tab-widget {
+        display: flex;
+        width: 85%;
+
+        margin: {
+            left: auto;
+            right: auto;
+        }
+
+        ;
+
+        @media (max-width: map-get($breakpoints, tablet-lg)) {
+            width: 100%;
+        }
+
+        @media (max-width: map-get($breakpoints, tablet)) {
+            flex-direction: column;
+        }
+    }
+
+    &__tab-links {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 30px;
+        justify-content: center;
+        border-right: 4px solid rgba(255, 255, 255, 0.3);
+        padding-right: 60px;
+
+        @media (max-width: map-get($breakpoints, tablet)) {
+            flex-direction: row;
+            border-right: none;
+            padding-bottom: 30px;
+            overflow-x: scroll;
+            justify-content: flex-start;
+            position: absolute;
+            left: 0;
+            width: calc(100vw - 25px);
+            padding-left: calc((100% - 648px) / 2);
+            padding-right: calc((100% - 648px) / 2);
+        }
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__tab-link {
+        color: white;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 100%;
+        white-space: nowrap;
+
+        &--active {
+            pointer-events: none;
+            background: linear-gradient(90.13deg, #EF8080 0.84%, #F0145A 99.96%);
+            -webkit-background-clip: text;
+            /* Clips background to text */
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Makes original text color transparent */
+            color: transparent;
+            /* Fallback */
+        }
+
+        &:hover {
+            color: rgba(240, 20, 90, 1);
+        }
+    }
+
+    &__tab-content {
+        flex: 2;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        padding-left: 60px;
+
+        @media (max-width: map-get($breakpoints, tablet)) {
+            padding-top: 30px;
+            border-top: 4px solid rgba(255, 255, 255, 0.3);
+            padding-left: 0;
+            margin-top: 68px;
+        }
+
+    }
+
+    &__tab-title {
+        margin-bottom: 30px;
+        font-family: Montserrat;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 100%;
+    }
+
+    &__tab-description {
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 30px;
+        opacity: 0.8;
+    }
+}

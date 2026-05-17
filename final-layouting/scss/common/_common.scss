@@ -1,3 +1,102 @@
-// body {
-//     @include text;
-// }
+body {
+    @include text;
+    color: black;
+}
+
+.header-background {
+    color: white;
+    background: linear-gradient(228.57deg, #323264 11.93%, #323264 57.17%, #643E72 87.46%);
+    position: relative;
+    margin-bottom: 20px;
+
+    &::before {
+        content: "";
+        width: calc(100% - 40px);
+        position: absolute;
+        top: 100%;
+        height: 10px;
+        background-color: rgba(202, 202, 219, 1);
+        justify-self: center;
+        display: block;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    &::after {
+        content: "";
+        width: calc(100% - 80px);
+        position: absolute;
+        top: calc(100% + 10px);
+        height: 10px;
+        background-color: rgba(231, 231, 242, 1);
+        justify-self: center;
+        display: block;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+}
+
+.anchor {
+    display: inline-block;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    /* Only bottom and right borders */
+    padding: 5px;
+    transform: rotate(45deg);
+    /* Rotates the square to point the corner down */
+}
+
+.container {
+    @media (max-width: map-get($breakpoints, mobile)) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+.wide-block {
+    margin: {
+        top: 50px;
+        bottom: 50px;
+    }
+
+    ;
+
+    .content {
+        background-color: palevioletred;
+    }
+}
+
+.man-picture {
+    transition: opacity 3s;
+    display: block;
+    animation: pulse 2s ease-in-out infinite;
+
+
+    // &:hover {
+    //     transform: rotate(-5deg);
+    //     transition: transform 0.4s, border-color 0.4s;
+    //     border-color: green;
+    // }
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: rotate(0);
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+        opacity: 0;
+        transform: scale(1.4);
+    }
+
+    75% {
+        transform: rotate(5deg);
+        opacity: 1;
+        transform: scale(0.4);
+    }
+}

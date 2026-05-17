@@ -2,7 +2,6 @@
     .content {
         width: map-get($content-width, desktop-lg);
         margin: 0 auto;
-        background-color: red;
 
         @media (max-width: map-get($breakpoints, desktop)) {
             width: map-get($content-width, desktop);
@@ -20,4 +19,29 @@
             width: map-get($content-width, mobile);
         }
     }
+
+    &.wide-block {
+        @media (max-width: map-get($breakpoints, mobile)) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .content {
+            width: calc(map-get($content-width, desktop-lg) + 50px);
+            margin: 0 auto;
+
+            @media (max-width: map-get($breakpoints, desktop)) {
+                width: calc(map-get($content-width, desktop) + 50px);
+            }
+
+            @media (max-width: map-get($breakpoints, tablet-lg)) {
+                width: calc(map-get($content-width, tablet-lg) + 50px);
+            }
+
+            @media (max-width: map-get($breakpoints, tablet)) {
+                width: 100%;
+            }
+        }
+    }
+
 }

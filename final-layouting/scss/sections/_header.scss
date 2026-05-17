@@ -1,1 +1,205 @@
-.header {}
+.header {
+    z-index: 2;
+    @media (max-width: map-get($breakpoints, mobile)) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-areas:
+            "logo contacts"
+            "logo menu"
+        ;
+        padding-top: 50px;
+
+        @media (max-width: map-get($breakpoints, tablet)) {
+            grid-template-areas:
+                "contacts"
+                "logo"
+                "menu"
+            ;
+        }
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            grid-template-areas:
+                "contacts contacts"
+                "logo hamburger"
+            ;
+            padding-top: 0;
+        }
+    }
+
+    &__logo {
+        width: fit-content;
+        grid-area: logo;
+        height: fit-content;
+
+        @media (max-width: map-get($breakpoints, tablet)) {
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            width: 70px;
+            margin-top: 15px;
+            margin-bottom: 0;
+
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    &__contacts {
+        width: fit-content;
+        margin-left: auto;
+        grid-area: contacts;
+        display: flex;
+        margin-bottom: 16px;
+
+        @media (max-width: map-get($breakpoints, tablet)) {
+            margin-left: initial;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            background-color: rgba(245, 245, 250, 0.2);
+
+            padding: {
+                top: 10px;
+                bottom: 10px;
+                left: 15px;
+                right: 15px;
+            }
+
+            ;
+            width: 100%;
+            box-sizing: content-box;
+            margin-left: -15px;
+            margin-bottom: 0;
+        }
+    }
+
+    &__menu {
+        width: fit-content;
+        margin-left: auto;
+        grid-area: menu;
+        height: fit-content;
+
+        @media (max-width: map-get($breakpoints, tablet)) {
+            margin-left: initial;
+        }
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            display: none;
+        }
+    }
+
+    &__hamburger {
+        display: none;
+        height: 32px;
+        width: 32px;
+        grid-area: hamburger;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12.5px;
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            display: flex;
+        }
+
+
+        div {
+            width: 18px;
+            height: 18px;
+            border-top: 2.5px solid white;
+            border-bottom: 2.5px solid white;
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            &:after {
+                content: '';
+                background-color: white;
+                width: 18px;
+                height: 2px;
+                position: absolute;
+            }
+        }
+    }
+
+
+    &__languages {
+        display: flex;
+
+        @include headerDot;
+    }
+
+    &__language {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        letter-spacing: 1px;
+        color: white;
+        width: 33px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: none;
+
+        &--active {
+            background: rgba(240, 20, 90, 1);
+            pointer-events: none;
+        }
+
+        &:hover {
+            background: palevioletred;
+            transition: background-color 0.5s;
+        }
+    }
+
+    &__address {
+        font-style: normal;
+        @include headerDot;
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            display: none;
+        }
+    }
+
+    &__callback {
+        font-weight: 700;
+        font-size: 16px;
+        color: white;
+        @include headerDot;
+
+        @media (max-width: map-get($breakpoints, mobile)) {
+            margin-left: auto;
+        }
+    }
+
+    &__fb {
+        @media (max-width: map-get($breakpoints, mobile)) {
+            display: none;
+        }
+    }
+
+
+    &__menu-list {
+        display: flex;
+        gap: 15px;
+    }
+
+    &__menu-item {}
+
+    &__menu-link {
+        font-weight: 700;
+        font-size: 16px;
+        color: white;
+    }
+}
