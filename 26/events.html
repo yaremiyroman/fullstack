@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./script.js"></script>
+
+        <style>
+            #square {
+                width: 200px;
+                height: 200px;
+                margin: 30px;
+                background-color: red;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a href="#" id="myLink">LINK</a>
+        <div id="square"></div>
+
+        <input type="text" id="myInput">
+        <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni fuga, quam
+            eaque, veniam sunt praesentium itaque sit incidunt temporibus cumque
+            voluptatem sapiente aliquid assumenda, expedita possimus veritatis error quos
+            tempora.</div>
+    </body>
+
+    <script>
+        const box = document.getElementById("square");
+        const myInput = document.getElementById("myInput");
+
+
+
+        // box.addEventListener(
+        //     'dblclick',
+        //     () => {
+        //         console.log('DOUBLE CLICK');
+        //     }
+        // );
+
+        // box.addEventListener(
+        //     'mouseover',
+        //     () => {
+        //         console.log('MOUSE >>>');
+        //     }
+        // );
+
+        // box.addEventListener(
+        //     'mouseout',
+        //     () => {
+        //         console.log('MOUSE <<<');
+        //     }
+        // );
+
+        // box.addEventListener(
+        //     'mousemove',
+        //     () => {
+        //         console.log('MOUSE +++');
+        //     }
+        // );
+
+        // box.addEventListener(
+        //     'mousedown',
+        //     () => {
+        //         console.log('DOWN');
+        //     }
+        // );
+
+        // box.addEventListener(
+        //     'mouseup',
+        //     () => {
+        //         console.log('UP');
+        //     }
+        // );
+
+        // myInput.addEventListener('keydown', () => {
+        //     console.log('DOWN');
+        // });
+
+        // myInput.addEventListener('keyup', () => {
+        //     console.log('UP');
+        // });
+
+        // myInput.addEventListener('keypress', () => {
+        //     console.log('PRESS');
+        // });
+
+        //  .addEventListener('keydown', () => {
+        //     console.log('WINDOW DOWN');
+        // });
+
+        // window.addEventListener('load', () => {
+        //     console.log('LOAD');
+        // });
+
+
+        // function scrollHandler() {
+        //     console.log('SCROLL');
+        // }
+
+        // window.addEventListener('scroll', scrollHandler);
+
+        // window.addEventListener('resize', function () {
+        //     window.removeEventListener('scroll', scrollHandler);
+        // });
+
+        const myLink = document.getElementById('myLink');
+
+        myLink.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            console.log('event > ', event);
+            console.log('event.target > ', event.target);
+        });
+    </script>
+
+</html>

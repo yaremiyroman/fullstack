@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./script.js"></script>
+
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+        <form class="userForm" name="userForm">
+            <input type="text" name="name" class="userName" placeholder="Імʼя">
+            <br />
+            <br />
+            <input type="text" name="secondName" class="secondName"
+                placeholder="Прізвище">
+            <br />
+            <br />
+            <input type="text" name="mail" class="mail" placeholder="Пошта">
+            <br />
+            <br />
+            <button type="submit">SUBMIT</button>
+        </form>
+    </body>
+
+    <script>
+        const userForm = document.querySelector('.userForm');
+        const userName = document.querySelector('.userName');
+        const secondName = document.querySelector('.secondName');
+        const mail = document.querySelector('.mail');
+
+        userForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            if (!userName.value || !secondName.value || !mail.value) {
+                console.log('Заповніть поля форми!!!');
+
+                return;
+            }
+
+            console.log('Форма відправлена.');
+        });
+
+        // userName.addEventListener('focus', () => {
+        //     console.log('Елемент форми отримав фокус.');
+        // });
+
+        // userName.addEventListener('blur', () => {
+        //     console.log('Елемент форми ВТРАТИВ фокус.');
+        // });
+
+        const fields = [userName, secondName, mail];
+
+        fields.forEach(field => {
+            field.addEventListener('input', (e) => {
+                console.log(e.target.name, ' > ', e.target.value);
+            });
+        });
+
+    </script>
+
+</html>
