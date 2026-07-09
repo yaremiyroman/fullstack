@@ -30,8 +30,6 @@
             }
 
             #slider-container {
-                width: 1200px;
-                height: 360px;
                 position: relative;
                 display: flex;
                 align-items: center;
@@ -52,7 +50,6 @@
             }
 
             #slider {
-                width: 960px;
                 overflow: hidden;
             }
 
@@ -87,11 +84,28 @@
                 opacity: 1;
                 transition: opacity 0.2s;
             }
+
+            .control {
+                position: absolute;
+                top: 20px;
+                font-size: 60px;
+                cursor: pointer;
+            }
+
+            .control#start {
+                left: 20px;
+            }
+
+            .control#stop {
+                left: 100px;
+            }
         </style>
     </head>
 
     <body>
         <div id="app">
+            <div class="control" id="start">▶️</div>
+            <div class="control" id="stop">⏸️</div>
 
             <div id="slider-container">
                 <div class="nav" id="prev">⬅️</div>

@@ -1,0 +1,25 @@
+{
+    "name": "example",
+    "version": "1.0.0",
+    "settings": {
+        "enabled": true,
+        "maxItems": 10,
+        "features": [
+            "search",
+            "analytics",
+            "notifications"
+        ]
+    },
+    "users": [
+        {
+            "id": 1,
+            "name": "Alice",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "name": "Bob",
+            "role": "editor"
+        }
+    ]
+}
