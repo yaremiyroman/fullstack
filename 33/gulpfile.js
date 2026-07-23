@@ -5,8 +5,13 @@ const sourcemaps = require('gulp-sourcemaps'); // Requires: npm i -D gulp-source
 const cssnano = require('cssnano');
 const rename = require('gulp-rename');
 const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
 
-const PLUGINS = [
+const POSTCSS_PLUGINS = [
+    autoprefixer({
+        overrideBrowserslist: ['last 5 versions'],
+        cascade: true
+    }),
     cssnano({ preset: ['default', {}] }),
 ];
 
@@ -15,13 +20,13 @@ const PATH = {
     htmlAllFiles: './*.html',
 };
 
-
-
 function scss() {
     return src('./scss/styles.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss(PLUGINS))
+        .pipe(postcss(POSTCSS_PLUGINS))
         .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('./css/'));
 }
 

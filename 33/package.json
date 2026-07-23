@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "GPL-3.0-only",
   "devDependencies": {
+    "autoprefixer": "^10.5.4",
     "browser-sync": "^3.0.4",
     "cssnano": "^8.0.2",
     "gulp": "^5.0.1",
