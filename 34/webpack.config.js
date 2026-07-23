@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 // console.log('__dirname > ', __dirname);
 
@@ -31,6 +32,12 @@ module.exports = (env, argv) => {
                     test: /\.(sa|c|sc)ss$/i,
                     use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
                 },
+            ],
+        },
+        optimization: {
+            minimize: true,
+            minimizer: [
+                new CssMinimizerPlugin(),
             ],
         },
         resolve: {
