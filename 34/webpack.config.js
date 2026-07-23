@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 // console.log('__dirname > ', __dirname);
 
@@ -25,9 +26,23 @@ module.exports = (env, argv) => {
             new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css',
             }),
+            new ESLintPlugin({
+                extensions: ['js'],
+                emitWarning: true,
+            }),
         ],
         module: {
             rules: [
+                {
+                    test: /\.m?js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                        },
+                    },
+                },
                 {
                     test: /\.(sa|c|sc)ss$/i,
                     use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
