@@ -1,6 +1,7 @@
 // alert('hello9');
 
 import axios from 'axios';
+import '../scss/styles.scss';
 
 // 1. Using Async/Await (Recommended)
 async function fetchTodos() {

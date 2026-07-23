@@ -10,7 +10,11 @@
   "license": "GPL",
   "description": "",
   "devDependencies": {
+    "css-loader": "^7.1.4",
     "html-webpack-plugin": "^5.6.7",
+    "sass": "^1.99.0",
+    "sass-loader": "^16.0.8",
+    "style-loader": "^4.0.0",
     "webpack": "^5.108.4",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.6"

@@ -21,6 +21,14 @@ module.exports = (env, argv) => {
                 inject: 'body'
             })
         ],
+        module: {
+            rules: [
+                {
+                    test: /\.(sa|c|sc)ss$/i,
+                    use: ['style-loader', 'css-loader', 'sass-loader'],
+                },
+            ],
+        },
         resolve: {
             extensions: ['.js'],
         },
