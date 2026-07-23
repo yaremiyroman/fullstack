@@ -32,12 +32,28 @@ module.exports = (env, argv) => {
                     test: /\.(sa|c|sc)ss$/i,
                     use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
                 },
+                {
+                    test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
+                    type: 'asset/resource',
+                    generator: {
+                        filename: 'images/[name][hash][ext][query]',
+                    },
+                },
             ],
         },
         optimization: {
             minimize: true,
             minimizer: [
-                new CssMinimizerPlugin(),
+                new CssMinimizerPlugin({
+                    minimizerOptions: {
+                        preset: [
+                            'default',
+                            {
+                                discardComments: { removeAll: true },
+                            },
+                        ],
+                    },
+                }),
             ],
         },
         resolve: {
