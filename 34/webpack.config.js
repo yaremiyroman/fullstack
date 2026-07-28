@@ -1,5 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -31,6 +32,15 @@ module.exports = (env, argv) => {
             new ESLintPlugin({
                 extensions: ['js'],
                 emitWarning: true,
+            }),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, 'public'),
+                        to: path.resolve(__dirname, 'dist'),
+                        noErrorOnMissing: true,
+                    },
+                ],
             }),
         ],
         module: {
@@ -76,6 +86,9 @@ module.exports = (env, argv) => {
         devServer: {
             static: {
                 directory: path.join(__dirname, 'dist'),
+            },
+            devMiddleware: {
+                writeToDisk: true,
             },
             hot: true,
             port: 9000,
