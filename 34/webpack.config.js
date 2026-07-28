@@ -4,6 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 // console.log('__dirname > ', __dirname);
@@ -69,6 +70,9 @@ module.exports = (env, argv) => {
         optimization: {
             minimize: true,
             minimizer: [
+                new TerserPlugin({
+                    extractComments: false,
+                }),
                 new CssMinimizerPlugin({
                     minimizerOptions: {
                         preset: [
