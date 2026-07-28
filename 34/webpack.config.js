@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -18,6 +19,7 @@ module.exports = (env, argv) => {
             filename: 'bundle.js',
         },
         plugins: [
+            new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
                 title: 'WEbpack Demo',
                 template: 'src/index.html',
@@ -34,13 +36,10 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    test: /\.m?js$/,
+                    test: /\.m?jsx?$/,
                     exclude: /node_modules/,
                     use: {
                         loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env'],
-                        },
                     },
                 },
                 {
@@ -72,7 +71,7 @@ module.exports = (env, argv) => {
             ],
         },
         resolve: {
-            extensions: ['.js'],
+            extensions: ['.js', '.jsx'],
         },
         devServer: {
             static: {
