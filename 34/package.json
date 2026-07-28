@@ -6,7 +6,8 @@
     "startDev": "cross-env NODE_ENV=development webpack serve --mode development",
     "startProd": "cross-env NODE_ENV=production webpack serve --mode production",
     "buildDev": "cross-env NODE_ENV=development webpack --mode development",
-    "buildProd": "cross-env NODE_ENV=production webpack --mode production"
+    "buildProd": "cross-env NODE_ENV=production webpack --mode production",
+    "analyze": "cross-env NODE_ENV=development ANALYZE=true webpack --mode development"
   },
   "author": "Roman Y",
   "license": "GPL",
@@ -35,6 +36,7 @@
     "ts-loader": "^9.6.2",
     "typescript": "^5.9.3",
     "webpack": "^5.108.4",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.6"
   },

@@ -6,11 +6,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 // console.log('__dirname > ', __dirname);
 
 module.exports = (env, argv) => {
     const isProd = process.env.NODE_ENV === 'production';
+    const isAnalyze = process.env.ANALYZE === 'true';
     console.log('isProd >>> ', isProd);
 
     return {
@@ -46,6 +48,13 @@ module.exports = (env, argv) => {
                     },
                 ],
             }),
+            ...(isAnalyze ? [
+                new BundleAnalyzerPlugin({
+                    analyzerMode: 'static',
+                    openAnalyzer: false,
+                    reportFilename: path.resolve(__dirname, 'dist/bundle-report.html'),
+                }),
+            ] : []),
         ],
         module: {
             rules: [
