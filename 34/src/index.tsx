@@ -5,6 +5,7 @@ import '../scss/styles.scss';
 
 function App() {
     const [todosCount, setTodosCount] = useState<number | null>(null);
+    const [lazyMessage, setLazyMessage] = useState<string>('');
 
     useEffect(() => {
         async function fetchTodos() {
@@ -19,10 +20,28 @@ function App() {
         fetchTodos();
     }, []);
 
+    function loadDynamicMessage() {
+        import(/* webpackChunkName: "lodash-chunk" */ 'lodash')
+            .then(({ default: _ }) => {
+                const message = _.join(
+                    ['Lodash', 'loaded', 'via', 'dynamic', 'import'],
+                    ' ',
+                );
+                setLazyMessage(message);
+            })
+            .catch((error) => {
+                console.error('Error loading lodash chunk:', error);
+            });
+    }
+
     return (
         <main>
             <h1>React + Webpack + TypeScript</h1>
             <p>Todos loaded: {todosCount ?? 'loading...'}</p>
+            <button type="button" onClick={loadDynamicMessage}>
+                Load lodash dynamically
+            </button>
+            {lazyMessage && <p>{lazyMessage}</p>}
         </main>
     );
 }

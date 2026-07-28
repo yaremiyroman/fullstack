@@ -19,6 +19,7 @@ module.exports = (env, argv) => {
         entry: './src/index.tsx',
         output: {
             filename: 'bundle.js',
+            chunkFilename: '[name].[contenthash].js',
             path: path.resolve(__dirname, 'dist'),
             filename: 'bundle.js',
         },
