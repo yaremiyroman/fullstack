@@ -23,3 +23,9 @@ axios.get('https://jsonplaceholder.typicode.com/todos')
     .catch(error => {
         console.error('Error fetching data:', error.message);
     });
+
+
+let myString: string = 'string';
+
+
+console.log('myString > ', myString);
