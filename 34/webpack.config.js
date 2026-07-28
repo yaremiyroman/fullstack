@@ -32,7 +32,7 @@ module.exports = (env, argv) => {
                 filename: '[name].[contenthash].css',
             }),
             new ESLintPlugin({
-                extensions: ['js'],
+                extensions: ['js', 'ts', 'tsx'],
                 emitWarning: true,
             }),
             new CopyPlugin({
@@ -47,6 +47,11 @@ module.exports = (env, argv) => {
         ],
         module: {
             rules: [
+                {
+                    test: /\.tsx?$/,
+                    exclude: /node_modules/,
+                    use: 'ts-loader',
+                },
                 {
                     test: /\.m?jsx?$/,
                     exclude: /node_modules/,
@@ -86,7 +91,7 @@ module.exports = (env, argv) => {
             ],
         },
         resolve: {
-            extensions: ['.js', '.jsx'],
+            extensions: ['.ts', '.tsx', '.js', '.jsx'],
         },
         devServer: {
             static: {
