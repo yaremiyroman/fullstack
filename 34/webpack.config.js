@@ -15,6 +15,7 @@ module.exports = (env, argv) => {
 
     return {
         mode: isProd ? 'production' : 'development',
+        devtool: 'source-map',
         entry: './src/index.tsx',
         output: {
             filename: 'bundle.js',
