@@ -9,7 +9,8 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 // console.log('__dirname > ', __dirname);
 
 module.exports = (env, argv) => {
-    const isProd = argv.mode === 'production';
+    const isProd = process.env.NODE_ENV === 'production';
+    console.log('isProd >>> ', isProd);
 
     return {
         mode: isProd ? 'production' : 'development',
