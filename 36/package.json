@@ -1,0 +1,34 @@
+{
+  "name": "36",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "dev": "webpack serve --mode development",
+    "sync": "browser-sync start --server \"dist\" --files \"dist/**/*\" --open",
+    "dev:sync": "npm run build:dev && run-p watch sync",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "browser-sync": "^3.0.3",
+    "copy-webpack-plugin": "^13.0.0",
+    "eslint": "^9.33.0",
+    "html-webpack-plugin": "^5.6.0",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^9.5.4",
+    "typescript-eslint": "^8.39.0",
+    "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
