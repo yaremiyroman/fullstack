@@ -1,4 +1,4 @@
-import { NavLink, Outlet, Link } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const getNavLinkClassName = ({ isActive }) =>
   isActive ? 'app-nav__link app-nav__link--active' : 'app-nav__link';
@@ -16,6 +16,9 @@ function MainLayout() {
           </NavLink>
           <NavLink className={getNavLinkClassName} to="/contact">
             Contact
+          </NavLink>
+          <NavLink className={getNavLinkClassName} to="/post/1">
+            Blog
           </NavLink>
         </nav>
       </header>

@@ -4,6 +4,7 @@ import Home from './containers/Home'
 import About from './containers/About'
 import Contact from './containers/Contact'
 import Blog from './containers/Blog'
+import Test from './containers/Test'
 import NotFound from './containers/NotFound'
 
 export const router = createBrowserRouter([
@@ -25,7 +26,13 @@ export const router = createBrowserRouter([
       },
       {
         path: 'post/:id',
-        element: <Blog />
+        element: <Blog />,
+        children: [
+          {
+            path: 'test',
+            element: <Test />,
+          },
+        ],
       },
       {
         path: '*',
