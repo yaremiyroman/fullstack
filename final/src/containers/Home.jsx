@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 
 import Card from '../components/Card'
-const languageProp = 'en';
-
-
-// Prop Drilling
-
 
 function Home() {
   return (
@@ -23,7 +18,6 @@ function Home() {
       <Card
         title="title"
         description="some description"
-        language={languageProp}
       />
       <p>Welcome! This is a starter React Router setup.</p>
     </section>

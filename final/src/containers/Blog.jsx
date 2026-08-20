@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
-import Card from '../components/Card';
-
 function Blog() {
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

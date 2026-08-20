@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 
 const ThemeContext = createContext();
 
@@ -6,7 +6,7 @@ export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState('day');
 
     const toggleTheme = () => {
-        setTheme(prev => theme === 'day' ? 'night' : 'day');
+        setTheme((prev) => (prev === 'day' ? 'night' : 'day'));
     }
 
     return (
