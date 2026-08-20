@@ -3,7 +3,7 @@ import MainLayout from './layouts/MainLayout'
 import Home from './containers/Home'
 import About from './containers/About'
 import Contact from './containers/Contact'
-import Blog from './containers/Blog'
+import Post from './containers/Post'
 import Test from './containers/Test'
 import NotFound from './containers/NotFound'
 
@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'post/:id',
-        element: <Blog />,
+        element: <Post />,
         children: [
           {
             path: 'test',

@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Welcome Post",
+      "body": "This is a mock post served by json-server."
+    },
+    {
+      "id": 2,
+      "title": "Second Post",
+      "body": "Use this data for local UI development."
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Olena",
+      "email": "olena@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Maksym",
+      "email": "maksym@example.com"
+    }
+  ]
+}
