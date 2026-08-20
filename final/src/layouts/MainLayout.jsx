@@ -110,13 +110,6 @@ function MainLayout() {
           >
             {t('contact')}
           </StyledNavLink>
-          <StyledNavLink
-            $themeMode={theme}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            to="/post/1"
-          >
-            {t('blog')}
-          </StyledNavLink>
         </Nav>
         <Controls>
           <ControlLabel>{t('language')}:</ControlLabel>

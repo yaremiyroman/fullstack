@@ -3,10 +3,16 @@ import { createContext, useState, useContext } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState('day');
+    const initTheme = localStorage.getItem('theme') ?? 'day';
+    const [theme, setTheme] = useState(initTheme);
 
     const toggleTheme = () => {
-        setTheme((prev) => (prev === 'day' ? 'night' : 'day'));
+        setTheme((prev) => {
+            const newTheme = prev === 'day' ? 'night' : 'day';
+            localStorage.setItem('theme', newTheme);
+
+            return newTheme;
+        });
     }
 
     return (
