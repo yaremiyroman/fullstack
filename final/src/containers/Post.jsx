@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 
+import { BASE_URL } from '../api';
+
 function Post() {
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +18,7 @@ function Post() {
         setError('');
 
         const response = await fetch(
-          `https://jsonplaceholder.typicode.com/posts/${postID}`,
+          `${BASE_URL}/${postID}`,
           { signal: controller.signal }
         );
 
@@ -63,7 +65,7 @@ function Post() {
   return (
     <section>
       <h1>{post.title}</h1>
-      <em>Authored by user #{post.userId}</em>
+      <em>Authored by user #{post.userID}</em>
       <p>{post.body}</p>
     </section>
   )

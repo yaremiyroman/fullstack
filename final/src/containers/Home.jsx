@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from '../components/Card'
 
 function Home() {
+  // BASE_URL
   return (
     <section>
       <Link

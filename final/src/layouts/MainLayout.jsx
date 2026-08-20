@@ -39,10 +39,10 @@ function MainLayout() {
             UA
           </button>
         </div>
-        <div className="theme-selector">
+        {/* <div className="theme-selector">
           <button onClick={() => toggleTheme()}>☀️</button>
           <button onClick={() => toggleTheme()}>🌑</button>
-        </div>
+        </div> */}
       </header>
 
       <main className="app-main">
