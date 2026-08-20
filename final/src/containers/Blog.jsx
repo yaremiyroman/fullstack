@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
+import Card from '../components/Card';
+
 function Blog() {
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -68,8 +70,11 @@ function Blog() {
     return <p>Post not found.</p>;
   }
 
+
+
   return (
     <section>
+      {/* {languageProp} */}
       <button onClick={() => navigate('/about')}>
         Перейти на ABOUT
       </button>
@@ -80,6 +85,8 @@ function Blog() {
       <p>
         <Link to="test">Open nested test route</Link>
       </p>
+
+
 
       <p>
         <Link to="/post/1">Post 1</Link> | <Link to="/post/2">Post 2</Link> |{' '}

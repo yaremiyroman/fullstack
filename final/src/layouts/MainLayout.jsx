@@ -1,11 +1,18 @@
 import { NavLink, Outlet } from 'react-router-dom';
 
+import { useTheme } from '../contexts/ThemeContext';
+
+
 const getNavLinkClassName = ({ isActive }) =>
   isActive ? 'app-nav__link app-nav__link--active' : 'app-nav__link';
 
 function MainLayout() {
+  const { theme, toggleTheme } = useTheme();
+
+  console.log('theme > ', theme);
+
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${theme}`}>
       <header className="app-header">
         <nav className="app-nav">
           <NavLink className={getNavLinkClassName} to="/">
@@ -21,6 +28,10 @@ function MainLayout() {
             Blog
           </NavLink>
         </nav>
+        <div className="theme-selector">
+          <button onClick={() => toggleTheme()}>☀️</button>
+          <button onClick={() => toggleTheme()}>🌑</button>
+        </div>
       </header>
 
       <main className="app-main">
