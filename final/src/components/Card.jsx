@@ -1,12 +1,26 @@
-import Button from "./Button";
+import styled from 'styled-components';
 
-const Card = ({ title, description }) => {
+// Створення стилізованої кнопки
+const Container = styled.div`
+`;
+
+const Title = styled.h2`
+`;
+
+const Author = styled.em`
+`;
+
+const Description = styled.p`
+`;
+
+
+const Card = ({ title, description, author }) => {
   return (
-    <div>
-      <h2 >{title}</h2>
-      <p >{description}</p>
-      <Button />
-    </div>
+    <Container>
+      <Title>{title}</Title>
+      <Author>author #{author}</Author>
+      <Description>{description}</Description>
+    </Container>
   );
 };
 

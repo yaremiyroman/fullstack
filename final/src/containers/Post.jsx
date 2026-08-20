@@ -10,17 +10,12 @@ function Post() {
   const { id: postID } = useParams();
 
   useEffect(() => {
-    const controller = new AbortController();
-
     const fetchData = async () => {
       try {
         setIsLoading(true);
         setError('');
 
-        const response = await fetch(
-          `${BASE_URL}/${postID}`,
-          { signal: controller.signal }
-        );
+        const response = await fetch(`${BASE_URL}/${postID}`);
 
         if (!response.ok) {
           throw new Error('Failed to load post data');
@@ -43,8 +38,6 @@ function Post() {
     };
 
     fetchData();
-
-    return () => controller.abort();
   }, [postID]);
 
 
