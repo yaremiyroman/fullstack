@@ -10,11 +10,13 @@ const i18nMap = {
 };
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState('en');
+    const initialLang = localStorage.getItem('lang') ?? 'en';
+    const [language, setLanguage] = useState(initialLang);
 
     const changeLanguage = (nextLanguage) => {
         if (i18nMap[nextLanguage]) {
             setLanguage(nextLanguage);
+            localStorage.setItem('lang', nextLanguage);
         }
     };
 
