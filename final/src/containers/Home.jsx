@@ -46,32 +46,17 @@ function Home() {
     return <p>{error}</p>;
   }
 
-
-
-  // body
-  // :
-  // "This is a mock post served by json-server."
-  // id
-  // :
-  // 1
-  // title
-  // :
-  // "Welcome Post"
-  // userID
-  // :
-  // 1
-  // uuid
-  // :
-  // "2d879610-b4f1-4e89-95da-6fe11b2ecb9d"
+  console.log('posts > ', posts);
 
   return (
     <section>
-      {posts.map(({ uuid, title, body, userID }) => (
+      {posts.map(({ uuid, title, body, userID, id }) => (
         <Card
           key={uuid}
           title={title}
           description={body}
           author={userID}
+          postID={id}
         />
       ))}
     </section>

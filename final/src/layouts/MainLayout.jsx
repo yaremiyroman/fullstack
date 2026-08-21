@@ -76,9 +76,6 @@ const ControlButton = styled.button`
 
 const Main = styled.main`
   background: ${({ $themeMode }) => ($themeMode === 'night' ? '#111827' : '#ffffff')};
-  border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#334155' : '#e2e8f0')};
-  border-radius: 12px;
-  padding: 24px;
 `;
 
 function MainLayout() {
