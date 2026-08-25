@@ -3,12 +3,19 @@ import { router } from './router';
 
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { Provider as StoreProvider } from 'react-redux';
+
+import { store } from './store';
+
+console.log('store > ', store);
 
 function App() {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <RouterProvider router={router} />
+        <StoreProvider store={store}>
+          <RouterProvider router={router} />
+        </StoreProvider>
       </ThemeProvider>
     </LanguageProvider>
   );

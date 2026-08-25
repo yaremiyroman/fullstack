@@ -9,44 +9,46 @@ function Home() {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setError('');
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setError('');
 
-        const response = await fetch(BASE_URL);
+  //       const response = await fetch(BASE_URL);
 
-        if (!response.ok) {
-          throw new Error('Failed to load posts data');
-        }
+  //       if (!response.ok) {
+  //         throw new Error('Failed to load posts data');
+  //       }
 
-        const data = await response.json();
+  //       const data = await response.json();
 
-        setPosts(data); // Збереження отриманих даних
-      } catch (error) {
-        if (error.name === 'AbortError') {
-          return;
-        }
+  //       setPosts(data); // Збереження отриманих даних
+  //     } catch (error) {
+  //       if (error.name === 'AbortError') {
+  //         return;
+  //       }
 
-        setPosts(null);
-        setError(error.message);
-        console.error('Error retrieving data', error);
-      }
-    };
+  //       setPosts(null);
+  //       setError(error.message);
+  //       console.error('Error retrieving data', error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
 
-  if (!posts) {
-    return <p>Loading...</p>;
-  }
+  // if (!posts) {
+  //   return <p>Loading...</p>;
+  // }
 
-  if (error) {
-    return <p>{error}</p>;
-  }
+  // if (error) {
+  //   return <p>{error}</p>;
+  // }
 
-  console.log('posts > ', posts);
+  // console.log('posts > ', posts);
+
+  return null;
 
   return (
     <section>
