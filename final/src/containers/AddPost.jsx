@@ -10,9 +10,10 @@ const AddPostForm = styled.form`
   flex-direction: column;
   gap: 20px;
 
-  &.isLoading {
+  /* Targets the component when the $isLoading prop is true */
+  ${props => props.$isLoading && `
     background: red;
-  }
+  `}
 `;
 
 const PostTitle = styled.input`
@@ -63,7 +64,7 @@ function AddPost() {
 
   return (<>
     <h1>Add Post</h1>
-    <AddPostForm onSubmit={handleSubmit} className={!!isLoading ? 'loading' : ''}>
+    <AddPostForm onSubmit={handleSubmit} $isLoading={isLoading}>
       <PostTitle
         type="text"
         name="title"
