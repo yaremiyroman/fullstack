@@ -7,8 +7,6 @@ import { Provider as StoreProvider } from 'react-redux';
 
 import { store } from './store';
 
-console.log('store > ', store);
-
 function App() {
   return (
     <LanguageProvider>

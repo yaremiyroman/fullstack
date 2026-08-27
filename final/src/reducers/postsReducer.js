@@ -5,11 +5,24 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'GET_POSTS':
-            return { ...state, postsData: action.payload, status: 'success' };
+        case 'GET_POSTS': {
+            console.log('action > ', action);
+
+            return {
+                ...state,
+                postsData: action.payload,
+                status: 'success'
+            };
+        }
         case 'LOADING':
-            return { ...state, status: 'loading' };
+            return {
+                ...state,
+                status: 'loading'
+            };
         default:
             return state;
     }
 };
+
+
+// slice

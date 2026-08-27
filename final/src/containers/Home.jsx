@@ -1,54 +1,43 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchPosts } from '../slices/postsSlice';
 
 import Card from '../components/Card'
 
 import { BASE_URL } from '../api';
 
+// store - Single Source of Truth
+// rootReducer
+// reducer
+// storeProvider
+// action (type, payload)
+// actionCreator
+// useDispatch/dispatch
+// useSelector/selector
+// middleware
+// thunk(saga)
+// redux toolkit
+// slice
+// axios
+
 function Home() {
-  const [posts, setPosts] = useState(null);
-  const [error, setError] = useState('');
+  // const [open, setOpen] = useState(null);
+  // const [posts, setPosts] = useState(null);
+  const posts = useSelector(state => state.posts.postsData);
+  const postsStatus = useSelector(state => state.posts.status);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setError('');
+  const dispatch = useDispatch();
 
-  //       const response = await fetch(BASE_URL);
-
-  //       if (!response.ok) {
-  //         throw new Error('Failed to load posts data');
-  //       }
-
-  //       const data = await response.json();
-
-  //       setPosts(data); // Збереження отриманих даних
-  //     } catch (error) {
-  //       if (error.name === 'AbortError') {
-  //         return;
-  //       }
-
-  //       setPosts(null);
-  //       setError(error.message);
-  //       console.error('Error retrieving data', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, []);
 
 
-  // if (!posts) {
-  //   return <p>Loading...</p>;
-  // }
-
-  // if (error) {
-  //   return <p>{error}</p>;
-  // }
-
-  // console.log('posts > ', posts);
-
-  return null;
+  if (!posts || postsStatus !== 'success') {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section>
@@ -62,7 +51,7 @@ function Home() {
         />
       ))}
     </section>
-  )
+  );
 };
 
 export default Home;
