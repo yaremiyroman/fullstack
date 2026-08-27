@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchPosts } from '../slices/postsSlice';
-
 import Card from '../components/Card'
-
+import { fetchPosts } from '../slices/postsSlice';
 import { BASE_URL } from '../api';
 
 // store - Single Source of Truth
@@ -23,10 +21,9 @@ import { BASE_URL } from '../api';
 // axios
 
 function Home() {
-  // const [open, setOpen] = useState(null);
-  // const [posts, setPosts] = useState(null);
   const posts = useSelector(state => state.posts.postsData);
-  const postsStatus = useSelector(state => state.posts.status);
+  const isLoading = useSelector(state => state.posts.loading);
+  const error = useSelector(state => state.posts.error);
 
   const dispatch = useDispatch();
 
@@ -34,9 +31,16 @@ function Home() {
     dispatch(fetchPosts());
   }, []);
 
-
-  if (!posts || postsStatus !== 'success') {
+  if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (!!error) {
+    return <p>ERROR: {error}</p>;
+  }
+
+  if (!posts) {
+    return <p>No posts yet...</p>;
   }
 
   return (

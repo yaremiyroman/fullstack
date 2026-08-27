@@ -107,6 +107,13 @@ function MainLayout() {
           >
             {t('contact')}
           </StyledNavLink>
+          <StyledNavLink
+            $themeMode={theme}
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to="/add-post"
+          >
+            {t('addPost')}
+          </StyledNavLink>
         </Nav>
         <Controls>
           <ControlLabel>{t('language')}:</ControlLabel>

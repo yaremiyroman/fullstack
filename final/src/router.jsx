@@ -1,11 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
-import Home from './containers/Home'
-import About from './containers/About'
-import Contact from './containers/Contact'
-import Post from './containers/Post'
-import Test from './containers/Test'
-import NotFound from './containers/NotFound'
+
+import {
+  Home,
+  About,
+  Contact,
+  Post,
+  Test,
+  NotFound,
+  AddPost,
+} from './containers';
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +37,10 @@ export const router = createBrowserRouter([
             element: <Test />,
           },
         ],
+      },
+      {
+        path: '/add-post',
+        element: <AddPost />,
       },
       {
         path: '*',
