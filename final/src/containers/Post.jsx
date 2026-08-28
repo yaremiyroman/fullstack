@@ -1,43 +1,30 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import { BASE_URL } from '../api';
 
 function Post() {
-  const [post, setPost] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [post, setPost] = useState(useSelector(state => state.posts.post));
   const { id: postID } = useParams();
+
+  const isLoading = useSelector(state => state.posts.loading);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        setError('');
+      const response = await fetch(`${BASE_URL}/${postID}`);
 
-        const response = await fetch(`${BASE_URL}/${postID}`);
+      const data = await response.json();
 
-        if (!response.ok) {
-          throw new Error('Failed to load post data');
-        }
-
-        const data = await response.json();
-
-        setPost(data); // Збереження отриманих даних
-      } catch (error) {
-        if (error.name === 'AbortError') {
-          return;
-        }
-
-        setPost(null);
-        setError(error.message);
-        console.error('Помилка отримання даних:', error);
-      } finally {
-        setIsLoading(false);
-      }
+      setPost(data); // Збереження отриманих даних
     };
 
-    fetchData();
+    if (post == null) {
+      console.log(' FETCH >>>>');
+
+      fetchData();
+    }
   }, [postID]);
 
 
@@ -45,15 +32,9 @@ function Post() {
     return <p>Loading post...</p>;
   }
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   if (!post) {
     return <p>Post not found.</p>;
   }
-
-
 
   return (
     <section>

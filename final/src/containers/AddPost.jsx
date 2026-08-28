@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
 
 import { addPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils';
@@ -12,7 +14,9 @@ const AddPostForm = styled.form`
 
   /* Targets the component when the $isLoading prop is true */
   ${props => props.$isLoading && `
-    background: red;
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
   `}
 `;
 
@@ -33,11 +37,18 @@ const PostSubmit = styled.button`
 
 function AddPost() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
 
   const isLoading = useSelector(state => state.posts.loading);
+  const newPostID = useSelector(state => state.posts.post?.id);
+
+  useEffect(() => {
+    if (!!newPostID)
+      navigate(`/post/${newPostID}`);
+  }, [newPostID]);
 
   const handlePostTitleInput = (event) => {
     setPostTitle(event.target.value);
@@ -52,15 +63,16 @@ function AddPost() {
 
     dispatch(
       addPost({
-        "userID": 1,
-        "title": postTitle,
-        "body": postBody,
-        "uuid": generateDummyUUID(),
+        userID: 1,
+        title: postTitle,
+        body: postBody,
+        uuid: generateDummyUUID(),
       })
     );
   };
 
-  console.log('isLoading > ', isLoading);
+
+  console.log('newPostID > ', newPostID);
 
   return (<>
     <h1>Add Post</h1>
