@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
-
+import { Link, Outlet, useParams, useViewTransitionState } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { BASE_URL } from '../api';
+import { combineSlices } from '@reduxjs/toolkit';
+
+import { deletePost } from '../slices/postsSlice';
 
 function Post() {
   const [post, setPost] = useState(useSelector(state => state.posts.post));
   const { id: postID } = useParams();
 
   const isLoading = useSelector(state => state.posts.loading);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +34,14 @@ function Post() {
   }, [postID]);
 
 
+  const handlePostDeletion = (e) => {
+    e.preventDefault();
+
+    dispatch(deletePost(post.id));
+
+    navigate(`/`);
+  }
+
   if (isLoading) {
     return <p>Loading post...</p>;
   }
@@ -38,7 +52,10 @@ function Post() {
 
   return (
     <section>
-      <h1>{post.title}</h1>
+      <h1>
+        {post.title}
+        <span onClick={handlePostDeletion}>❌</span>
+      </h1>
       <em>Authored by user #{post.userID}</em>
       <p>{post.body}</p>
     </section>

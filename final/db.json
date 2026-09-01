@@ -281,25 +281,11 @@
       "uuid": "00000000-0000-4000-8000-000000000040"
     },
     {
-      "userID": 1,
-      "id": 41,
-      "title": "Post 41",
-      "body": "Generated mock content for post 41.",
-      "uuid": "00000000-0000-4000-8000-000000000041"
-    },
-    {
       "userID": 2,
       "id": 42,
       "title": "Post 42",
       "body": "Generated mock content for post 42.",
       "uuid": "00000000-0000-4000-8000-000000000042"
-    },
-    {
-      "userID": 1,
-      "id": 43,
-      "title": "Post 43",
-      "body": "Generated mock content for post 43.",
-      "uuid": "00000000-0000-4000-8000-000000000043"
     },
     {
       "userID": 2,
@@ -699,63 +685,6 @@
       "title": "Post 100",
       "body": "Generated mock content for post 100.",
       "uuid": "00000000-0000-4000-8000-000000000100"
-    },
-    {
-      "id": 101
-    },
-    {
-      "id": 102
-    },
-    {
-      "userID": 1,
-      "title": "Post 102",
-      "body": "Generated mock content for post 102.",
-      "id": 103
-    },
-    {
-      "title": "New Post +++++",
-      "body": "This is the post content.",
-      "userId": 1,
-      "id": 104
-    },
-    {
-      "userID": 1,
-      "title": "77",
-      "body": "88",
-      "id": 105
-    },
-    {
-      "userID": 1,
-      "title": "245t64t6",
-      "body": "245t245t4356",
-      "id": 106
-    },
-    {
-      "userID": 1,
-      "title": "sdfgdsfg",
-      "body": "sdfgsdfgdzg",
-      "id": 107
-    },
-    {
-      "userID": 1,
-      "title": "asdgasdg",
-      "body": "asdgasdgsadgasdgasdg",
-      "uuid": "undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined-undefinedundefinedundefinedundefined-4undefinedundefinedundefined-undefinedundefinedundefinedundefined-undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined",
-      "id": 108
-    },
-    {
-      "userID": 1,
-      "title": "asdgasdgsadgasdg",
-      "body": "asdgasdgsadgasdgasdg",
-      "uuid": "undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined-undefinedundefinedundefinedundefined-4undefinedundefinedundefined-undefinedundefinedundefinedundefined-undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined",
-      "id": 109
-    },
-    {
-      "userID": 1,
-      "title": "asdgasdgsadgasdg",
-      "body": "asdgasdgsadgasdgasdg",
-      "uuid": "undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined-undefinedundefinedundefinedundefined-4undefinedundefinedundefined-undefinedundefinedundefinedundefined-undefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefinedundefined",
-      "id": 110
     },
     {
       "userID": 1,
@@ -1204,6 +1133,13 @@
       "body": "test222",
       "uuid": "e5631237-c6ae-4a21-ace2-b9e52c22a2f9",
       "id": 174
+    },
+    {
+      "userID": 1,
+      "title": "test",
+      "body": "test2",
+      "uuid": "97f688cf-c385-4e7a-994a-9adfe603a4ea",
+      "id": 176
     }
   ],
   "users": [
