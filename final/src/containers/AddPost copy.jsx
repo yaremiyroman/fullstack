@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Formik, Form, Field, useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 
 import { addPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils';
@@ -39,43 +39,71 @@ function AddPost() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [postTitle, setPostTitle] = useState('');
+  const [postBody, setPostBody] = useState('');
+
   const isLoading = useSelector(state => state.posts.loading);
   const newPostID = useSelector(state => state.posts.post?.id);
-
-  const formik = useFormik({});
 
   useEffect(() => {
     if (!!newPostID)
       navigate(`/post/${newPostID}`);
   }, [newPostID]);
 
+  const handlePostTitleInput = (event) => {
+    setPostTitle(event.target.value);
+  }
+
+  const handlePostBodyInput = (event) => {
+    setPostBody(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(
+      addPost({
+        userID: 1,
+        title: postTitle,
+        body: postBody,
+        uuid: generateDummyUUID(),
+      })
+    );
+  };
+
+
   const handleSubmit = (values, { setSubmitting }) => {
     // Імітація відправки на сервер 
     console.log('Дані форми:', values);
     // Позначаємо що форма більше не в процесі відправки
     setSubmitting(false);
-
-
-    if (!!values.title && !!values.body) {
-      dispatch(
-        addPost({
-          userID: 1,
-          title: values.title,
-          body: values.body,
-          uuid: generateDummyUUID(),
-        })
-      );
-    } else {
-      console.log('EMPTY FIELDS!!!');
-    }
-
-    console.log(' formik > ', formik);
   };
+
+  console.log('newPostID > ', newPostID);
 
   return (<>
     <h1>Add Post</h1>
+    <AddPostForm onSubmit={handleSubmit} $isLoading={isLoading}>
+      <PostTitle
+        type="text"
+        name="title"
+        placeholder="Title..."
+        onInput={handlePostTitleInput}
+        value={postTitle}
+      />
+      <PostBody
+        name="body"
+        id="body"
+        placeholder="Body..."
+        onInput={handlePostBodyInput}
+        value={postBody}
+      ></PostBody>
+      <PostSubmit>Додати Пост</PostSubmit>
+    </AddPostForm>
+
+
     <Formik
-      initialValues={{ title: '', body: '' }}
+      initialValues={{ name: '', email: '' }}
       onSubmit={handleSubmit}
     >
       {/* Компонент Form з доступом до стану форми */}
@@ -84,16 +112,15 @@ function AddPost() {
           {/* Поле для введення імені */}
           <Field
             type="text"
-            name="title"
-            placeholder="Title..."
+            name="name"
+            placeholder="Ім'я"
           />
 
           {/* Поле для введення email */}
           <Field
-            name="body"
-            id="body"
-            placeholder="Body..."
-            as="textarea"
+            type="email"
+            name="email"
+            placeholder="Email"
           />
 
           {/* Кнопка відправки форми */}

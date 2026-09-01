@@ -46,3 +46,9 @@ function Post() {
 }
 
 export default Post;
+
+
+// FULLSTACK - business programming - MERN + AI + React Native
+// AI  - chatbox, helper, assistant, ai automation... Python
+// IoT - rapsberryPi, smart home appliances,
+// CyberSecurity
