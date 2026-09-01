@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Formik, Form, Field, useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 
-import { addPost } from '../slices/postsSlice';
+import { addPost, clearCurrentPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils';
 
 const AddPostForm = styled.form`
@@ -39,73 +39,62 @@ function AddPost() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [postTitle, setPostTitle] = useState('');
+  const [postBody, setPostBody] = useState('');
+
   const isLoading = useSelector(state => state.posts.loading);
   const newPostID = useSelector(state => state.posts.post?.id);
-
-  const formik = useFormik({});
 
   useEffect(() => {
     if (!!newPostID)
       navigate(`/post/${newPostID}`);
-  }, [newPostID]);
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    // Імітація відправки на сервер 
-    console.log('Дані форми:', values);
-    // Позначаємо що форма більше не в процесі відправки
-    setSubmitting(false);
+    // 👇 This runs automatically when the user leaves this page
+    return () => {
+      dispatch(clearCurrentPost());
+    };
+  }, [newPostID, dispatch, navigate]);
 
+  const handlePostTitleInput = (event) => {
+    setPostTitle(event.target.value);
+  }
 
-    if (!!values.title && !!values.body) {
-      dispatch(
-        addPost({
-          userID: 1,
-          title: values.title,
-          body: values.body,
-          uuid: generateDummyUUID(),
-        })
-      );
-    } else {
-      console.log('EMPTY FIELDS!!!');
-    }
+  const handlePostBodyInput = (event) => {
+    setPostBody(event.target.value);
+  }
 
-    console.log(' formik > ', formik);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(
+      addPost({
+        userID: 1,
+        title: postTitle,
+        body: postBody,
+        uuid: generateDummyUUID(),
+      })
+    );
   };
 
   return (<>
     <h1>Add Post</h1>
-    <Formik
-      initialValues={{ title: '', body: '' }}
-      onSubmit={handleSubmit}
-    >
-      {/* Компонент Form з доступом до стану форми */}
-      {({ isSubmitting }) => (
-        <Form>
-          {/* Поле для введення імені */}
-          <Field
-            type="text"
-            name="title"
-            placeholder="Title..."
-          />
-
-          {/* Поле для введення email */}
-          <Field
-            name="body"
-            id="body"
-            placeholder="Body..."
-            as="textarea"
-          />
-
-          {/* Кнопка відправки форми */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-          >
-            Відправити
-          </button>
-        </Form>
-      )}
-    </Formik>
+    <AddPostForm onSubmit={handleSubmit} $isLoading={isLoading}>
+      <PostTitle
+        type="text"
+        name="title"
+        placeholder="Title..."
+        onInput={handlePostTitleInput}
+        value={postTitle}
+      />
+      <PostBody
+        name="body"
+        id="body"
+        placeholder="Body..."
+        onInput={handlePostBodyInput}
+        value={postBody}
+      ></PostBody>
+      <PostSubmit>Додати Пост</PostSubmit>
+    </AddPostForm>
   </>);
 }
 

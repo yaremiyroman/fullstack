@@ -111,6 +111,7 @@ function MainLayout() {
             $themeMode={theme}
             className={({ isActive }) => (isActive ? 'active' : '')}
             to="/add-post"
+            state={{ createNew: true }}
           >
             {t('addPost')}
           </StyledNavLink>
