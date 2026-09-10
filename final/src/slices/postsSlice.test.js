@@ -31,7 +31,7 @@ describe('posts async thunks', () => {
 
     const result = await fetchPosts()(dispatch, getState, undefined);
 
-    expect(axios.get).toHaveBeenCalledWith('BASE_URL');
+    expect(axios.get).toHaveBeenCalledWith(BASE_URL);
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toHaveBeenNthCalledWith(
       1,
