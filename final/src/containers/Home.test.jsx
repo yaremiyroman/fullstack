@@ -22,11 +22,6 @@ jest.mock('../components/Card', () => ({
   default: ({ title }) => <article data-testid="post-card">{title}</article>,
 }));
 
-jest.mock('../components/Error', () => ({
-  __esModule: true,
-  default: ({ message }) => <p role="alert">{message}</p>,
-}));
-
 const createDeferred = () => {
   let resolve;
   let reject;
@@ -81,7 +76,7 @@ describe('Home loader during fetchPosts', () => {
     expect(screen.getByTestId('post-card')).toBeInTheDocument();
   });
 
-  it('shows loader while fetchPosts is pending and hides it after failure', async () => {
+  it('renders Error component when fetchPosts fails', async () => {
     const deferred = createDeferred();
     axios.get.mockReturnValueOnce(deferred.promise);
 
@@ -95,6 +90,7 @@ describe('Home loader during fetchPosts', () => {
       expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
     });
 
-    expect(screen.getByRole('alert')).toHaveTextContent('Request failed');
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText(/ERROR:\s*Request failed/i)).toBeInTheDocument();
   });
 });
