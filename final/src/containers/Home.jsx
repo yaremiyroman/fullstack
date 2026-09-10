@@ -5,20 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '../components/Card'
 import { fetchPosts } from '../slices/postsSlice';
 import { BASE_URL } from '../api';
-
-// store - Single Source of Truth
-// rootReducer
-// reducer
-// storeProvider
-// action (type, payload)
-// actionCreator
-// useDispatch/dispatch
-// useSelector/selector
-// middleware
-// thunk(saga)
-// redux toolkit
-// slice
-// axios
+import Loader from '../components/Loader'
+import Error from '../components/Error'
 
 function Home() {
   const posts = useSelector(state => state.posts.postsData);
@@ -32,11 +20,11 @@ function Home() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (!!error) {
-    return <p>ERROR: {error}</p>;
+    return <Error message={error} />;
   }
 
   if (!posts) {

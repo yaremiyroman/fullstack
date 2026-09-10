@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { json, Link } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
+
+
+import { useTheme } from '../contexts/ThemeContext';
 
 // Створення стилізованої кнопки
-const Container = styled.div`
+const Container = styled(Paper)`
   border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#33415550' : '#e2e8f050')};
   padding: 12px;
   margin-bottom: 10px;
@@ -28,14 +32,17 @@ const Author = styled.em`
 const Description = styled.p`
 `;
 
-
 const Card = ({ title, description, author, postID }) => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <Container>
+    <Container sx={{
+      backgroundColor: theme === 'night' ? '#33415550' : '#e2e8f050',
+    }}>
       <Title to={`/post/${postID}`}>{title}</Title>
       <Author>author #{author}</Author>
       <Description>{description}</Description>
-    </Container>
+    </Container >
   );
 };
 

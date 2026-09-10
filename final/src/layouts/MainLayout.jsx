@@ -4,24 +4,40 @@ import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 
+import { alpha } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputBase from '@mui/material/InputBase';
+import Badge from '@mui/material/Badge';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import SunnyIcon from '@mui/icons-material/Sunny';
+import BedtimeIcon from '@mui/icons-material/Bedtime';
 
 const AppShell = styled.div`
-  max-width: 960px;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 24px;
   color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#1e293b')};
   background: ${({ $themeMode }) => ($themeMode === 'night' ? '#0f172a' : '#f8fafc')};
   transition: background 0.2s ease, color 0.2s ease;
 `;
 
-const Header = styled.header`
-  margin-bottom: 24px;
+const Header = styled(AppBar)`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 
 const Nav = styled.nav`
@@ -60,23 +76,47 @@ const ControlLabel = styled.span`
   opacity: 0.85;
 `;
 
-const ControlButton = styled.button`
-  border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#334155' : '#94a3b8')};
-  background: ${({ $themeMode }) => ($themeMode === 'night' ? '#1e293b' : '#ffffff')};
-  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#1e293b')};
+const ControlButton = styled(Button)`
+ padding: 6px 12px;
   border-radius: 6px;
-  padding: 4px 10px;
-  cursor: pointer;
+  text-transform: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: auto;
 
+  /* ========================================== */
+  /* 1. REGULAR STATE (Unselected / Clickable)  */
+  /* ========================================== */
+  border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#334155' : '#cbd5e1')};
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#94a3b8' : '#64748b')};
+  background: transparent;
+
+  /* HOVER STATE (Unselected Hover) */
+  &:hover {
+    background: ${({ $themeMode }) => ($themeMode === 'night' ? '#1e293b' : '#f1f5f9')};
+    color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#1e293b')};
+    border-color: ${({ $themeMode }) => ($themeMode === 'night' ? '#475569' : '#94a3b8')};
+  }
+
+  /* ========================================== */
+  /* 2. ACTIVE STATE (Selected / Disabled)      */
+  /* ========================================== */
   &:disabled {
-    opacity: 0.5;
+    border-color: #2563eb; /* Consistent Blue Accent Border */
+    background: ${({ $themeMode }) => ($themeMode === 'night' ? '#1e3a8a' : '#dbeafe')};
+    color: ${({ $themeMode }) => ($themeMode === 'night' ? '#38bdf8' : '#1d4ed8')};
     cursor: not-allowed;
+    opacity: 1; /* Overrides default MUI disabled fade opacity */
   }
 `;
 
 const Main = styled.main`
   background: ${({ $themeMode }) => ($themeMode === 'night' ? '#111827' : '#ffffff')};
+  padding: 0 10px;
+  min-height: calc(100vh - 64px);
 `;
+
+const menuId = 'primary-search-account-menu';
 
 function MainLayout() {
   const { theme, toggleTheme } = useTheme();
@@ -84,58 +124,81 @@ function MainLayout() {
 
   return (
     <AppShell $themeMode={theme}>
-      <Header>
-        <Nav>
-          <StyledNavLink
-            $themeMode={theme}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            to="/"
-          >
-            {t('home')}
-          </StyledNavLink>
-          <StyledNavLink
-            $themeMode={theme}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            to="/about"
-          >
-            {t('about')}
-          </StyledNavLink>
-          <StyledNavLink
-            $themeMode={theme}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            to="/contact"
-          >
-            {t('contact')}
-          </StyledNavLink>
-          <StyledNavLink
-            $themeMode={theme}
-            className={({ isActive }) => (isActive ? 'active' : '')}
-            to="/add-post"
-            state={{ createNew: true }}
-          >
-            {t('addPost')}
-          </StyledNavLink>
-        </Nav>
-        <Controls>
-          <ControlLabel>{t('language')}:</ControlLabel>
-          <ControlButton
-            $themeMode={theme}
-            disabled={language === 'en'}
-            onClick={() => changeLanguage('en')}
-          >
-            EN
-          </ControlButton>
-          <ControlButton
-            $themeMode={theme}
-            disabled={language === 'uk'}
-            onClick={() => changeLanguage('uk')}
-          >
-            UA
-          </ControlButton>
-          <ControlButton $themeMode={theme} onClick={toggleTheme}>
-            {theme === 'day' ? '🌑' : '☀️'}
-          </ControlButton>
-        </Controls>
+      <Header position="static" sx={{
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        backgroundImage: 'none' // Crucial if your theme uses dark mode gradients
+      }}>
+        <Toolbar sx={{ width: '100%' }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <Nav>
+              <Button
+                component={StyledNavLink} // Renders your styled component under the hood
+                to="/"           // Passed automatically to NavLink
+                sx={{
+                  textTransform: 'none',   // Prevents MUI from forcing ALL CAPS text
+                  minWidth: 'auto',        // Overrides default button widths if needed
+                }}
+              >
+                {t('home')}
+              </Button>
+              <Button
+                component={StyledNavLink} // Renders your styled component under the hood
+                to="/about"           // Passed automatically to NavLink
+                sx={{
+                  textTransform: 'none',   // Prevents MUI from forcing ALL CAPS text
+                  minWidth: 'auto',        // Overrides default button widths if needed
+                }}
+              >
+                {t('about')}
+              </Button>
+              <Button
+                component={StyledNavLink} // Renders your styled component under the hood
+                to="/contact"           // Passed automatically to NavLink
+                sx={{
+                  textTransform: 'none',   // Prevents MUI from forcing ALL CAPS text
+                  minWidth: 'auto',        // Overrides default button widths if needed
+                }}
+              >
+                {t('contact')}
+              </Button>
+              <Button
+                component={StyledNavLink} // Renders your styled component under the hood
+                to="/add-post"           // Passed automatically to NavLink
+                sx={{
+                  textTransform: 'none',   // Prevents MUI from forcing ALL CAPS text
+                  minWidth: 'auto',        // Overrides default button widths if needed
+                }}
+              >
+                {t('addPost')}
+              </Button>
+            </Nav>
+          </Box>
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Controls>
+              <ButtonGroup variant="outlined" aria-label="Basic button group">
+                <ControlButton
+                  $themeMode={theme}
+                  disabled={language === 'en'}
+                  onClick={() => changeLanguage('en')}
+                >
+                  EN
+                </ControlButton>
+                <ControlButton
+                  $themeMode={theme}
+                  disabled={language === 'uk'}
+                  onClick={() => changeLanguage('uk')}
+                >
+                  UA
+                </ControlButton>
+              </ButtonGroup>
+
+              <ControlButton $themeMode={theme} onClick={toggleTheme}>
+                {theme === 'day' ? <BedtimeIcon /> : <SunnyIcon />}
+              </ControlButton>
+            </Controls>
+          </Box>
+        </Toolbar>
       </Header>
 
       <Main $themeMode={theme}>

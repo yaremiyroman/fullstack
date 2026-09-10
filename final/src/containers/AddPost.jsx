@@ -7,6 +7,10 @@ import { Formik, Form, Field } from 'formik';
 import { addPost, clearCurrentPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils';
 
+import Input from '@mui/material/Input';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import Button from '@mui/material/Button';
+
 const AddPostForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -20,19 +24,18 @@ const AddPostForm = styled.form`
   `}
 `;
 
-const PostTitle = styled.input`
-  background: #ccc;
-  color: black;
+const PostTitle = styled(Input)`
+  color: #ccc;
   font-size: 20px;
 `;
 
-const PostBody = styled.textarea`
-  background: #ccc;
-  color: black;
+const PostBody = styled(TextareaAutosize)`
+  color: #ccc;
+  background: transparent;
   font-size: 20px;
 `;
 
-const PostSubmit = styled.button`
+const PostSubmit = styled(Button)`
 `;
 
 function AddPost() {
@@ -85,6 +88,7 @@ function AddPost() {
         placeholder="Title..."
         onInput={handlePostTitleInput}
         value={postTitle}
+        sx={{ color: '#ccc' }}
       />
       <PostBody
         name="body"
@@ -92,8 +96,9 @@ function AddPost() {
         placeholder="Body..."
         onInput={handlePostBodyInput}
         value={postBody}
+        minRows={10}
       ></PostBody>
-      <PostSubmit>Додати Пост</PostSubmit>
+      <PostSubmit variant="contained" type='submit'>Додати Пост</PostSubmit>
     </AddPostForm>
   </>);
 }
