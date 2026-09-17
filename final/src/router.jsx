@@ -6,7 +6,6 @@ import {
   About,
   Contact,
   Post,
-  Test,
   NotFound,
   AddPost,
 } from './containers';
@@ -32,12 +31,6 @@ export const router = createBrowserRouter(
         {
           path: 'post/:id',
           element: <Post />,
-          children: [
-            {
-              path: 'test',
-              element: <Test />,
-            },
-          ],
         },
         {
           path: '/add-post',
