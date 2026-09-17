@@ -6,8 +6,6 @@ import { BASE_URL } from '../api';
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     const response = await axios.get(BASE_URL);
 
-    console.log('response >> ', response);
-
     return response.data;
 });
 

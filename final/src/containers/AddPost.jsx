@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Formik, Form, Field } from 'formik';
 
 import { addPost, clearCurrentPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils';
@@ -24,18 +23,18 @@ const AddPostForm = styled.form`
   `}
 `;
 
-const PostTitle = styled(Input)`
+const PostTitle = styled.input`
   color: #ccc;
   font-size: 20px;
 `;
 
-const PostBody = styled(TextareaAutosize)`
+const PostBody = styled.textarea`
   color: #ccc;
   background: transparent;
   font-size: 20px;
 `;
 
-const PostSubmit = styled(Button)`
+const PostSubmit = styled.button`
 `;
 
 function AddPost() {
@@ -78,6 +77,8 @@ function AddPost() {
       })
     );
   };
+
+  return null;
 
   return (<>
     <h1>Add Post</h1>
