@@ -24,7 +24,6 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import SunnyIcon from '@mui/icons-material/Sunny';
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 
-import LayoutEffectExample from '../components/LayoutEffectExample';
 import Modal from '../components/Modal';
 
 const AppShell = styled.div`
@@ -120,13 +119,9 @@ const Main = styled.main`
   min-height: calc(100vh - 64px);
 `;
 
-const menuId = 'primary-search-account-menu';
-
 function MainLayout() {
   const { theme, toggleTheme } = useTheme();
   const { language, changeLanguage, t } = useLanguage();
-
-  const [showModal, setShowModal] = useState(false);
 
   return (
     <AppShell $themeMode={theme}>
@@ -206,16 +201,7 @@ function MainLayout() {
           </Box>
         </Toolbar>
       </Header>
-
       <Main $themeMode={theme}>
-        {/* <LayoutEffectExample /> */}
-        <button onClick={() => setShowModal(true)}>SHOW MODAL</button>
-
-        {showModal && (
-          <Modal onClose={setShowModal}>
-            <h3>This is my Modal</h3>
-          </Modal>
-        )}
         <Outlet />
       </Main>
     </AppShell>

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { json, Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 
-
 import { useTheme } from '../contexts/ThemeContext';
 
 // Створення стилізованої кнопки
