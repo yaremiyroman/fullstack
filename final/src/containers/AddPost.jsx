@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { addPost, clearCurrentPost } from '../slices/postsSlice';
-import { generateDummyUUID } from '../utils';
+import { generateDummyUUID } from '../utils/utils';
 
 import Input from '@mui/material/Input';
 import TextareaAutosize from '@mui/material/TextareaAutosize';

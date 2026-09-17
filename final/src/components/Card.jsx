@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 
 import { useTheme } from '../contexts/ThemeContext';
+import { getCategoryKeyFromPostValue } from '../utils/categoryUtils';
 
 // Створення стилізованої кнопки
 const Container = styled(Paper)`
@@ -43,7 +44,8 @@ const CategoryLink = styled(Link)`
 `;
 
 const Card = ({ title, description, author, postID, category }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
+  const categoryKey = getCategoryKeyFromPostValue(category);
 
   return (
     <Container sx={{
@@ -53,7 +55,7 @@ const Card = ({ title, description, author, postID, category }) => {
       <Author>author #{author}</Author>
       <Description>{description}</Description>
       <CategoryContainer>
-        <CategoryLink to={`/category/${category}`}>{category}</CategoryLink>
+        <CategoryLink to={`/category/${categoryKey ?? category}`}>{category}</CategoryLink>
       </CategoryContainer>
     </Container >
   );

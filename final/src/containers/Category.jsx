@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import Card from '../components/Card';
 import { fetchPosts } from '../slices/postsSlice';
-import { BASE_URL } from '../api';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+import { getCategoryByKey, getCategoryKeyFromPostValue } from '../utils/categoryUtils';
 
 function Category() {
   const posts = useSelector(state => state.posts.postsData);
@@ -19,13 +18,13 @@ function Category() {
 
   useEffect(() => {
     dispatch(fetchPosts());
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (!!error) {
+  if (error) {
     return <Error message={error} />;
   }
 
@@ -33,13 +32,18 @@ function Category() {
     return <p>No posts yet...</p>;
   }
 
-
-  console.log('catName ', catName);
+  const selectedCategory = getCategoryByKey(catName);
+  const selectedCategoryTitle = selectedCategory?.title ?? catName;
 
   return (
     <section>
+      <h2>{selectedCategoryTitle}</h2>
       {posts
-        .filter(post => post.category === catName)
+        .filter((post) => {
+          const postCategoryKey = getCategoryKeyFromPostValue(post.category);
+
+          return postCategoryKey ? postCategoryKey === catName : post.category === catName;
+        })
         .map(({ uuid, title, body, userID, id, category }) => (
           <Card
             key={uuid}
