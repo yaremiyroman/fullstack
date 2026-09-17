@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { json, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 
 import { useTheme } from '../contexts/ThemeContext';
@@ -53,7 +53,7 @@ const Card = ({ title, description, author, postID, category }) => {
       <Author>author #{author}</Author>
       <Description>{description}</Description>
       <CategoryContainer>
-        <CategoryLink to={`category/${category}`}>{category}</CategoryLink>
+        <CategoryLink to={`/category/${category}`}>{category}</CategoryLink>
       </CategoryContainer>
     </Container >
   );
