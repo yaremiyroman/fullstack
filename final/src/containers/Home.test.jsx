@@ -1,23 +1,23 @@
-import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { vi } from 'vitest';
 
 import postsReducer from '../slices/postsSlice';
 import Home from './Home';
 
-jest.mock('axios', () => ({
+vi.mock('axios', () => ({
   __esModule: true,
   default: {
-    get: jest.fn(),
-    post: jest.fn(),
-    delete: jest.fn(),
+    get: vi.fn(),
+    post: vi.fn(),
+    delete: vi.fn(),
   },
 }));
 
-jest.mock('../components/Card', () => ({
+vi.mock('../components/Card', () => ({
   __esModule: true,
   default: ({ title }) => <article data-testid="post-card">{title}</article>,
 }));
@@ -54,7 +54,7 @@ const renderHome = () => {
 
 describe('Home loader during fetchPosts', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('shows loader while fetchPosts is pending and hides it after success', async () => {

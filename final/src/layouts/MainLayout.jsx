@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -22,6 +23,9 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import SunnyIcon from '@mui/icons-material/Sunny';
 import BedtimeIcon from '@mui/icons-material/Bedtime';
+
+import LayoutEffectExample from '../components/LayoutEffectExample';
+import Modal from '../components/Modal';
 
 const AppShell = styled.div`
   margin: 0 auto;
@@ -122,6 +126,8 @@ function MainLayout() {
   const { theme, toggleTheme } = useTheme();
   const { language, changeLanguage, t } = useLanguage();
 
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <AppShell $themeMode={theme}>
       <Header position="static" sx={{
@@ -202,6 +208,14 @@ function MainLayout() {
       </Header>
 
       <Main $themeMode={theme}>
+        {/* <LayoutEffectExample /> */}
+        <button onClick={() => setShowModal(true)}>SHOW MODAL</button>
+
+        {showModal && (
+          <Modal onClose={setShowModal}>
+            <h3>This is my Modal</h3>
+          </Modal>
+        )}
         <Outlet />
       </Main>
     </AppShell>

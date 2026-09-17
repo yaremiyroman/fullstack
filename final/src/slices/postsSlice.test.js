@@ -1,25 +1,53 @@
 import axios from 'axios';
+import { vi } from 'vitest';
 
 import { BASE_URL } from '../api';
 import { addPost, deletePost, fetchPosts } from './postsSlice';
 
-jest.mock('axios', () => ({
+vi.mock('axios', () => ({
   __esModule: true,
   default: {
-    get: jest.fn(),
-    post: jest.fn(),
-    delete: jest.fn(),
+    get: vi.fn(),
+    post: vi.fn(),
+    delete: vi.fn(),
   },
 }));
 
 const createThunkContext = () => ({
-  dispatch: jest.fn(),
-  getState: jest.fn(),
+  dispatch: vi.fn(),
+  getState: vi.fn(),
 });
+
+
+// GenAI claude/cursor/chatgpt
+// models - pros/const, різновидності, Haiku/Sonnet/Opus
+// Context
+// Tokens
+// Params
+// LLM
+// State
+// Шаблони - delegator-controller/subagents   -- parallel execution -- synchronous
+// Messages API - Batch Messages API
+// MCP
+// Skills
+
+
+
+
+// Hello, World!
+// Hel
+// lo
+//,
+// 
+// Wor
+// ld
+// !
+
+
 
 describe('posts async thunks', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('dispatches fulfilled when fetchPosts succeeds', async () => {
