@@ -15,6 +15,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 
+import categories from '../data/categories.json';
+
 const AddPostForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -84,6 +86,7 @@ function AddPost() {
         userID: 1,
         title: postTitle,
         body: postBody,
+        category,
         uuid: generateDummyUUID(),
       })
     );
@@ -100,20 +103,30 @@ function AddPost() {
         value={postTitle}
         sx={{ color: '#ccc' }}
       />
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">Category</InputLabel>
+      <FormControl variant="standard" sx={{
+        m: 1,
+        minWidth: 120,
+      }}>
+        <InputLabel id="category-selector">Category</InputLabel>
         <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
+          labelId="category-selector"
+          id="category-selector"
           value={category}
           onChange={handleCategorySelection}
+          sx={{
+            color: 'white'
+          }}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {categories.cats.map(({ title }) => {
+            return (
+              <MenuItem
+                key={title}
+                value={title}
+              >
+                {title}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
       <PostBody
@@ -122,7 +135,6 @@ function AddPost() {
         placeholder="Body..."
         onInput={handlePostBodyInput}
         value={postBody}
-        minRows={10}
       ></PostBody>
       <PostSubmit variant="contained" type='submit'>Додати Пост</PostSubmit>
     </AddPostForm>

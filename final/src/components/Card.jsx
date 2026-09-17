@@ -9,6 +9,7 @@ const Container = styled(Paper)`
   border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#33415550' : '#e2e8f050')};
   padding: 12px;
   margin-bottom: 10px;
+  color: #ffffff;
 `;
 
 const Title = styled(Link)`
@@ -26,12 +27,22 @@ const Title = styled(Link)`
 `;
 
 const Author = styled.em`
+  color: #ffffff;
 `;
 
 const Description = styled.p`
+  color: #ffffff;
 `;
 
-const Card = ({ title, description, author, postID }) => {
+const CategoryContainer = styled.div`
+  color: #ffffff;
+`;
+
+const CategoryLink = styled(Link)`
+  color: #ffffff;
+`;
+
+const Card = ({ title, description, author, postID, category }) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -41,6 +52,9 @@ const Card = ({ title, description, author, postID }) => {
       <Title to={`/post/${postID}`}>{title}</Title>
       <Author>author #{author}</Author>
       <Description>{description}</Description>
+      <CategoryContainer>
+        <CategoryLink to={`category/${category}`}>{category}</CategoryLink>
+      </CategoryContainer>
     </Container >
   );
 };

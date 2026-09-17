@@ -4,6 +4,7 @@ import Contact from './Contact';
 import Post from './Post';
 import NotFound from './NotFound';
 import AddPost from './AddPost';
+import Category from './Category';
 
 export {
     Home,
@@ -12,4 +13,5 @@ export {
     Post,
     NotFound,
     AddPost,
+    Category,
 };

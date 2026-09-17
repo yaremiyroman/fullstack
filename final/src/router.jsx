@@ -8,6 +8,7 @@ import {
   Post,
   NotFound,
   AddPost,
+  Category,
 } from './containers';
 
 export const router = createBrowserRouter(
@@ -19,6 +20,10 @@ export const router = createBrowserRouter(
         {
           index: true,
           element: <Home />
+        },
+        {
+          path: 'category/:catName',
+          element: <Category />
         },
         {
           path: 'about', // => /about

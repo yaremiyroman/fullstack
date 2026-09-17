@@ -5,6 +5,7 @@
       "id": 1,
       "title": "Welcome Post",
       "body": "This is a mock post served by json-server.",
+      "category": "asdgsd;ofgn ls;dg l;dsfg;lksdfg;klsdfg",
       "uuid": "2d879610-b4f1-4e89-95da-6fe11b2ecb9d"
     },
     {
@@ -12,6 +13,7 @@
       "id": 2,
       "title": "Second Post",
       "body": "Use this data for local UI development.",
+      "category": "Новини та тренди",
       "uuid": "3380ad83-40ce-46f4-8c57-20a72067d507"
     },
     {
@@ -19,6 +21,7 @@
       "id": 3,
       "title": "Routing Basics",
       "body": "This post explains nested and dynamic routing in a simple way.",
+      "category": "Новини та тренди",
       "uuid": "84a694f2-34af-4e32-8596-c0e436f677ff"
     },
     {
@@ -26,6 +29,7 @@
       "id": 4,
       "title": "Context API Tips",
       "body": "You can avoid prop drilling by moving shared state to context providers.",
+      "category": "Новини та тренди",
       "uuid": "228b2e53-9d27-490c-b4e8-84f8534f9c9c"
     },
     {
@@ -33,6 +37,7 @@
       "id": 5,
       "title": "Mock API Workflow",
       "body": "json-server is useful for frontend development before backend endpoints are ready.",
+      "category": "Новини та тренди",
       "uuid": "fcf6461d-af4b-42da-87ea-0013f2ad5f86"
     },
     {
@@ -40,6 +45,7 @@
       "id": 6,
       "title": "Internationalization Setup",
       "body": "Store translation keys in JSON files and resolve them through a helper function.",
+      "category": "Новини та тренди",
       "uuid": "4f03023d-5f65-4545-9ab8-5d8af86a561b"
     },
     {
@@ -47,6 +53,7 @@
       "id": 7,
       "title": "Testing Components",
       "body": "Keep component logic small and test behavior instead of implementation details.",
+      "category": "Новини та тренди",
       "uuid": "f2b5ddf5-10cb-46c3-a0f1-6b42f16ee5f7"
     },
     {
@@ -54,6 +61,7 @@
       "id": 8,
       "title": "Deployment Checklist",
       "body": "Before release, verify routes, API mocks, i18n strings, and production build.",
+      "category": "Новини та тренди",
       "uuid": "f2c7bdf4-37d5-4f4e-90ee-0ed34a353ec2"
     },
     {
@@ -61,6 +69,7 @@
       "id": 9,
       "title": "Post 9",
       "body": "Generated mock content for post 9.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000009"
     },
     {
@@ -68,6 +77,7 @@
       "id": 10,
       "title": "Post 10",
       "body": "Generated mock content for post 10.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000010"
     },
     {
@@ -75,6 +85,7 @@
       "id": 11,
       "title": "Post 11",
       "body": "Generated mock content for post 11.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000011"
     },
     {
@@ -82,6 +93,7 @@
       "id": 12,
       "title": "Post 12",
       "body": "Generated mock content for post 12.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000012"
     },
     {
@@ -89,6 +101,7 @@
       "id": 13,
       "title": "Post 13",
       "body": "Generated mock content for post 13.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000013"
     },
     {
@@ -96,6 +109,7 @@
       "id": 14,
       "title": "Post 14",
       "body": "Generated mock content for post 14.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000014"
     },
     {
@@ -103,6 +117,7 @@
       "id": 15,
       "title": "Post 15",
       "body": "Generated mock content for post 15.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000015"
     },
     {
@@ -110,6 +125,7 @@
       "id": 16,
       "title": "Post 16",
       "body": "Generated mock content for post 16.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000016"
     },
     {
@@ -117,6 +133,7 @@
       "id": 17,
       "title": "Post 17",
       "body": "Generated mock content for post 17.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000017"
     },
     {
@@ -124,6 +141,7 @@
       "id": 18,
       "title": "Post 18",
       "body": "Generated mock content for post 18.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000018"
     },
     {
@@ -131,6 +149,7 @@
       "id": 19,
       "title": "Post 19",
       "body": "Generated mock content for post 19.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000019"
     },
     {
@@ -138,6 +157,7 @@
       "id": 20,
       "title": "Post 20",
       "body": "Generated mock content for post 20.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000020"
     },
     {
@@ -145,6 +165,7 @@
       "id": 21,
       "title": "Post 21",
       "body": "Generated mock content for post 21.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000021"
     },
     {
@@ -152,6 +173,7 @@
       "id": 22,
       "title": "Post 22",
       "body": "Generated mock content for post 22.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000022"
     },
     {
@@ -159,6 +181,7 @@
       "id": 23,
       "title": "Post 23",
       "body": "Generated mock content for post 23.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000023"
     },
     {
@@ -166,6 +189,7 @@
       "id": 24,
       "title": "Post 24",
       "body": "Generated mock content for post 24.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000024"
     },
     {
@@ -173,6 +197,7 @@
       "id": 25,
       "title": "Post 25",
       "body": "Generated mock content for post 25.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000025"
     },
     {
@@ -180,6 +205,7 @@
       "id": 26,
       "title": "Post 26",
       "body": "Generated mock content for post 26.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000026"
     },
     {
@@ -187,6 +213,7 @@
       "id": 27,
       "title": "Post 27",
       "body": "Generated mock content for post 27.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000027"
     },
     {
@@ -194,6 +221,7 @@
       "id": 28,
       "title": "Post 28",
       "body": "Generated mock content for post 28.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000028"
     },
     {
@@ -201,6 +229,7 @@
       "id": 29,
       "title": "Post 29",
       "body": "Generated mock content for post 29.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000029"
     },
     {
@@ -208,6 +237,7 @@
       "id": 30,
       "title": "Post 30",
       "body": "Generated mock content for post 30.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000030"
     },
     {
@@ -215,6 +245,7 @@
       "id": 31,
       "title": "Post 31",
       "body": "Generated mock content for post 31.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000031"
     },
     {
@@ -222,6 +253,7 @@
       "id": 32,
       "title": "Post 32",
       "body": "Generated mock content for post 32.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000032"
     },
     {
@@ -229,6 +261,7 @@
       "id": 33,
       "title": "Post 33",
       "body": "Generated mock content for post 33.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000033"
     },
     {
@@ -236,6 +269,7 @@
       "id": 34,
       "title": "Post 34",
       "body": "Generated mock content for post 34.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000034"
     },
     {
@@ -243,6 +277,7 @@
       "id": 35,
       "title": "Post 35",
       "body": "Generated mock content for post 35.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000035"
     },
     {
@@ -250,6 +285,7 @@
       "id": 36,
       "title": "Post 36",
       "body": "Generated mock content for post 36.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000036"
     },
     {
@@ -257,6 +293,7 @@
       "id": 37,
       "title": "Post 37",
       "body": "Generated mock content for post 37.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000037"
     },
     {
@@ -264,6 +301,7 @@
       "id": 38,
       "title": "Post 38",
       "body": "Generated mock content for post 38.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000038"
     },
     {
@@ -271,6 +309,7 @@
       "id": 39,
       "title": "Post 39",
       "body": "Generated mock content for post 39.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000039"
     },
     {
@@ -278,6 +317,7 @@
       "id": 40,
       "title": "Post 40",
       "body": "Generated mock content for post 40.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000040"
     },
     {
@@ -285,6 +325,7 @@
       "id": 42,
       "title": "Post 42",
       "body": "Generated mock content for post 42.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000042"
     },
     {
@@ -292,6 +333,7 @@
       "id": 44,
       "title": "Post 44",
       "body": "Generated mock content for post 44.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000044"
     },
     {
@@ -299,6 +341,7 @@
       "id": 45,
       "title": "Post 45",
       "body": "Generated mock content for post 45.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000045"
     },
     {
@@ -306,6 +349,7 @@
       "id": 46,
       "title": "Post 46",
       "body": "Generated mock content for post 46.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000046"
     },
     {
@@ -313,6 +357,7 @@
       "id": 47,
       "title": "Post 47",
       "body": "Generated mock content for post 47.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000047"
     },
     {
@@ -320,6 +365,7 @@
       "id": 48,
       "title": "Post 48",
       "body": "Generated mock content for post 48.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000048"
     },
     {
@@ -327,6 +373,7 @@
       "id": 49,
       "title": "Post 49",
       "body": "Generated mock content for post 49.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000049"
     },
     {
@@ -334,6 +381,7 @@
       "id": 50,
       "title": "Post 50",
       "body": "Generated mock content for post 50.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000050"
     },
     {
@@ -341,6 +389,7 @@
       "id": 51,
       "title": "Post 51",
       "body": "Generated mock content for post 51.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000051"
     },
     {
@@ -348,6 +397,7 @@
       "id": 52,
       "title": "Post 52",
       "body": "Generated mock content for post 52.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000052"
     },
     {
@@ -355,6 +405,7 @@
       "id": 53,
       "title": "Post 53",
       "body": "Generated mock content for post 53.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000053"
     },
     {
@@ -362,6 +413,7 @@
       "id": 54,
       "title": "Post 54",
       "body": "Generated mock content for post 54.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000054"
     },
     {
@@ -369,6 +421,7 @@
       "id": 55,
       "title": "Post 55",
       "body": "Generated mock content for post 55.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000055"
     },
     {
@@ -376,6 +429,7 @@
       "id": 56,
       "title": "Post 56",
       "body": "Generated mock content for post 56.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000056"
     },
     {
@@ -383,6 +437,7 @@
       "id": 57,
       "title": "Post 57",
       "body": "Generated mock content for post 57.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000057"
     },
     {
@@ -390,6 +445,7 @@
       "id": 58,
       "title": "Post 58",
       "body": "Generated mock content for post 58.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000058"
     },
     {
@@ -397,6 +453,7 @@
       "id": 59,
       "title": "Post 59",
       "body": "Generated mock content for post 59.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000059"
     },
     {
@@ -404,6 +461,7 @@
       "id": 60,
       "title": "Post 60",
       "body": "Generated mock content for post 60.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000060"
     },
     {
@@ -411,6 +469,7 @@
       "id": 61,
       "title": "Post 61",
       "body": "Generated mock content for post 61.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000061"
     },
     {
@@ -418,6 +477,7 @@
       "id": 62,
       "title": "Post 62",
       "body": "Generated mock content for post 62.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000062"
     },
     {
@@ -425,6 +485,7 @@
       "id": 63,
       "title": "Post 63",
       "body": "Generated mock content for post 63.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000063"
     },
     {
@@ -432,6 +493,7 @@
       "id": 64,
       "title": "Post 64",
       "body": "Generated mock content for post 64.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000064"
     },
     {
@@ -439,6 +501,7 @@
       "id": 65,
       "title": "Post 65",
       "body": "Generated mock content for post 65.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000065"
     },
     {
@@ -446,6 +509,7 @@
       "id": 66,
       "title": "Post 66",
       "body": "Generated mock content for post 66.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000066"
     },
     {
@@ -453,6 +517,7 @@
       "id": 67,
       "title": "Post 67",
       "body": "Generated mock content for post 67.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000067"
     },
     {
@@ -460,6 +525,7 @@
       "id": 68,
       "title": "Post 68",
       "body": "Generated mock content for post 68.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000068"
     },
     {
@@ -467,6 +533,7 @@
       "id": 69,
       "title": "Post 69",
       "body": "Generated mock content for post 69.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000069"
     },
     {
@@ -474,6 +541,7 @@
       "id": 70,
       "title": "Post 70",
       "body": "Generated mock content for post 70.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000070"
     },
     {
@@ -481,6 +549,7 @@
       "id": 71,
       "title": "Post 71",
       "body": "Generated mock content for post 71.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000071"
     },
     {
@@ -488,6 +557,7 @@
       "id": 72,
       "title": "Post 72",
       "body": "Generated mock content for post 72.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000072"
     },
     {
@@ -495,6 +565,7 @@
       "id": 73,
       "title": "Post 73",
       "body": "Generated mock content for post 73.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000073"
     },
     {
@@ -502,6 +573,7 @@
       "id": 74,
       "title": "Post 74",
       "body": "Generated mock content for post 74.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000074"
     },
     {
@@ -509,6 +581,7 @@
       "id": 75,
       "title": "Post 75",
       "body": "Generated mock content for post 75.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000075"
     },
     {
@@ -516,6 +589,7 @@
       "id": 76,
       "title": "Post 76",
       "body": "Generated mock content for post 76.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000076"
     },
     {
@@ -523,6 +597,7 @@
       "id": 77,
       "title": "Post 77",
       "body": "Generated mock content for post 77.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000077"
     },
     {
@@ -530,6 +605,7 @@
       "id": 78,
       "title": "Post 78",
       "body": "Generated mock content for post 78.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000078"
     },
     {
@@ -537,6 +613,7 @@
       "id": 79,
       "title": "Post 79",
       "body": "Generated mock content for post 79.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000079"
     },
     {
@@ -544,6 +621,7 @@
       "id": 80,
       "title": "Post 80",
       "body": "Generated mock content for post 80.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000080"
     },
     {
@@ -551,6 +629,7 @@
       "id": 81,
       "title": "Post 81",
       "body": "Generated mock content for post 81.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000081"
     },
     {
@@ -558,6 +637,7 @@
       "id": 82,
       "title": "Post 82",
       "body": "Generated mock content for post 82.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000082"
     },
     {
@@ -565,6 +645,7 @@
       "id": 83,
       "title": "Post 83",
       "body": "Generated mock content for post 83.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000083"
     },
     {
@@ -572,6 +653,7 @@
       "id": 84,
       "title": "Post 84",
       "body": "Generated mock content for post 84.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000084"
     },
     {
@@ -579,6 +661,7 @@
       "id": 85,
       "title": "Post 85",
       "body": "Generated mock content for post 85.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000085"
     },
     {
@@ -586,6 +669,7 @@
       "id": 86,
       "title": "Post 86",
       "body": "Generated mock content for post 86.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000086"
     },
     {
@@ -593,6 +677,7 @@
       "id": 87,
       "title": "Post 87",
       "body": "Generated mock content for post 87.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000087"
     },
     {
@@ -600,6 +685,7 @@
       "id": 88,
       "title": "Post 88",
       "body": "Generated mock content for post 88.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000088"
     },
     {
@@ -607,6 +693,7 @@
       "id": 89,
       "title": "Post 89",
       "body": "Generated mock content for post 89.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000089"
     },
     {
@@ -614,6 +701,7 @@
       "id": 90,
       "title": "Post 90",
       "body": "Generated mock content for post 90.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000090"
     },
     {
@@ -621,6 +709,7 @@
       "id": 91,
       "title": "Post 91",
       "body": "Generated mock content for post 91.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000091"
     },
     {
@@ -628,6 +717,7 @@
       "id": 92,
       "title": "Post 92",
       "body": "Generated mock content for post 92.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000092"
     },
     {
@@ -635,6 +725,7 @@
       "id": 93,
       "title": "Post 93",
       "body": "Generated mock content for post 93.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000093"
     },
     {
@@ -642,6 +733,7 @@
       "id": 94,
       "title": "Post 94",
       "body": "Generated mock content for post 94.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000094"
     },
     {
@@ -649,6 +741,7 @@
       "id": 95,
       "title": "Post 95",
       "body": "Generated mock content for post 95.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000095"
     },
     {
@@ -656,6 +749,7 @@
       "id": 96,
       "title": "Post 96",
       "body": "Generated mock content for post 96.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000096"
     },
     {
@@ -663,6 +757,7 @@
       "id": 97,
       "title": "Post 97",
       "body": "Generated mock content for post 97.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000097"
     },
     {
@@ -670,6 +765,7 @@
       "id": 98,
       "title": "Post 98",
       "body": "Generated mock content for post 98.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000098"
     },
     {
@@ -677,6 +773,7 @@
       "id": 99,
       "title": "Post 99",
       "body": "Generated mock content for post 99.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000099"
     },
     {
@@ -684,12 +781,14 @@
       "id": 100,
       "title": "Post 100",
       "body": "Generated mock content for post 100.",
+      "category": "Новини та тренди",
       "uuid": "00000000-0000-4000-8000-000000000100"
     },
     {
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "85f4188f-a425-45d5-ad28-3b4203e4f645",
       "id": 111
     },
@@ -697,6 +796,7 @@
       "userID": 1,
       "title": "asdgsadg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "4e2537df-c359-4b92-9261-ba5c4c76b5a4",
       "id": 112
     },
@@ -704,6 +804,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "191dc727-8c3f-4ce5-a9d1-c79efc8ece91",
       "id": 113
     },
@@ -711,6 +812,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "fc85d3bd-4003-4f59-a670-9dbeec94bba9",
       "id": 114
     },
@@ -718,6 +820,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "c9d31ff3-8f75-4317-9ed5-71c47765891b",
       "id": 115
     },
@@ -725,6 +828,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "b84f60d8-9d1e-466f-999a-c5fe89223230",
       "id": 116
     },
@@ -732,6 +836,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "fb91c096-1bfe-49ff-a462-afe4e5ae5709",
       "id": 117
     },
@@ -739,6 +844,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "7f9619a4-5b2f-405c-bf8c-c9580e1c0413",
       "id": 118
     },
@@ -746,6 +852,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "0d39825a-348e-482d-b64f-d7fdd14e7124",
       "id": 119
     },
@@ -753,6 +860,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "374ef1bd-87f1-41a7-bc59-437822421fce",
       "id": 120
     },
@@ -760,6 +868,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "6ff593c8-0772-4bb5-ba46-9f2bb86016a4",
       "id": 121
     },
@@ -767,6 +876,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "e01f69d1-fe54-4a8e-b164-dba7478df2f2",
       "id": 122
     },
@@ -774,6 +884,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "70359a1a-bda6-48b3-ab22-4bae2698d816",
       "id": 123
     },
@@ -781,6 +892,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "a823d4f8-61c8-43fc-a4e4-b78cebc4be1e",
       "id": 124
     },
@@ -788,6 +900,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "80153619-ad9b-4040-9918-dfb34bfb9119",
       "id": 125
     },
@@ -795,6 +908,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "1fe3afbd-8f2a-4bbd-b1df-550b85be76cb",
       "id": 126
     },
@@ -802,6 +916,7 @@
       "userID": 1,
       "title": "asdgsadgsagsdfgdsfgdsfg",
       "body": "sdfgsdfg",
+      "category": "Новини та тренди",
       "uuid": "3b39e2fd-7367-4d95-9e10-27a34d0dd8b8",
       "id": 127
     },
@@ -809,6 +924,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "536fb9e0-6b68-4ac5-9151-79d96a6999bf",
       "id": 128
     },
@@ -816,6 +932,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "9934082c-fd9e-4772-b298-6b33e51cc922",
       "id": 129
     },
@@ -823,6 +940,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "cd4d69a0-17f7-418c-b1ad-da2db301d6b0",
       "id": 130
     },
@@ -830,6 +948,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "ebc14595-cacf-4a03-be8c-7c35a33c656d",
       "id": 131
     },
@@ -837,6 +956,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "c655c93a-4c51-425a-816b-80973a6b0390",
       "id": 132
     },
@@ -844,6 +964,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "ab75db3e-bfc9-4d94-ba5e-b5a26c0230ec",
       "id": 133
     },
@@ -851,6 +972,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "77e1b346-1a59-4bd2-86c1-86a8fddea9e7",
       "id": 134
     },
@@ -858,6 +980,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "cd19123c-d6af-4fff-b6f6-060faf8e7331",
       "id": 135
     },
@@ -865,6 +988,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "3cb8d6d9-3fdd-425e-a06c-8c6849984b62",
       "id": 136
     },
@@ -872,6 +996,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "75cd7c54-2c84-4c57-be22-d02956a9c509",
       "id": 137
     },
@@ -879,6 +1004,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "2d87769d-1157-4c0f-a0f6-bbf6bcb255f0",
       "id": 138
     },
@@ -886,6 +1012,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "402d0792-50b2-4b73-922c-63da4c463eed",
       "id": 139
     },
@@ -893,6 +1020,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "e6387bc1-a5ff-48fb-827c-7689373fc037",
       "id": 140
     },
@@ -900,6 +1028,7 @@
       "userID": 1,
       "title": "1",
       "body": "2",
+      "category": "Новини та тренди",
       "uuid": "0f6bd600-3f1e-4071-b5d8-443df37e6074",
       "id": 141
     },
@@ -907,6 +1036,7 @@
       "userID": 1,
       "title": "123213",
       "body": "1231231",
+      "category": "Новини та тренди",
       "uuid": "cb0f8643-7284-46b7-9a7a-49d32a0f781e",
       "id": 142
     },
@@ -914,6 +1044,7 @@
       "userID": 1,
       "title": "123213",
       "body": "1231231",
+      "category": "Новини та тренди",
       "uuid": "d15ea2c1-d76c-422b-8bb8-a3ab1377b752",
       "id": 143
     },
@@ -921,6 +1052,7 @@
       "userID": 1,
       "title": "123213",
       "body": "1231231",
+      "category": "Новини та тренди",
       "uuid": "fdace3af-bcdf-4d07-8253-a32e9e341f82",
       "id": 144
     },
@@ -928,6 +1060,7 @@
       "userID": 1,
       "title": "123213",
       "body": "1231231",
+      "category": "Новини та тренди",
       "uuid": "66927d17-1199-42f7-adcb-c2cb0d61837c",
       "id": 145
     },
@@ -935,6 +1068,7 @@
       "userID": 1,
       "title": "123213",
       "body": "1231231",
+      "category": "Новини та тренди",
       "uuid": "3ee9be00-176e-4bca-a0fc-19f8fd72214c",
       "id": 146
     },
@@ -942,6 +1076,7 @@
       "userID": 1,
       "title": "123213",
       "body": "1231231",
+      "category": "Новини та тренди",
       "uuid": "c9d47164-c7ac-4314-b536-9af09c9738c5",
       "id": 147
     },
@@ -949,6 +1084,7 @@
       "userID": 1,
       "title": "adfgsadf",
       "body": "sdfgdsfgdsfg",
+      "category": "Новини та тренди",
       "uuid": "41582711-79f0-4d96-becb-193038857b12",
       "id": 148
     },
@@ -956,6 +1092,7 @@
       "userID": 1,
       "title": "safdgasdfg",
       "body": "sdfgdsfgdsg",
+      "category": "Новини та тренди",
       "uuid": "44b9d41c-c25a-4370-9692-2d6f7826d5ab",
       "id": 149
     },
@@ -963,6 +1100,7 @@
       "userID": 1,
       "title": "f",
       "body": "g",
+      "category": "Новини та тренди",
       "uuid": "4a8e6cfa-e2f9-4b4e-930c-fef8797f155a",
       "id": 150
     },
@@ -970,6 +1108,7 @@
       "userID": 1,
       "title": "asdf",
       "body": "asdf",
+      "category": "Новини та тренди",
       "uuid": "5fcac780-851a-4781-bd24-94b51cc92984",
       "id": 151
     },
@@ -977,6 +1116,7 @@
       "userID": 1,
       "title": "asdf",
       "body": "asdf",
+      "category": "Новини та тренди",
       "uuid": "5859baf9-ef6c-4348-b9a5-a390e8e5e0c9",
       "id": 152
     },
@@ -984,6 +1124,7 @@
       "userID": 1,
       "title": "asdf",
       "body": "asdf",
+      "category": "Новини та тренди",
       "uuid": "8a93e062-55fd-477f-bc8d-8b674e122b78",
       "id": 153
     },
@@ -991,6 +1132,7 @@
       "userID": 1,
       "title": "asdf",
       "body": "asdf",
+      "category": "Новини та тренди",
       "uuid": "c433d4a4-b4a4-4ef3-a7aa-c038dfd59133",
       "id": 154
     },
@@ -998,6 +1140,7 @@
       "userID": 1,
       "title": "jjj",
       "body": "ooo",
+      "category": "Новини та тренди",
       "uuid": "a06c969c-e963-4eb0-a1f5-d6b2a3939e84",
       "id": 155
     },
@@ -1005,6 +1148,7 @@
       "userID": 1,
       "title": "New Post",
       "body": "Some Post",
+      "category": "Новини та тренди",
       "uuid": "ecdd6e97-f150-4b94-a755-ad2a258c8bc3",
       "id": 156
     },
@@ -1012,6 +1156,7 @@
       "userID": 1,
       "title": "New New",
       "body": "sdfsdsdfsdf",
+      "category": "Новини та тренди",
       "uuid": "8aeeaecf-1cfc-4f77-929e-2517f14a3203",
       "id": 157
     },
@@ -1019,6 +1164,7 @@
       "userID": 1,
       "title": "Ho",
       "body": "New",
+      "category": "Новини та тренди",
       "uuid": "90d91966-1ff6-43fb-8fb1-09ea3ffb7f2a",
       "id": 158
     },
@@ -1026,6 +1172,7 @@
       "userID": 1,
       "title": "dfsg",
       "body": "sdfgdsfg",
+      "category": "Новини та тренди",
       "uuid": "add2f6a4-9cf0-4945-a779-26293f23cec4",
       "id": 159
     },
@@ -1033,6 +1180,7 @@
       "userID": 1,
       "title": "test",
       "body": "test222",
+      "category": "Новини та тренди",
       "uuid": "b702bf62-5ae9-4d35-a9f0-170447997cb8",
       "id": 160
     },
@@ -1040,6 +1188,7 @@
       "userID": 1,
       "title": "",
       "body": "",
+      "category": "Новини та тренди",
       "uuid": "36b6fdfe-b05b-4eaa-a771-b418b9241947",
       "id": 161
     },
@@ -1047,6 +1196,7 @@
       "userID": 1,
       "title": "sdf",
       "body": "asdg",
+      "category": "Новини та тренди",
       "uuid": "c468513b-703b-490c-a262-be480618ab4e",
       "id": 162
     },
@@ -1054,6 +1204,7 @@
       "userID": 1,
       "title": "f",
       "body": "",
+      "category": "Новини та тренди",
       "uuid": "b0965066-be3e-46b9-85c7-10f14e249ded",
       "id": 163
     },
@@ -1061,6 +1212,7 @@
       "userID": 1,
       "title": "asdgasdgasdg",
       "body": "kjkjl",
+      "category": "Новини та тренди",
       "uuid": "810cbea6-868a-4663-a64d-b6a64ba29b68",
       "id": 164
     },
@@ -1068,6 +1220,7 @@
       "userID": 1,
       "title": "test",
       "body": "test",
+      "category": "Новини та тренди",
       "uuid": "dcc3b3fa-5bd1-453e-84b5-dc9050396b21",
       "id": 165
     },
@@ -1075,6 +1228,7 @@
       "userID": 1,
       "title": "test",
       "body": "test2",
+      "category": "Новини та тренди",
       "uuid": "a8897dd8-b645-46b1-b9e5-6977075ac211",
       "id": 166
     },
@@ -1082,6 +1236,7 @@
       "userID": 1,
       "title": "test",
       "body": "test2",
+      "category": "Новини та тренди",
       "uuid": "e98e29a4-ef7a-498f-9583-f387c9bfd4b1",
       "id": 167
     },
@@ -1089,6 +1244,7 @@
       "userID": 1,
       "title": "fdsafasdf",
       "body": "asdgasdg",
+      "category": "Новини та тренди",
       "uuid": "57f9d137-ff7f-4cdb-a154-633e20928c5d",
       "id": 168
     },
@@ -1096,6 +1252,7 @@
       "userID": 1,
       "title": "test",
       "body": "testt",
+      "category": "Новини та тренди",
       "uuid": "61d0a0b0-b1a9-4c0c-8848-e77a59bfae9c",
       "id": 169
     },
@@ -1103,6 +1260,7 @@
       "userID": 1,
       "title": "test",
       "body": "testst",
+      "category": "Новини та тренди",
       "uuid": "e2ce4a8b-00c1-452a-8a01-6ffca312367f",
       "id": 170
     },
@@ -1110,6 +1268,7 @@
       "userID": 1,
       "title": "test",
       "body": "test",
+      "category": "Новини та тренди",
       "uuid": "22b04da7-5335-46b8-97ce-7355648153ea",
       "id": 171
     },
@@ -1117,6 +1276,7 @@
       "userID": 1,
       "title": "test",
       "body": "test",
+      "category": "Новини та тренди",
       "uuid": "a17a6d90-b2ea-4ebb-b994-b5bc5f1baddd",
       "id": 172
     },
@@ -1124,6 +1284,7 @@
       "userID": 1,
       "title": "test",
       "body": "test",
+      "category": "Новини та тренди",
       "uuid": "76fa3bd8-accc-47d2-9e13-b112e688bf99",
       "id": 173
     },
@@ -1131,6 +1292,7 @@
       "userID": 1,
       "title": "test",
       "body": "test222",
+      "category": "Новини та тренди",
       "uuid": "e5631237-c6ae-4a21-ace2-b9e52c22a2f9",
       "id": 174
     },
@@ -1138,6 +1300,7 @@
       "userID": 1,
       "title": "test",
       "body": "test2",
+      "category": "Новини та тренди",
       "uuid": "97f688cf-c385-4e7a-994a-9adfe603a4ea",
       "id": 176
     },
@@ -1145,6 +1308,7 @@
       "userID": 1,
       "title": "",
       "body": "",
+      "category": "Новини та тренди",
       "uuid": "41ee98c2-5b74-4c3f-81b5-ab686ffd7f12",
       "id": 177
     },
@@ -1152,6 +1316,7 @@
       "userID": 1,
       "title": "titleasdf sadf asdf sadf ",
       "body": "bodyasdgf saf asdf asdfa sdfas as dfasdf asdf sad",
+      "category": "Новини та тренди",
       "uuid": "69c7b8b1-cf56-44f0-96c0-1de7a3bc2a5d",
       "id": 178
     },
@@ -1159,6 +1324,7 @@
       "userID": 1,
       "title": "test",
       "body": "test2",
+      "category": "Новини та тренди",
       "uuid": "0313c9aa-e5ca-4b0d-9d3c-cb6ba49cfa92",
       "id": 179
     },
@@ -1166,8 +1332,25 @@
       "userID": 1,
       "title": "",
       "body": "",
+      "category": "Новини та тренди",
       "uuid": "6afbce27-4531-435e-9c33-631be5d0b2b7",
       "id": 180
+    },
+    {
+      "userID": 1,
+      "title": "Штучний інтелект",
+      "body": "Штучний інтелектШтучний інтелектШтучний інтелектШтучний інтелектШтучний інтелектШтучний інтелектШтучний інтелектШтучний інтелект",
+      "category": "Новини та тренди",
+      "uuid": "0a4015aa-51f7-4208-8e9c-5d1f933570de",
+      "id": 181
+    },
+    {
+      "userID": 1,
+      "title": "testНовини та трендиНовини та трендиНовини та трендиНовини та трендиНовини та тренди",
+      "body": "Новини та трендиНовини та трендиНовини та трендиНовини та трендиНовини та трендиНовини та",
+      "category": "Новини та тренди",
+      "uuid": "c31a968d-f35a-4046-9c15-252bd0903cf4",
+      "id": 182
     }
   ],
   "users": [
