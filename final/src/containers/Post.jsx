@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { BASE_URL } from '../api';
+import { BASE_URL, resolveImageUrl } from '../api';
 import { deletePost } from '../slices/postsSlice';
 
 const previewImageStyles = {
@@ -61,6 +61,7 @@ function Post() {
   }
 
   const previewImage = Array.isArray(post.imagePaths) ? post.imagePaths[0] : null;
+  const previewImageSrc = previewImage ? resolveImageUrl(previewImage) : null;
 
   return (
     <section>
@@ -69,9 +70,9 @@ function Post() {
         <span onClick={handlePostDeletion}>❌</span>
       </h1>
       <em>Authored by user #{post.userID}</em>
-      {previewImage && (
+      {previewImageSrc && (
         <img
-          src={previewImage}
+          src={previewImageSrc}
           alt={`${post.title} preview`}
           style={previewImageStyles}
         />

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -8,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
+import { UPLOAD_IMAGES_URL } from '../api';
 import categories from '../data/categories.json';
 import { addPost, clearCurrentPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils/utils';
@@ -30,20 +32,6 @@ const isAllowedImageFormat = (file) => {
 
   return ALLOWED_IMAGE_EXTENSIONS.includes(extension) || ALLOWED_IMAGE_MIME_TYPES.includes(file.type);
 };
-
-const readFileAsDataURL = (file) => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-
-  reader.onload = () => {
-    resolve(reader.result);
-  };
-
-  reader.onerror = () => {
-    reject(new Error(`Unable to read "${file.name}".`));
-  };
-
-  reader.readAsDataURL(file);
-});
 
 const getImageDimensions = (file) => new Promise((resolve, reject) => {
   const image = new Image();
@@ -188,6 +176,25 @@ function AddPost() {
     return errors;
   };
 
+  const uploadPostImages = async () => {
+    if (postImages.length === 0) {
+      return [];
+    }
+
+    const formData = new FormData();
+    postImages.forEach((imageFile) => {
+      formData.append('images', imageFile);
+    });
+
+    const response = await axios.post(UPLOAD_IMAGES_URL, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response.data?.imagePaths ?? [];
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -198,25 +205,27 @@ function AddPost() {
       return;
     }
 
-    let imagePaths = [];
-
     try {
-      imagePaths = await Promise.all(postImages.map(readFileAsDataURL));
+      const imagePaths = await uploadPostImages();
+
+      setImageValidationError('');
+
+      dispatch(addPost({
+        userID: 1,
+        title: postTitle,
+        body: postBody,
+        category,
+        imagePaths,
+        uuid: generateDummyUUID(),
+      }));
     } catch (error) {
-      setImageValidationError(error.message);
-      return;
+      const message =
+        error?.response?.data?.message
+        || error.message
+        || 'Image upload failed.';
+
+      setImageValidationError(message);
     }
-
-    setImageValidationError('');
-
-    dispatch(addPost({
-      userID: 1,
-      title: postTitle,
-      body: postBody,
-      category,
-      imagePaths,
-      uuid: generateDummyUUID(),
-    }));
   };
 
   return (

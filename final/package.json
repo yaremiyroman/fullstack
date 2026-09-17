@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "json-server --watch db.json --port 3001",
-    "server:readonly": "json-server --watch db.json --port 3001 --read-only",
+    "server": "node server.js",
+    "json-server": "json-server --watch db.json --port 3001",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -24,7 +24,8 @@
     "react-redux": "^9.3.0",
     "react-router-dom": "^6.30.6",
     "redux": "^5.0.1",
-    "styled-components": "^6.5.3"
+    "styled-components": "^6.5.3",
+    "multer": "^2.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

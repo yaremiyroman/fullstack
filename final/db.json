@@ -1363,6 +1363,18 @@
       ],
       "uuid": "4c5cc351-dd49-4aeb-aafa-ac615cd02c58",
       "id": 183
+    },
+    {
+      "userID": 1,
+      "title": "asdfasdf",
+      "body": "asdfas fasfd asdf",
+      "category": "Розробка",
+      "imagePaths": [
+        "/uploads/1789668576408-630922353-3-copy.png",
+        "/uploads/1789668576414-235762669-3.png"
+      ],
+      "uuid": "44e01c2d-ee6d-4f10-9b31-648ac8c74a27",
+      "id": 184
     }
   ],
   "users": [
