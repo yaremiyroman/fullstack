@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,6 +9,11 @@ import { generateDummyUUID } from '../utils';
 import Input from '@mui/material/Input';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Button from '@mui/material/Button';
+
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 
 const AddPostForm = styled.form`
   display: flex;
@@ -44,6 +49,12 @@ function AddPost() {
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
 
+  const [category, setCategory] = useState('');
+
+  const handleCategorySelection = (event) => {
+    setCategory(event.target.value);
+  };
+
   const isLoading = useSelector(state => state.posts.loading);
   const newPostID = useSelector(state => state.posts.post?.id);
 
@@ -78,8 +89,6 @@ function AddPost() {
     );
   };
 
-  return null;
-
   return (<>
     <h1>Add Post</h1>
     <AddPostForm onSubmit={handleSubmit} $isLoading={isLoading}>
@@ -91,6 +100,22 @@ function AddPost() {
         value={postTitle}
         sx={{ color: '#ccc' }}
       />
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">Category</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={category}
+          onChange={handleCategorySelection}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
       <PostBody
         name="body"
         id="body"

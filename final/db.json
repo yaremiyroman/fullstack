@@ -1161,6 +1161,13 @@
       "body": "test2",
       "uuid": "0313c9aa-e5ca-4b0d-9d3c-cb6ba49cfa92",
       "id": 179
+    },
+    {
+      "userID": 1,
+      "title": "",
+      "body": "",
+      "uuid": "6afbce27-4531-435e-9c33-631be5d0b2b7",
+      "id": 180
     }
   ],
   "users": [
