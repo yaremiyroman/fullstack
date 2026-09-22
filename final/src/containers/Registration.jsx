@@ -1,96 +1,249 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { useState } from 'react';
+import {
+    Alert,
+    Box,
+    Button,
+    Checkbox,
+    FormControlLabel,
+    Stack,
+    TextField,
+    Typography,
+} from '@mui/material';
 
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+const MIN_TEXT_LENGTH = 3;
+const MAX_TEXT_LENGTH = 255;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const UKRAINIAN_PHONE_REGEX = /^(?:\+380\d{9}|380\d{9}|0\d{9})$/;
 
-import { UPLOAD_IMAGES_URL } from '../api';
-import categories from '../data/categories.json';
-import { addPost, clearCurrentPost } from '../slices/postsSlice';
-import { generateDummyUUID } from '../utils/utils';
+const INITIAL_FORM_VALUES = {
+    firstName: '',
+    secondName: '',
+    dateOfBirth: '',
+    phone: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    policyConsent: false,
+};
 
-const MAX_IMAGE_COUNT = 5;
-const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024;
-const MIN_IMAGE_DIMENSION = 100;
-const MAX_IMAGE_DIMENSION = 2000;
-const ALLOWED_IMAGE_EXTENSIONS = ['.img', '.png'];
-const ALLOWED_IMAGE_MIME_TYPES = ['image/png'];
-
-const AddPostForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  ${props => props.$isLoading && `
-    opacity: 0.5;
-    pointer-events: none;
-    cursor: default;
-  `}
-`;
-
-const PostTitle = styled.input`
-  color: #ccc;
-  font-size: 20px;
-`;
-
-const PostBody = styled.textarea`
-  color: #ccc;
-  background: transparent;
-  font-size: 20px;
-`;
-
-const PostSubmit = styled.button``;
-
-const ImageHint = styled.p`
-  margin: 0;
-  color: #94a3b8;
-`;
-
-const ImageList = styled.ul`
-  margin: 0;
-  padding-left: 16px;
-  color: #e2e8f0;
-`;
-
-const ValidationError = styled.p`
-  margin: 0;
-  color: #fca5a5;
-`;
-
-
-// Name
-// Second Name
-// DOB
-// phone number
-// email
-// pswd
-// pswd confirmation
-// confirmation
-
-
+function normalizePhone(value) {
+    return value.replace(/[\s()-]/g, '');
+}
 
 function Register() {
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES);
+    const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
-    // const isLoading = useSelector(state => state.posts.loading);
-    // const newPostID = useSelector(state => state.posts.post?.id);
+    const handleChange = event => {
+        const { name, value } = event.target;
 
-    // const [postTitle, setPostTitle] = useState('');
-    // const [postBody, setPostBody] = useState('');
-    // const [category, setCategory] = useState('');
-    // const [postImages, setPostImages] = useState([]);
-    // const [imageValidationError, setImageValidationError] = useState('');
+        setFormValues(prevValues => ({
+            ...prevValues,
+            [name]: value,
+        }));
+    };
+
+    const handleCheckboxChange = event => {
+        const { name, checked } = event.target;
+
+        setFormValues(prevValues => ({
+            ...prevValues,
+            [name]: checked,
+        }));
+    };
+
+    const validateForm = () => {
+        const nextErrors = {};
+        const trimmedFirstName = formValues.firstName.trim();
+        const trimmedSecondName = formValues.secondName.trim();
+        const trimmedPhone = normalizePhone(formValues.phone.trim());
+        const trimmedEmail = formValues.email.trim();
+
+        if (!trimmedFirstName) {
+            nextErrors.firstName = 'Name is required.';
+        } else if (trimmedFirstName.length < MIN_TEXT_LENGTH) {
+            nextErrors.firstName = `Name must be at least ${MIN_TEXT_LENGTH} characters.`;
+        } else if (trimmedFirstName.length > MAX_TEXT_LENGTH) {
+            nextErrors.firstName = `Name must be at most ${MAX_TEXT_LENGTH} characters.`;
+        }
+
+        if (trimmedSecondName) {
+            if (trimmedSecondName.length < MIN_TEXT_LENGTH) {
+                nextErrors.secondName = `Second name must be at least ${MIN_TEXT_LENGTH} characters.`;
+            } else if (trimmedSecondName.length > MAX_TEXT_LENGTH) {
+                nextErrors.secondName = `Second name must be at most ${MAX_TEXT_LENGTH} characters.`;
+            }
+        }
+
+        if (!trimmedPhone) {
+            nextErrors.phone = 'Phone number is required.';
+        }
+
+        if (!trimmedEmail) {
+            nextErrors.email = 'Email is required.';
+        } else if (!EMAIL_REGEX.test(trimmedEmail)) {
+            nextErrors.email = 'Enter a valid email address.';
+        }
+
+        if (!formValues.password) {
+            nextErrors.password = 'Password is required.';
+        }
+
+        if (!formValues.confirmPassword) {
+            nextErrors.confirmPassword = 'Please confirm your password.';
+        } else if (formValues.confirmPassword !== formValues.password) {
+            nextErrors.confirmPassword = 'Passwords must match.';
+        }
+
+        if (!formValues.policyConsent) {
+            nextErrors.policyConsent = 'You must accept the policy consent.';
+        }
+
+        setErrors(nextErrors);
+        return Object.keys(nextErrors).length === 0;
+    };
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+        setIsSubmitted(false);
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        // Simulate a submit request without calling an API.
+        await new Promise(resolve => {
+            setTimeout(resolve, 1000);
+        });
+
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+    };
 
     return (
-        <>
-            <h1>Register</h1>
-        </>
+        <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ maxWidth: 520, mx: 'auto', py: 3 }}
+        >
+            <Stack spacing={2.5}>
+                <Typography variant="h4" component="h1">
+                    Register
+                </Typography>
+
+                {isSubmitted && (
+                    <Alert severity="success">
+                        Registration form was submitted successfully (simulated submit).
+                    </Alert>
+                )}
+
+                <TextField
+                    required
+                    label="Name"
+                    name="firstName"
+                    value={formValues.firstName}
+                    onChange={handleChange}
+                    error={Boolean(errors.firstName)}
+                    helperText={errors.firstName}
+                    inputProps={{ minLength: MIN_TEXT_LENGTH, maxLength: MAX_TEXT_LENGTH }}
+                />
+
+                <TextField
+                    label="Second Name"
+                    name="secondName"
+                    value={formValues.secondName}
+                    onChange={handleChange}
+                    error={Boolean(errors.secondName)}
+                    helperText={errors.secondName}
+                    inputProps={{ minLength: MIN_TEXT_LENGTH, maxLength: MAX_TEXT_LENGTH }}
+                />
+
+                <TextField
+                    label="Date of Birth"
+                    name="dateOfBirth"
+                    type="date"
+                    value={formValues.dateOfBirth}
+                    onChange={handleChange}
+                    InputLabelProps={{ shrink: true }}
+                    sx={{
+                        '& input::-webkit-datetime-edit-day-field, & input::-webkit-datetime-edit-month-field, & input::-webkit-datetime-edit-year-field, & input::-webkit-datetime-edit-text': {
+                            color: formValues.dateOfBirth ? 'inherit' : 'transparent',
+                        },
+                    }}
+                />
+
+                <TextField
+                    required
+                    label="Phone Number"
+                    name="phone"
+                    type="tel"
+                    value={formValues.phone}
+                    onChange={handleChange}
+                    error={Boolean(errors.phone)}
+                    helperText={errors.phone || 'Use +380XXXXXXXXX or 0XXXXXXXXX format.'}
+                />
+
+                <TextField
+                    required
+                    label="Email"
+                    name="email"
+                    type="email"
+                    value={formValues.email}
+                    onChange={handleChange}
+                    error={Boolean(errors.email)}
+                    helperText={errors.email}
+                />
+
+                <TextField
+                    required
+                    label="Password"
+                    name="password"
+                    type="password"
+                    value={formValues.password}
+                    onChange={handleChange}
+                    error={Boolean(errors.password)}
+                    helperText={errors.password}
+                />
+
+                <TextField
+                    required
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    type="password"
+                    value={formValues.confirmPassword}
+                    onChange={handleChange}
+                    error={Boolean(errors.confirmPassword)}
+                    helperText={errors.confirmPassword}
+                />
+
+                <Box>
+                    <FormControlLabel
+                        control={(
+                            <Checkbox
+                                name="policyConsent"
+                                checked={formValues.policyConsent}
+                                onChange={handleCheckboxChange}
+                            />
+                        )}
+                        label="I agree to the policy consent"
+                    />
+                    {errors.policyConsent && (
+                        <Typography variant="body2" color="error">
+                            {errors.policyConsent}
+                        </Typography>
+                    )}
+                </Box>
+
+                <Button type="submit" variant="contained" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                </Button>
+            </Stack>
+        </Box>
     );
 }
 
