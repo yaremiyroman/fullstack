@@ -1387,6 +1387,12 @@
       "id": 2,
       "name": "Maksym",
       "email": "maksym@example.com"
+    },
+    {
+      "userID": 1,
+      "title": "Post 102",
+      "body": "Generated mock content for post 102.",
+      "id": 3
     }
   ]
 }

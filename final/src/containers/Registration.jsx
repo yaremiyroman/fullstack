@@ -10,6 +10,11 @@ import {
     Typography,
 } from '@mui/material';
 
+// import { UPLOAD_IMAGES_URL } from '../api';
+// import categories from '../data/categories.json';
+// import { addPost, clearCurrentPost } from '../slices/postsSlice';
+// import { generateDummyUUID } from '../utils/utils';
+
 const MIN_TEXT_LENGTH = 3;
 const MAX_TEXT_LENGTH = 255;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -105,7 +110,7 @@ function Register() {
         return Object.keys(nextErrors).length === 0;
     };
 
-    const handleSubmit = async event => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         setIsSubmitted(false);
 
@@ -115,10 +120,7 @@ function Register() {
 
         setIsSubmitting(true);
 
-        // Simulate a submit request without calling an API.
-        await new Promise(resolve => {
-            setTimeout(resolve, 1000);
-        });
+        console.log('formValues > ', formValues);
 
         setIsSubmitting(false);
         setIsSubmitted(true);
