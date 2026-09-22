@@ -150,7 +150,9 @@ function Register() {
                     onChange={handleChange}
                     error={Boolean(errors.firstName)}
                     helperText={errors.firstName}
-                    inputProps={{ minLength: MIN_TEXT_LENGTH, maxLength: MAX_TEXT_LENGTH }}
+                    slotProps={{
+                        htmlInput: { minLength: MIN_TEXT_LENGTH, maxLength: MAX_TEXT_LENGTH },
+                    }}
                 />
 
                 <TextField
@@ -160,7 +162,9 @@ function Register() {
                     onChange={handleChange}
                     error={Boolean(errors.secondName)}
                     helperText={errors.secondName}
-                    inputProps={{ minLength: MIN_TEXT_LENGTH, maxLength: MAX_TEXT_LENGTH }}
+                    slotProps={{
+                        htmlInput: { minLength: MIN_TEXT_LENGTH, maxLength: MAX_TEXT_LENGTH },
+                    }}
                 />
 
                 <TextField
@@ -169,7 +173,7 @@ function Register() {
                     type="date"
                     value={formValues.dateOfBirth}
                     onChange={handleChange}
-                    InputLabelProps={{ shrink: true }}
+                    slotProps={{ inputLabel: { shrink: true } }}
                     sx={{
                         '& input::-webkit-datetime-edit-day-field, & input::-webkit-datetime-edit-month-field, & input::-webkit-datetime-edit-year-field, & input::-webkit-datetime-edit-text': {
                             color: formValues.dateOfBirth ? 'inherit' : 'transparent',
