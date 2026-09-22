@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useTheme } from '../contexts/ThemeContext';
@@ -327,6 +327,9 @@ function MainLayout() {
                     </Box>
                     <Box sx={{ fontSize: '0.75rem', opacity: 0.7, wordBreak: 'break-all', mb: 2 }}>
                       JWT: {authSession.token}
+                    </Box>
+                    <Box sx={{ fontSize: '0.75rem', opacity: 0.7, wordBreak: 'break-all', mb: 2 }}>
+                      <Link to="/user">User Page</Link>
                     </Box>
                     <Button onClick={handleLogout} variant="contained" fullWidth>
                       Logout

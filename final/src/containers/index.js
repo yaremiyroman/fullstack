@@ -6,6 +6,7 @@ import NotFound from './NotFound';
 import AddPost from './AddPost';
 import Category from './Category';
 import Registration from './Registration';
+import UserPage from './UserPage';
 
 export {
     Home,
@@ -16,4 +17,5 @@ export {
     AddPost,
     Category,
     Registration,
+    UserPage,
 };
