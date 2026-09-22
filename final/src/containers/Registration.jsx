@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Alert,
     Box,
@@ -10,15 +11,11 @@ import {
     Typography,
 } from '@mui/material';
 
-// import { UPLOAD_IMAGES_URL } from '../api';
-// import categories from '../data/categories.json';
-// import { addPost, clearCurrentPost } from '../slices/postsSlice';
-// import { generateDummyUUID } from '../utils/utils';
+import { addUser } from '../slices/usersSlice';
 
 const MIN_TEXT_LENGTH = 3;
 const MAX_TEXT_LENGTH = 255;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const UKRAINIAN_PHONE_REGEX = /^(?:\+380\d{9}|380\d{9}|0\d{9})$/;
 
 const INITIAL_FORM_VALUES = {
     firstName: '',
@@ -38,8 +35,12 @@ function normalizePhone(value) {
 function Register() {
     const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES);
     const [errors, setErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const isLoading = useSelector(state => state.users.loading);
+
 
     const handleChange = event => {
         const { name, value } = event.target;
@@ -118,11 +119,18 @@ function Register() {
             return;
         }
 
-        setIsSubmitting(true);
-
         console.log('formValues > ', formValues);
 
-        setIsSubmitting(false);
+        dispatch(addUser({
+            firstName: formValues.firstName,
+            userName: formValues.firstName,
+            secondName: formValues?.secondName ?? null,
+            dateOfBirth: formValues.dateOfBirth,
+            email: formValues.email,
+            password: formValues.password,
+            phone: formValues.password,
+        }));
+
         setIsSubmitted(true);
     };
 
@@ -245,8 +253,8 @@ function Register() {
                     )}
                 </Box>
 
-                <Button type="submit" variant="contained" disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                <Button type="submit" variant="contained" disabled={isLoading}>
+                    {isLoading ? 'Submitting...' : 'Submit'}
                 </Button>
             </Stack>
         </Box>
