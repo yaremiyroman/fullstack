@@ -145,7 +145,8 @@ function MainLayout() {
     }
 
     try {
-      dispatch(savedSession);
+      dispatch(addCurrentUser(JSON.parse(savedSession)));
+
 
       const parsedSession = JSON.parse(savedSession);
 
