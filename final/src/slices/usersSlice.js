@@ -3,6 +3,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { USERS_URL } from '../api';
 
+export const getUsers = createAsyncThunk('users/getUsers', async () => {
+    const response = await axios.get(USERS_URL);
+
+    return response.data;
+});
+
 export const addUser = createAsyncThunk('users/addUser', async (userData = {}) => {
     const response = await axios.post(USERS_URL, userData);
 
@@ -18,9 +24,23 @@ const usersSlice = createSlice({
         user: null,
     },
     reducers: {
+        addCurrentUser: (state, action) => {
+            state.user = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
+            .addCase(getUsers.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(getUsers.fulfilled, (state, action) => {
+                state.loading = false;
+                state.usersData = action.payload;
+            })
+            .addCase(getUsers.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
             .addCase(addUser.pending, (state, action) => {
                 state.loading = true;
             })
@@ -35,6 +55,6 @@ const usersSlice = createSlice({
     }
 });
 
-// export const { clearCurrentPost } = usersSlice.actions;
+export const { addCurrentUser } = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -1,30 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 
-import { alpha } from '@mui/material/styles';
+import { getUsers, addCurrentUser } from '../slices/usersSlice';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import SunnyIcon from '@mui/icons-material/Sunny';
 import BedtimeIcon from '@mui/icons-material/Bedtime';
-
-import Modal from '../components/Modal';
 
 const AppShell = styled.div`
   margin: 0 auto;
@@ -119,9 +112,123 @@ const Main = styled.main`
   min-height: calc(100vh - 64px);
 `;
 
+const AUTH_STORAGE_KEY = 'mock_jwt_auth_session';
+
 function MainLayout() {
   const { theme, toggleTheme } = useTheme();
   const { language, changeLanguage, t } = useLanguage();
+  const [authAnchorEl, setAuthAnchorEl] = useState(null);
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [authError, setAuthError] = useState('');
+  const [authSession, setAuthSession] = useState(null);
+
+  const dispatch = useDispatch();
+  const usersData = useSelector(state => state.users.usersData);
+  const currentUserData = useSelector(state => state.users.user);
+
+  console.log('currentUserData > ', currentUserData);
+
+
+  useEffect(() => {
+    if (!usersData.length) {
+      dispatch(getUsers());
+    }
+
+
+  }, []);
+
+  useEffect(() => {
+    const savedSession = localStorage.getItem(AUTH_STORAGE_KEY);
+
+    if (!savedSession) {
+      return;
+    }
+
+    try {
+      dispatch(savedSession);
+
+      const parsedSession = JSON.parse(savedSession);
+
+      if (parsedSession?.email && parsedSession?.token) {
+        setAuthSession(parsedSession);
+      }
+    } catch {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+    }
+  }, []);
+
+  const isAuthMenuOpen = Boolean(authAnchorEl);
+
+  const handleOpenAuthMenu = event => {
+    setAuthAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseAuthMenu = () => {
+    setAuthAnchorEl(null);
+    setAuthError('');
+  };
+
+  const handleCredentialsChange = event => {
+    const { name, value } = event.target;
+
+    setCredentials(prevValues => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleAuthorize = event => {
+    event.preventDefault();
+
+    const email = credentials.email.trim();
+    const password = credentials.password.trim();
+
+    if (!email || !password) {
+      setAuthError('Email and password are required.');
+
+      return;
+    }
+
+
+    const currentUser = usersData.filter(user => user.email === email);
+
+    console.log('currentUser > ', currentUser);
+
+    if (!currentUser) {
+      alert('NO USER');
+
+      return;
+    }
+
+    dispatch(addCurrentUser(currentUser[0]));
+
+
+    const simulatedJwt = btoa(`${email}:${Date.now()}:${password.length}`);
+
+    // -------
+
+    // const
+
+    const nextSession = {
+      ...currentUser[0],
+      token: simulatedJwt,
+      issuedAt: new Date().toISOString(),
+    };
+
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(nextSession));
+    setAuthSession(nextSession);
+    setCredentials({ email, password: '' });
+    setAuthError('');
+    setAuthAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+    setAuthSession(null);
+    setCredentials({ email: '', password: '' });
+    setAuthError('');
+    setAuthAnchorEl(null);
+  };
 
   return (
     <AppShell $themeMode={theme}>
@@ -197,6 +304,66 @@ function MainLayout() {
               <ControlButton $themeMode={theme} onClick={toggleTheme}>
                 {theme === 'day' ? <BedtimeIcon /> : <SunnyIcon />}
               </ControlButton>
+
+              <ControlButton
+                $themeMode={theme}
+                onClick={handleOpenAuthMenu}
+                startIcon={<AccountCircle />}
+              >
+                {authSession ? authSession.email : 'Authorize'}
+              </ControlButton>
+              <Menu
+                anchorEl={authAnchorEl}
+                open={isAuthMenuOpen}
+                onClose={handleCloseAuthMenu}
+                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+              >
+                {authSession ? (
+                  <Box sx={{ p: 2, width: 320 }}>
+                    <Box sx={{ mb: 1, fontSize: '0.9rem', opacity: 0.85 }}>
+                      Authorized as: {authSession.email}
+                    </Box>
+                    <Box sx={{ fontSize: '0.75rem', opacity: 0.7, wordBreak: 'break-all', mb: 2 }}>
+                      JWT: {authSession.token}
+                    </Box>
+                    <Button onClick={handleLogout} variant="contained" fullWidth>
+                      Logout
+                    </Button>
+                  </Box>
+                ) : (
+                  <Box
+                    component="form"
+                    onSubmit={handleAuthorize}
+                    sx={{ p: 2, width: 320, display: 'flex', flexDirection: 'column', gap: 1.5 }}
+                  >
+                    <TextField
+                      label="Email"
+                      name="email"
+                      type="email"
+                      value={credentials.email}
+                      onChange={handleCredentialsChange}
+                      size="small"
+                      autoComplete="email"
+                      required
+                    />
+                    <TextField
+                      label="Password"
+                      name="password"
+                      type="password"
+                      value={credentials.password}
+                      onChange={handleCredentialsChange}
+                      size="small"
+                      autoComplete="current-password"
+                      required
+                    />
+                    {authError ? (
+                      <Box sx={{ color: 'error.main', fontSize: '0.8rem' }}>{authError}</Box>
+                    ) : null}
+                    <Button type="submit" variant="contained">Login</Button>
+                  </Box>
+                )}
+              </Menu>
             </Controls>
           </Box>
         </Toolbar>
