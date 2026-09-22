@@ -9,6 +9,7 @@ import {
   NotFound,
   AddPost,
   Category,
+  Registration,
 } from './containers';
 
 export const router = createBrowserRouter(
@@ -40,6 +41,10 @@ export const router = createBrowserRouter(
         {
           path: '/add-post',
           element: <AddPost />,
+        },
+        {
+          path: '/register',
+          element: <Registration />,
         },
         {
           path: '*',
