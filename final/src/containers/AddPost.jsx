@@ -2,31 +2,23 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-import { UPLOAD_IMAGES_URL } from '../api';
 import categories from '../data/categories.json';
 import { addPost, clearCurrentPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils/utils';
 
 import {
-  MAX_IMAGE_COUNT,
-  MAX_IMAGE_SIZE_BYTES,
-  MIN_IMAGE_DIMENSION,
-  MAX_IMAGE_DIMENSION,
-  ALLOWED_IMAGE_EXTENSIONS,
-  ALLOWED_IMAGE_MIME_TYPES,
-} from '../data/constants';
-
-import {
   getFileExtension,
   isAllowedImageFormat,
   getImageDimensions,
+  handlePostImageInput,
+  validatePostImages,
+  uploadPostImages,
 } from '../utils/imageUtils';
 
 const AddPostForm = styled.form`
@@ -105,93 +97,19 @@ function AddPost() {
     setPostBody(event.target.value);
   };
 
-
-
-  
-  const handlePostImageInput = (event) => {
-    const selectedFiles = Array.from(event.target.files ?? []);
-
-    if (selectedFiles.length > MAX_IMAGE_COUNT) {
-      setPostImages(selectedFiles.slice(0, MAX_IMAGE_COUNT));
-      setImageValidationError(`Only ${MAX_IMAGE_COUNT} images are allowed. Keeping the first ${MAX_IMAGE_COUNT}.`);
-      return;
-    }
-
-    setPostImages(selectedFiles);
-    setImageValidationError('');
-  };
-
-  const validatePostImages = async () => {
-    const errors = [];
-
-    if (postImages.length > MAX_IMAGE_COUNT) {
-      errors.push(`Please upload up to ${MAX_IMAGE_COUNT} images.`);
-    }
-
-    for (const file of postImages) {
-      if (!isAllowedImageFormat(file)) {
-        errors.push(`"${file.name}" has unsupported format. Allowed: img, png.`);
-      }
-
-      if (file.size > MAX_IMAGE_SIZE_BYTES) {
-        errors.push(`"${file.name}" is larger than 5MB.`);
-      }
-
-      try {
-        const { width, height } = await getImageDimensions(file);
-        const hasValidDimensions =
-          width >= MIN_IMAGE_DIMENSION &&
-          height >= MIN_IMAGE_DIMENSION &&
-          width <= MAX_IMAGE_DIMENSION &&
-          height <= MAX_IMAGE_DIMENSION;
-
-        if (!hasValidDimensions) {
-          errors.push(
-            `"${file.name}" must be between ${MIN_IMAGE_DIMENSION}x${MIN_IMAGE_DIMENSION} and ${MAX_IMAGE_DIMENSION}x${MAX_IMAGE_DIMENSION}.`,
-          );
-        }
-      } catch (error) {
-        errors.push(error.message);
-      }
-    }
-
-    return errors;
-  };
-
-  const uploadPostImages = async () => {
-    if (postImages.length === 0) {
-      return [];
-    }
-
-    const formData = new FormData();
-    postImages.forEach((imageFile) => {
-      formData.append('images', imageFile);
-    });
-
-    const response = await axios.post(UPLOAD_IMAGES_URL, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-
-    return response.data?.imagePaths ?? [];
-  };
-
-
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const imageValidationErrors = await validatePostImages();
+    const imageValidationErrors = await validatePostImages(postImages);
 
     if (imageValidationErrors.length > 0) {
       setImageValidationError(imageValidationErrors.join(' '));
+
       return;
     }
 
     try {
-      const imagePaths = await uploadPostImages();
+      const imagePaths = await uploadPostImages(postImages);
 
       setImageValidationError('');
 
@@ -259,7 +177,7 @@ function AddPost() {
           name="images"
           accept=".img,.png,image/png"
           multiple
-          onChange={handlePostImageInput}
+          onChange={(e) => handlePostImageInput(e, setPostImages, setImageValidationError)}
         />
         <ImageHint>
           Upload up to 5 images, 5MB each, dimensions between 100x100 and 2000x2000.

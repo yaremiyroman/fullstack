@@ -1367,6 +1367,17 @@
       ],
       "uuid": "44e01c2d-ee6d-4f10-9b31-648ac8c74a27",
       "id": 184
+    },
+    {
+      "userID": 1,
+      "title": "",
+      "body": "",
+      "category": "",
+      "imagePaths": [
+        "/uploads/1790270868575-708728094-3.png"
+      ],
+      "uuid": "068c5bb3-0df0-4083-91f0-e0f154801bf5",
+      "id": 185
     }
   ],
   "users": [
@@ -1379,26 +1390,6 @@
       "id": 2,
       "name": "Maksym",
       "email": "maksym@example.com"
-    },
-    {
-      "firstName": "aaa",
-      "userName": "aaa",
-      "secondName": "asdfsaf",
-      "dateOfBirth": "2026-09-11",
-      "email": "asdfsadf@asdfasdf.com",
-      "password": "aaa",
-      "phone": "aaa",
-      "id": 3
-    },
-    {
-      "firstName": "aaa",
-      "userName": "aaa",
-      "secondName": "asdfsaf",
-      "dateOfBirth": "2026-09-11",
-      "email": "aaa@aaa.com",
-      "password": "aaa",
-      "phone": "aaa",
-      "id": 4
     }
   ]
 }
