@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Card from '../components/Card';
-import Loader from '../components/Loader';
-import Error from '../components/Error';
-import Plug from '../components/Plug';
+import { Card, Loader, Error, Plug } from '../components';
 
 import { BASE_URL } from '../api';
 import { fetchPosts } from '../slices/postsSlice';

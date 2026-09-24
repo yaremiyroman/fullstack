@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Plug from '../components/Plug';
+import { Plug } from '../components';
 
 import { BASE_URL, resolveImageUrl } from '../api';
 import { deletePost } from '../slices/postsSlice';

@@ -2,9 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { Alert, Box, Paper, Stack, Typography } from '@mui/material';
 
-import Loader from '../components/Loader';
-import Error from '../components/Error';
-import Plug from '../components/Plug';
+import { Loader, Error, Plug } from '../components';
 
 function UserPage() {
   const user = useSelector(state => state.users.user);

@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import MainMenu from '../components/MainMenu';
-import Controls from '../components/Controls';
+import { MainMenu, Controls } from '../components';
 
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
