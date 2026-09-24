@@ -33,7 +33,7 @@ function Home() {
   }
 
   return (
-    <div>
+    <>
       {posts.map(({ uuid, title, body, userID, id, category }) => (
         <Card
           key={uuid}
@@ -44,7 +44,7 @@ function Home() {
           category={category}
         />
       ))}
-    </div>
+    </>
   );
 };
 

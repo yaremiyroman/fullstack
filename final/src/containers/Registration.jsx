@@ -13,9 +13,13 @@ import {
 
 import { addUser } from '../slices/usersSlice';
 
-const MIN_TEXT_LENGTH = 3;
-const MAX_TEXT_LENGTH = 255;
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import {
+    MIN_TEXT_LENGTH,
+    MAX_TEXT_LENGTH,
+    EMAIL_REGEX,
+} from '../data/constants';
+
+import { validateRegisterForm } from '../validators/registration';
 
 const INITIAL_FORM_VALUES = {
     firstName: '',
@@ -28,19 +32,14 @@ const INITIAL_FORM_VALUES = {
     policyConsent: false,
 };
 
-function normalizePhone(value) {
-    return value.replace(/[\s()-]/g, '');
-}
-
 function Register() {
     const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES);
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const dispatch = useDispatch();
-
     const isLoading = useSelector(state => state.users.loading);
 
+    const dispatch = useDispatch();
 
     const handleChange = event => {
         const { name, value } = event.target;
@@ -60,66 +59,13 @@ function Register() {
         }));
     };
 
-    const validateForm = () => {
-        const nextErrors = {};
-        const trimmedFirstName = formValues.firstName.trim();
-        const trimmedSecondName = formValues.secondName.trim();
-        const trimmedPhone = normalizePhone(formValues.phone.trim());
-        const trimmedEmail = formValues.email.trim();
-
-        if (!trimmedFirstName) {
-            nextErrors.firstName = 'Name is required.';
-        } else if (trimmedFirstName.length < MIN_TEXT_LENGTH) {
-            nextErrors.firstName = `Name must be at least ${MIN_TEXT_LENGTH} characters.`;
-        } else if (trimmedFirstName.length > MAX_TEXT_LENGTH) {
-            nextErrors.firstName = `Name must be at most ${MAX_TEXT_LENGTH} characters.`;
-        }
-
-        if (trimmedSecondName) {
-            if (trimmedSecondName.length < MIN_TEXT_LENGTH) {
-                nextErrors.secondName = `Second name must be at least ${MIN_TEXT_LENGTH} characters.`;
-            } else if (trimmedSecondName.length > MAX_TEXT_LENGTH) {
-                nextErrors.secondName = `Second name must be at most ${MAX_TEXT_LENGTH} characters.`;
-            }
-        }
-
-        if (!trimmedPhone) {
-            nextErrors.phone = 'Phone number is required.';
-        }
-
-        if (!trimmedEmail) {
-            nextErrors.email = 'Email is required.';
-        } else if (!EMAIL_REGEX.test(trimmedEmail)) {
-            nextErrors.email = 'Enter a valid email address.';
-        }
-
-        if (!formValues.password) {
-            nextErrors.password = 'Password is required.';
-        }
-
-        if (!formValues.confirmPassword) {
-            nextErrors.confirmPassword = 'Please confirm your password.';
-        } else if (formValues.confirmPassword !== formValues.password) {
-            nextErrors.confirmPassword = 'Passwords must match.';
-        }
-
-        if (!formValues.policyConsent) {
-            nextErrors.policyConsent = 'You must accept the policy consent.';
-        }
-
-        setErrors(nextErrors);
-        return Object.keys(nextErrors).length === 0;
-    };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         setIsSubmitted(false);
 
-        if (!validateForm()) {
+        if (!validateRegisterForm(formValues, setErrors)) {
             return;
         }
-
-        console.log('formValues > ', formValues);
 
         dispatch(addUser({
             firstName: formValues.firstName,

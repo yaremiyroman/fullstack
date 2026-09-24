@@ -126,9 +126,6 @@ function MainLayout() {
   const usersData = useSelector(state => state.users.usersData);
   const currentUserData = useSelector(state => state.users.user);
 
-  console.log('currentUserData > ', currentUserData);
-
-
   useEffect(() => {
     if (!usersData.length) {
       dispatch(getUsers());

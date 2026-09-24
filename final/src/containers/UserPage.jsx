@@ -1,26 +1,27 @@
-import { Alert, Box, Paper, Stack, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
-function formatFieldValue(value) {
-  if (value === null || value === undefined || value === '') {
-    return '-';
-  }
+import { Alert, Box, Paper, Stack, Typography } from '@mui/material';
 
-  if (typeof value === 'object') {
-    return JSON.stringify(value);
-  }
-
-  return String(value);
-}
+import Loader from '../components/Loader';
+import Error from '../components/Error';
+import Plug from '../components/Plug';
 
 function UserPage() {
   const user = useSelector(state => state.users.user);
+  const isLoading = useSelector(state => state.users.loading);
+  const error = useSelector(state => state.users.error);
 
-  if (!user) {
-    return <Alert severity="info">User data is not available.</Alert>;
+  if (isLoading) {
+    return <Loader />;
   }
 
-  const userFields = Object.entries(user);
+  if (!!error) {
+    return <Error message={error} />;
+  }
+
+  if (!user) {
+    return <Plug text="User data is not available." />;
+  }
 
   return (
     <Box sx={{ maxWidth: 720, mx: 'auto', py: 3 }}>
@@ -30,7 +31,7 @@ function UserPage() {
 
       <Paper variant="outlined" sx={{ p: 2 }}>
         <Stack spacing={1.5}>
-          {userFields.map(([fieldName, fieldValue]) => (
+          {Object.entries(user).map(([fieldName, fieldValue]) => (
             <Box
               key={fieldName}
               sx={{
@@ -46,7 +47,7 @@ function UserPage() {
                 {fieldName}
               </Typography>
               <Typography variant="body2" sx={{ wordBreak: 'break-word' }}>
-                {formatFieldValue(fieldValue)}
+                {fieldValue}
               </Typography>
             </Box>
           ))}

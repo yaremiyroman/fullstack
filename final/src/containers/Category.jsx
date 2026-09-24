@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import Card from '../components/Card';
-import { fetchPosts } from '../slices/postsSlice';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+
+import { fetchPosts } from '../slices/postsSlice';
+
 import { getCategoryByKey, getCategoryKeyFromPostValue } from '../utils/categoryUtils';
 
 function Category() {
@@ -36,7 +38,7 @@ function Category() {
   const selectedCategoryTitle = selectedCategory?.title ?? catName;
 
   return (
-    <section>
+    <>
       <h2>{selectedCategoryTitle}</h2>
       {posts
         .filter((post) => {
@@ -54,7 +56,7 @@ function Category() {
             category={category}
           />
         ))}
-    </section>
+    </>
   );
 };
 

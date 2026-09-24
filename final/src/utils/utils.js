@@ -5,3 +5,7 @@ export const generateDummyUUID = () =>
 
         return value.toString(16); // Added 'return' here
     });
+
+export const normalizePhone = (value) => {
+    return value.replace(/[\s()-]/g, '');
+}

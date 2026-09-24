@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -14,41 +14,20 @@ import categories from '../data/categories.json';
 import { addPost, clearCurrentPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils/utils';
 
-const MAX_IMAGE_COUNT = 5;
-const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024;
-const MIN_IMAGE_DIMENSION = 100;
-const MAX_IMAGE_DIMENSION = 2000;
-const ALLOWED_IMAGE_EXTENSIONS = ['.img', '.png'];
-const ALLOWED_IMAGE_MIME_TYPES = ['image/png'];
+import {
+  MAX_IMAGE_COUNT,
+  MAX_IMAGE_SIZE_BYTES,
+  MIN_IMAGE_DIMENSION,
+  MAX_IMAGE_DIMENSION,
+  ALLOWED_IMAGE_EXTENSIONS,
+  ALLOWED_IMAGE_MIME_TYPES,
+} from '../data/constants';
 
-const getFileExtension = (fileName = '') => {
-  const dotIndex = fileName.lastIndexOf('.');
-
-  return dotIndex === -1 ? '' : fileName.slice(dotIndex).toLowerCase();
-};
-
-const isAllowedImageFormat = (file) => {
-  const extension = getFileExtension(file.name);
-
-  return ALLOWED_IMAGE_EXTENSIONS.includes(extension) || ALLOWED_IMAGE_MIME_TYPES.includes(file.type);
-};
-
-const getImageDimensions = (file) => new Promise((resolve, reject) => {
-  const image = new Image();
-  const imageURL = URL.createObjectURL(file);
-
-  image.onload = () => {
-    resolve({ width: image.width, height: image.height });
-    URL.revokeObjectURL(imageURL);
-  };
-
-  image.onerror = () => {
-    URL.revokeObjectURL(imageURL);
-    reject(new Error(`Unable to read dimensions for "${file.name}".`));
-  };
-
-  image.src = imageURL;
-});
+import {
+  getFileExtension,
+  isAllowedImageFormat,
+  getImageDimensions,
+} from '../utils/imageUtils';
 
 const AddPostForm = styled.form`
   display: flex;
@@ -92,17 +71,17 @@ const ValidationError = styled.p`
 `;
 
 function AddPost() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const isLoading = useSelector(state => state.posts.loading);
-  const newPostID = useSelector(state => state.posts.post?.id);
-
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
   const [category, setCategory] = useState('');
   const [postImages, setPostImages] = useState([]);
   const [imageValidationError, setImageValidationError] = useState('');
+
+  const isLoading = useSelector(state => state.posts.loading);
+  const newPostID = useSelector(state => state.posts.post?.id);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (newPostID) {
@@ -126,6 +105,9 @@ function AddPost() {
     setPostBody(event.target.value);
   };
 
+
+
+  
   const handlePostImageInput = (event) => {
     const selectedFiles = Array.from(event.target.files ?? []);
 
@@ -194,6 +176,9 @@ function AddPost() {
 
     return response.data?.imagePaths ?? [];
   };
+
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();

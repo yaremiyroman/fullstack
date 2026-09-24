@@ -1379,6 +1379,26 @@
       "id": 2,
       "name": "Maksym",
       "email": "maksym@example.com"
+    },
+    {
+      "firstName": "aaa",
+      "userName": "aaa",
+      "secondName": "asdfsaf",
+      "dateOfBirth": "2026-09-11",
+      "email": "asdfsadf@asdfasdf.com",
+      "password": "aaa",
+      "phone": "aaa",
+      "id": 3
+    },
+    {
+      "firstName": "aaa",
+      "userName": "aaa",
+      "secondName": "asdfsaf",
+      "dateOfBirth": "2026-09-11",
+      "email": "aaa@aaa.com",
+      "password": "aaa",
+      "phone": "aaa",
+      "id": 4
     }
   ]
 }
