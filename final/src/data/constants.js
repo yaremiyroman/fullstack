@@ -8,3 +8,5 @@ export const MIN_IMAGE_DIMENSION = 100;
 export const MAX_IMAGE_DIMENSION = 2000;
 export const ALLOWED_IMAGE_EXTENSIONS = ['.img', '.png'];
 export const ALLOWED_IMAGE_MIME_TYPES = ['image/png'];
+
+export const AUTH_STORAGE_KEY = 'mock_jwt_auth_session';
