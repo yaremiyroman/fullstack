@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function NotFound() {
   return (
-    <section>
+    <div>
       <h2>404 - Page Not Found</h2>
       <p>The page you requested does not exist.</p>
       <Link to="/">Go back to Home</Link>
-    </section>
-  )
+    </div>
+  );
 }
 
-export default NotFound
+export default NotFound;

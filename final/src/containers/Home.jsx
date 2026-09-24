@@ -2,17 +2,18 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Card from '../components/Card'
-import { fetchPosts } from '../slices/postsSlice';
+import Card from '../components/Card';
+import Loader from '../components/Loader';
+import Error from '../components/Error';
+import Plug from '../components/Plug';
+
 import { BASE_URL } from '../api';
-import Loader from '../components/Loader'
-import Error from '../components/Error'
+import { fetchPosts } from '../slices/postsSlice';
 
 function Home() {
   const posts = useSelector(state => state.posts.postsData);
   const isLoading = useSelector(state => state.posts.loading);
   const error = useSelector(state => state.posts.error);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,11 +29,11 @@ function Home() {
   }
 
   if (!posts) {
-    return <p>No posts yet...</p>;
+    return <Plug text="No posts yet..." />;
   }
 
   return (
-    <section>
+    <div>
       {posts.map(({ uuid, title, body, userID, id, category }) => (
         <Card
           key={uuid}
@@ -43,7 +44,7 @@ function Home() {
           category={category}
         />
       ))}
-    </section>
+    </div>
   );
 };
 
