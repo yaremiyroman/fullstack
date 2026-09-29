@@ -4,7 +4,6 @@ import { useTheme } from '../contexts/ThemeContext';
 const PlugWrapper = styled.div`
   margin: 20px auto;
   padding: 24px;
-  max-width: 680px;
   text-align: center;
   border: 1px dashed ${({ $themeMode }) => ($themeMode === 'night' ? '#334155' : '#cbd5e1')};
   border-radius: 12px;

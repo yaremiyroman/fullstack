@@ -10,7 +10,6 @@ import { fetchPosts } from '../slices/postsSlice';
 import { getCategoryByKey, getCategoryKeyFromPostValue } from '../utils/categoryUtils';
 
 const PageSection = styled.section`
-  max-width: 960px;
   margin: 0 auto;
   padding: 24px 0;
 `;

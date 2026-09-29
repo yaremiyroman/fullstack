@@ -9,7 +9,6 @@ import { BASE_URL, resolveImageUrl } from '../api';
 import { deletePost } from '../slices/postsSlice';
 
 const PageSection = styled.section`
-  max-width: 760px;
   margin: 0 auto;
   padding: 24px 0;
 `;

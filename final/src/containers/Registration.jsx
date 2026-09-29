@@ -34,7 +34,6 @@ const INITIAL_FORM_VALUES = {
 };
 
 const PageSection = styled.section`
-  max-width: 560px;
   margin: 0 auto;
   padding: 24px 0;
 `;
