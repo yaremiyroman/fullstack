@@ -44,7 +44,7 @@ function Home() {
 
   return (
     <>
-      {pagedPosts.map(({ uuid, title, body, userID, id, category }) => (
+      {pagedPosts.map(({ uuid, title, body, userID, id, category, imagePaths, publishedAt }) => (
         <Card
           key={uuid}
           title={title}
@@ -52,6 +52,8 @@ function Home() {
           author={userID}
           postID={id}
           category={category}
+          imagePaths={imagePaths}
+          publishedAt={publishedAt}
         />
       ))}
       <Pager page={page} pageCount={pageCount} onPageChange={setPage} />

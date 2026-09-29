@@ -79,7 +79,7 @@ function Category() {
   return (
     <PageSection>
       <Title>{selectedCategoryTitle}</Title>
-      {pagedPosts.map(({ uuid, title, body, userID, id, category }) => (
+      {pagedPosts.map(({ uuid, title, body, userID, id, category, imagePaths, publishedAt, createdAt, date }) => (
         <Card
           key={uuid}
           title={title}
@@ -87,6 +87,8 @@ function Category() {
           author={userID}
           postID={id}
           category={category}
+          imagePaths={imagePaths}
+          publishedAt={publishedAt ?? createdAt ?? date}
         />
       ))}
       <Pager page={page} pageCount={pageCount} onPageChange={setPage} />
