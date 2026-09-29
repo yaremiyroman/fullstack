@@ -1,5 +1,3 @@
-import Box from '@mui/material/Box';
-
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageControls from './controls/LanguageControls';
@@ -12,6 +10,14 @@ const ControlsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`;
+
+const ControlsDesktopOnly = styled.div`
+  display: none;
+
+  @media (min-width: 900px) {
+    display: flex;
+  }
 `;
 
 export default function Controls({
@@ -29,7 +35,7 @@ export default function Controls({
   const { language, changeLanguage } = useLanguage();
 
   return (
-    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+    <ControlsDesktopOnly>
       <ControlsContainer>
         <LanguageControls
           theme={theme}
@@ -50,6 +56,6 @@ export default function Controls({
           openAuthMenuHandler={openAuthMenuHandler}
         />
       </ControlsContainer>
-    </Box>
+    </ControlsDesktopOnly>
   );
 }

@@ -1,12 +1,23 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { Card, Loader, Error } from '../components';
+import { Card, Loader, Error, Plug } from '../components';
 
 import { fetchPosts } from '../slices/postsSlice';
 
 import { getCategoryByKey, getCategoryKeyFromPostValue } from '../utils/categoryUtils';
+
+const PageSection = styled.section`
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 0;
+`;
+
+const Title = styled.h2`
+  margin-bottom: 16px;
+`;
 
 function Category() {
   const posts = useSelector(state => state.posts.postsData);
@@ -29,15 +40,15 @@ function Category() {
   }
 
   if (!posts) {
-    return <p>No posts yet...</p>;
+    return <Plug text="No posts yet..." />;
   }
 
   const selectedCategory = getCategoryByKey(catName);
   const selectedCategoryTitle = selectedCategory?.title ?? catName;
 
   return (
-    <>
-      <h2>{selectedCategoryTitle}</h2>
+    <PageSection>
+      <Title>{selectedCategoryTitle}</Title>
       {posts
         .filter((post) => {
           const postCategoryKey = getCategoryKeyFromPostValue(post.category);
@@ -54,8 +65,8 @@ function Category() {
             category={category}
           />
         ))}
-    </>
+    </PageSection>
   );
-};
+}
 
 export default Category;

@@ -3,14 +3,15 @@ import Alert from '@mui/material/Alert';
 import styled from 'styled-components';
 
 const MessageWrapper = styled(Alert)`
-    color: red;
-    font-size: 32px;
+  margin: 16px auto;
+  max-width: 680px;
+  font-size: 1rem;
 `;
 
-export default function Error({ message }) {
-    return (
-        <MessageWrapper severity="error">
-            ERROR: {message}
-        </MessageWrapper>
-    );
+export default function Error({ message = 'Unknown error' }) {
+  return (
+    <MessageWrapper severity="error" variant="outlined">
+      ERROR: {message}
+    </MessageWrapper>
+  );
 }

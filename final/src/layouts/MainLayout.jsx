@@ -5,13 +5,11 @@ import styled from 'styled-components';
 
 import { MainMenu, Controls } from '../components';
 
-import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 
 import { getUsers, addCurrentUser } from '../slices/usersSlice';
 
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 
 import { AUTH_STORAGE_KEY } from '../data/constants';
@@ -19,8 +17,8 @@ import { AUTH_STORAGE_KEY } from '../data/constants';
 const AppShell = styled.div`
   margin: 0 auto;
   min-height: 100vh;
-  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#1e293b')};
-  background: ${({ $themeMode }) => ($themeMode === 'night' ? '#0f172a' : '#f8fafc')};
+  color: ${({ $colors }) => $colors.textPrimary};
+  background: ${({ $colors }) => $colors.appBackground};
   transition: background 0.2s ease, color 0.2s ease;
 `;
 
@@ -33,15 +31,13 @@ const Header = styled(AppBar)`
   width: 100%;
 `;
 
-const ControlLabel = styled.span`
-  font-size: 0.9rem;
-  opacity: 0.85;
+const HeaderToolbar = styled(Toolbar)`
+  width: 100%;
 `;
 
-
 const Main = styled.main`
-  background: ${({ $themeMode }) => ($themeMode === 'night' ? '#111827' : '#ffffff')};
-  padding: 0 10px;
+  background: ${({ $colors }) => $colors.surface};
+  padding: 0 12px 16px;
   min-height: calc(100vh - 64px);
 `;
 
@@ -52,10 +48,7 @@ function MainLayout() {
   const [authSession, setAuthSession] = useState(null);
 
   const usersData = useSelector(state => state.users.usersData);
-  const currentUserData = useSelector(state => state.users.user);
-
-  const { theme } = useTheme();
-  const { language, changeLanguage, t } = useLanguage();
+  const { theme, colors } = useTheme();
 
   const dispatch = useDispatch();
 
@@ -115,22 +108,20 @@ function MainLayout() {
       return;
     }
 
-    const currentUser = usersData.filter(user => user.email === email);
-
-    console.log('currentUser > ', currentUser);
+    const currentUser = usersData.find(user => user.email === email);
 
     if (!currentUser) {
-      alert('NO USER');
+      setAuthError('User with this email was not found.');
 
       return;
     }
 
-    dispatch(addCurrentUser(currentUser[0]));
+    dispatch(addCurrentUser(currentUser));
 
 
     const simulatedJwt = btoa(`${email}:${Date.now()}:${password.length}`);
     const nextSession = {
-      ...currentUser[0],
+      ...currentUser,
       token: simulatedJwt,
       issuedAt: new Date().toISOString(),
     };
@@ -151,13 +142,9 @@ function MainLayout() {
   };
 
   return (
-    <AppShell $themeMode={theme}>
-      <Header position="static" sx={{
-        backgroundColor: 'transparent',
-        boxShadow: 'none',
-        backgroundImage: 'none'
-      }}>
-        <Toolbar sx={{ width: '100%' }}>
+    <AppShell $colors={colors}>
+      <Header position="static">
+        <HeaderToolbar>
           <MainMenu $themeMode={theme} />
           <Controls
             $themeMode={theme}
@@ -171,13 +158,13 @@ function MainLayout() {
             credentialsChangeHandler={handleCredentialsChange}
             logoutHandler={handleLogout}
           />
-        </Toolbar>
+        </HeaderToolbar>
       </Header>
-      <Main $themeMode={theme}>
+      <Main $colors={colors}>
         <Outlet />
       </Main>
     </AppShell>
-  )
+  );
 }
 
-export default MainLayout
+export default MainLayout;

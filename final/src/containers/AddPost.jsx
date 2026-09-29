@@ -3,58 +3,66 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 
 import categories from '../data/categories.json';
 import { addPost, clearCurrentPost } from '../slices/postsSlice';
 import { generateDummyUUID } from '../utils/utils';
 
 import {
-  getFileExtension,
-  isAllowedImageFormat,
-  getImageDimensions,
   handlePostImageInput,
   validatePostImages,
   uploadPostImages,
 } from '../utils/imageUtils';
+import { useTheme } from '../contexts/ThemeContext';
+
+const PageSection = styled.div`
+  margin: 0 auto;
+  padding: 24px 0;
+`;
+
+const PageTitle = styled.h1`
+  margin-bottom: 16px;
+`;
 
 const AddPostForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#334155' : '#cbd5e1')};
+  background: ${({ $themeMode }) => ($themeMode === 'night' ? '#111827' : '#ffffff')};
 
-  ${props => props.$isLoading && `
+  ${({ $isLoading }) => $isLoading && `
     opacity: 0.5;
     pointer-events: none;
     cursor: default;
   `}
 `;
 
-const PostTitle = styled.input`
-  color: #ccc;
-  font-size: 20px;
+const CategoryControl = styled(FormControl)`
+  min-width: 160px;
 `;
 
-const PostBody = styled.textarea`
-  color: #ccc;
-  background: transparent;
-  font-size: 20px;
+const FileInput = styled.input`
+  max-width: 100%;
 `;
-
-const PostSubmit = styled.button``;
 
 const ImageHint = styled.p`
   margin: 0;
-  color: #94a3b8;
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#94a3b8' : '#475569')};
 `;
 
 const ImageList = styled.ul`
   margin: 0;
   padding-left: 16px;
-  color: #e2e8f0;
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#1e293b')};
 `;
 
 const ValidationError = styled.p`
@@ -72,6 +80,7 @@ function AddPost() {
   const isLoading = useSelector(state => state.posts.loading);
   const newPostID = useSelector(state => state.posts.post?.id);
 
+  const { theme } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -132,27 +141,24 @@ function AddPost() {
   };
 
   return (
-    <>
-      <h1>Add Post</h1>
-      <AddPostForm onSubmit={handleSubmit} $isLoading={isLoading}>
-        <PostTitle
-          type="text"
+    <PageSection>
+      <PageTitle>Add Post</PageTitle>
+      <AddPostForm onSubmit={handleSubmit} $isLoading={isLoading} $themeMode={theme}>
+        <TextField
+          label="Title"
           name="title"
-          placeholder="Title..."
-          onInput={handlePostTitleInput}
           value={postTitle}
+          onChange={handlePostTitleInput}
+          required
         />
-        <FormControl
-          variant="standard"
-          sx={{ m: 1, minWidth: 120 }}
-        >
+        <CategoryControl variant="standard">
           <InputLabel id="category-selector">Category</InputLabel>
           <Select
             labelId="category-selector"
             id="category-selector"
             value={category}
             onChange={handleCategorySelection}
-            sx={{ color: 'white' }}
+            required
           >
             {categories.cats.map(({ title }) => (
               <MenuItem
@@ -163,27 +169,30 @@ function AddPost() {
               </MenuItem>
             ))}
           </Select>
-        </FormControl>
-        <PostBody
+        </CategoryControl>
+        <TextField
           name="body"
           id="body"
-          placeholder="Body..."
-          onInput={handlePostBodyInput}
+          label="Body"
+          multiline
+          minRows={4}
           value={postBody}
+          onChange={handlePostBodyInput}
+          required
         />
-        <input
+        <FileInput
           id="images"
           type="file"
           name="images"
           accept=".img,.png,image/png"
           multiple
-          onChange={(e) => handlePostImageInput(e, setPostImages, setImageValidationError)}
+          onChange={(event) => handlePostImageInput(event, setPostImages, setImageValidationError)}
         />
-        <ImageHint>
+        <ImageHint $themeMode={theme}>
           Upload up to 5 images, 5MB each, dimensions between 100x100 and 2000x2000.
         </ImageHint>
         {postImages.length > 0 && (
-          <ImageList>
+          <ImageList $themeMode={theme}>
             {postImages.map((file) => (
               <li key={`${file.name}-${file.lastModified}`}>
                 {file.name}
@@ -194,9 +203,9 @@ function AddPost() {
         {imageValidationError && (
           <ValidationError role="alert">{imageValidationError}</ValidationError>
         )}
-        <PostSubmit type="submit">Додати Пост</PostSubmit>
+        <Button type="submit" variant="contained">Create post</Button>
       </AddPostForm>
-    </>
+    </PageSection>
   );
 }
 

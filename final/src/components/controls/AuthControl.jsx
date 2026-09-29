@@ -5,8 +5,35 @@ import Menu from '@mui/material/Menu';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import styled from 'styled-components';
 
 import { ControlButton } from './ControlButton';
+
+const SessionInfo = styled(Box)`
+  font-size: 0.75rem;
+  opacity: 0.75;
+  word-break: break-all;
+  margin-bottom: 16px;
+`;
+
+const MenuContent = styled(Box)`
+  padding: 16px;
+  width: 320px;
+`;
+
+const AuthForm = styled(Box)`
+  padding: 16px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const AuthError = styled.p`
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.8rem;
+`;
 
 function AuthControl({
   theme,
@@ -38,25 +65,24 @@ function AuthControl({
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {authSession ? (
-          <Box sx={{ p: 2, width: 320 }}>
+          <MenuContent>
             <Box sx={{ mb: 1, fontSize: '0.9rem', opacity: 0.85 }}>
               Authorized as: {authSession.email}
             </Box>
-            <Box sx={{ fontSize: '0.75rem', opacity: 0.7, wordBreak: 'break-all', mb: 2 }}>
+            <SessionInfo>
               JWT: {authSession.token}
-            </Box>
-            <Box sx={{ fontSize: '0.75rem', opacity: 0.7, wordBreak: 'break-all', mb: 2 }}>
+            </SessionInfo>
+            <SessionInfo>
               <Link to="/user">User Page</Link>
-            </Box>
+            </SessionInfo>
             <Button onClick={logoutHandler} variant="contained" fullWidth>
               Logout
             </Button>
-          </Box>
+          </MenuContent>
         ) : (
-          <Box
+          <AuthForm
             component="form"
             onSubmit={authorizeHandler}
-            sx={{ p: 2, width: 320, display: 'flex', flexDirection: 'column', gap: 1.5 }}
           >
             <TextField
               label="Email"
@@ -79,10 +105,10 @@ function AuthControl({
               required
             />
             {authError ? (
-              <Box sx={{ color: 'error.main', fontSize: '0.8rem' }}>{authError}</Box>
+              <AuthError>{authError}</AuthError>
             ) : null}
             <Button type="submit" variant="contained">Login</Button>
-          </Box>
+          </AuthForm>
         )}
       </Menu>
     </>

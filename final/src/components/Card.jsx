@@ -5,12 +5,12 @@ import Paper from '@mui/material/Paper';
 import { useTheme } from '../contexts/ThemeContext';
 import { getCategoryKeyFromPostValue } from '../utils/categoryUtils';
 
-// Створення стилізованої кнопки
 const Container = styled(Paper)`
-  border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#33415550' : '#e2e8f050')};
+  border: 1px solid ${({ $themeMode }) => ($themeMode === 'night' ? '#334155' : '#cbd5e1')};
+  background: ${({ $themeMode }) => ($themeMode === 'night' ? '#1e293b' : '#ffffff')};
   padding: 12px;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#0f172a')};
 `;
 
 const Title = styled(Link)`
@@ -18,7 +18,7 @@ const Title = styled(Link)`
   font-size: 24px;
   font-weight: 700;
   text-decoration: none;
-  color: #ffffff;
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#0f172a')};
   opacity: 0.9;
   transition: opacity 0.15;
 
@@ -28,19 +28,20 @@ const Title = styled(Link)`
 `;
 
 const Author = styled.em`
-  color: #ffffff;
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#cbd5e1' : '#334155')};
 `;
 
 const Description = styled.p`
-  color: #ffffff;
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#e2e8f0' : '#1e293b')};
+  margin: 8px 0;
 `;
 
 const CategoryContainer = styled.div`
-  color: #ffffff;
+  color: ${({ $themeMode }) => ($themeMode === 'night' ? '#bfdbfe' : '#1d4ed8')};
 `;
 
 const CategoryLink = styled(Link)`
-  color: #ffffff;
+  color: inherit;
 `;
 
 const Card = ({ title, description, author, postID, category }) => {
@@ -48,16 +49,14 @@ const Card = ({ title, description, author, postID, category }) => {
   const categoryKey = getCategoryKeyFromPostValue(category);
 
   return (
-    <Container sx={{
-      backgroundColor: theme === 'night' ? '#33415550' : '#e2e8f050',
-    }}>
-      <Title to={`/post/${postID}`}>{title}</Title>
-      <Author>author #{author}</Author>
-      <Description>{description}</Description>
-      <CategoryContainer>
+    <Container $themeMode={theme}>
+      <Title to={`/post/${postID}`} $themeMode={theme}>{title}</Title>
+      <Author $themeMode={theme}>author #{author}</Author>
+      <Description $themeMode={theme}>{description}</Description>
+      <CategoryContainer $themeMode={theme}>
         <CategoryLink to={`/category/${categoryKey ?? category}`}>{category}</CategoryLink>
       </CategoryContainer>
-    </Container >
+    </Container>
   );
 };
 

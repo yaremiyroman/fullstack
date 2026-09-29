@@ -1,21 +1,42 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { Plug } from '../components';
+import { Error, Plug } from '../components';
 
 import { BASE_URL, resolveImageUrl } from '../api';
 import { deletePost } from '../slices/postsSlice';
 
-import styled from 'styled-components';
+const PageSection = styled.section`
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 0;
+`;
+
+const PostHeader = styled.h1`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+`;
+
+const DeleteButton = styled.button`
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+`;
 
 const PostPreview = styled.img`
-  display: 'block',
-  maxWidth: '100%',
-  maxHeight: '340px',
-  objectFit: 'cover',
-  borderRadius: '8px',
-  marginTop: '16px',
+  display: block;
+  max-width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 `;
 
 function Post() {
@@ -73,11 +94,13 @@ function Post() {
   const previewImageSrc = previewImage ? resolveImageUrl(previewImage) : null;
 
   return (
-    <>
-      <h1>
+    <PageSection>
+      <PostHeader>
         {post.title}
-        <span onClick={handlePostDeletion}>❌</span>
-      </h1>
+        <DeleteButton type="button" onClick={handlePostDeletion} aria-label="Delete post">
+          ❌
+        </DeleteButton>
+      </PostHeader>
       <em>Authored by user #{post.userID}</em>
       {previewImageSrc && (
         <PostPreview
@@ -86,7 +109,7 @@ function Post() {
         />
       )}
       <p>{post.body}</p>
-    </>
+    </PageSection>
   );
 }
 

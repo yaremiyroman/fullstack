@@ -1,8 +1,18 @@
 import { useSelector } from 'react-redux';
 
-import { Alert, Box, Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
+import styled from 'styled-components';
 
 import { Loader, Error, Plug } from '../components';
+
+const PageSection = styled.section`
+  margin: 0 auto;
+  padding: 24px 0;
+`;
+
+const UserPaper = styled(Paper)`
+  padding: 16px;
+`;
 
 function UserPage() {
   const user = useSelector(state => state.users.user);
@@ -22,12 +32,12 @@ function UserPage() {
   }
 
   return (
-    <Box sx={{ maxWidth: 720, mx: 'auto', py: 3 }}>
+    <PageSection>
       <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
         User Info
       </Typography>
 
-      <Paper variant="outlined" sx={{ p: 2 }}>
+      <UserPaper variant="outlined">
         <Stack spacing={1.5}>
           {Object.entries(user).map(([fieldName, fieldValue]) => (
             <Box
@@ -45,13 +55,13 @@ function UserPage() {
                 {fieldName}
               </Typography>
               <Typography variant="body2" sx={{ wordBreak: 'break-word' }}>
-                {fieldValue}
+                {String(fieldValue)}
               </Typography>
             </Box>
           ))}
         </Stack>
-      </Paper>
-    </Box>
+      </UserPaper>
+    </PageSection>
   );
 }
 
