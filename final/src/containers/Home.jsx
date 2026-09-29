@@ -1,21 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Card, Loader, Error, Plug } from '../components';
+import { Card, Loader, Error, Pager, Plug } from '../components';
 
-import { BASE_URL } from '../api';
 import { fetchPosts } from '../slices/postsSlice';
+
+const POSTS_PER_PAGE = 10;
 
 function Home() {
   const posts = useSelector(state => state.posts.postsData);
   const isLoading = useSelector(state => state.posts.loading);
   const error = useSelector(state => state.posts.error);
+  const [page, setPage] = useState(1);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchPosts());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    const totalPages = Math.max(1, Math.ceil((posts?.length || 0) / POSTS_PER_PAGE));
+
+    setPage((prevPage) => Math.min(prevPage, totalPages));
+  }, [posts]);
 
   if (isLoading) {
     return <Loader />;
@@ -25,13 +33,18 @@ function Home() {
     return <Error message={error} />;
   }
 
-  if (!posts) {
+  if (!posts?.length) {
     return <Plug text="No posts yet..." />;
   }
 
+  const pageCount = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const pageStart = (page - 1) * POSTS_PER_PAGE;
+  const pageEnd = pageStart + POSTS_PER_PAGE;
+  const pagedPosts = posts.slice(pageStart, pageEnd);
+
   return (
     <>
-      {posts.map(({ uuid, title, body, userID, id, category }) => (
+      {pagedPosts.map(({ uuid, title, body, userID, id, category }) => (
         <Card
           key={uuid}
           title={title}
@@ -41,6 +54,7 @@ function Home() {
           category={category}
         />
       ))}
+      <Pager page={page} pageCount={pageCount} onPageChange={setPage} />
     </>
   );
 };

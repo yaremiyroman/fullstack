@@ -1,13 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Card, Loader, Error, Plug } from '../components';
+import { Card, Loader, Error, Pager, Plug } from '../components';
 
 import { fetchPosts } from '../slices/postsSlice';
 
 import { getCategoryByKey, getCategoryKeyFromPostValue } from '../utils/categoryUtils';
+
+const POSTS_PER_PAGE = 10;
 
 const PageSection = styled.section`
   margin: 0 auto;
@@ -22,13 +24,31 @@ function Category() {
   const posts = useSelector(state => state.posts.postsData);
   const isLoading = useSelector(state => state.posts.loading);
   const error = useSelector(state => state.posts.error);
+  const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
   const { catName } = useParams();
+  const selectedCategory = getCategoryByKey(catName);
+  const selectedCategoryTitle = selectedCategory?.title ?? catName;
+  const filteredPosts = (posts ?? []).filter((post) => {
+    const postCategoryKey = getCategoryKeyFromPostValue(post.category);
+
+    return postCategoryKey ? postCategoryKey === catName : post.category === catName;
+  });
 
   useEffect(() => {
     dispatch(fetchPosts());
   }, [dispatch]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [catName]);
+
+  useEffect(() => {
+    const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+
+    setPage((prevPage) => Math.min(prevPage, totalPages));
+  }, [filteredPosts.length]);
 
   if (isLoading) {
     return <Loader />;
@@ -38,32 +58,38 @@ function Category() {
     return <Error message={error} />;
   }
 
-  if (!posts) {
+  if (!posts?.length) {
     return <Plug text="No posts yet..." />;
   }
 
-  const selectedCategory = getCategoryByKey(catName);
-  const selectedCategoryTitle = selectedCategory?.title ?? catName;
+  if (!filteredPosts.length) {
+    return (
+      <PageSection>
+        <Title>{selectedCategoryTitle}</Title>
+        <Plug text="No posts in this category yet..." />
+      </PageSection>
+    );
+  }
+
+  const pageCount = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const pageStart = (page - 1) * POSTS_PER_PAGE;
+  const pageEnd = pageStart + POSTS_PER_PAGE;
+  const pagedPosts = filteredPosts.slice(pageStart, pageEnd);
 
   return (
     <PageSection>
       <Title>{selectedCategoryTitle}</Title>
-      {posts
-        .filter((post) => {
-          const postCategoryKey = getCategoryKeyFromPostValue(post.category);
-
-          return postCategoryKey ? postCategoryKey === catName : post.category === catName;
-        })
-        .map(({ uuid, title, body, userID, id, category }) => (
-          <Card
-            key={uuid}
-            title={title}
-            description={body}
-            author={userID}
-            postID={id}
-            category={category}
-          />
-        ))}
+      {pagedPosts.map(({ uuid, title, body, userID, id, category }) => (
+        <Card
+          key={uuid}
+          title={title}
+          description={body}
+          author={userID}
+          postID={id}
+          category={category}
+        />
+      ))}
+      <Pager page={page} pageCount={pageCount} onPageChange={setPage} />
     </PageSection>
   );
 }
