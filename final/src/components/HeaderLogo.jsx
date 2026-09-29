@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 import logo from '../assets/logo.svg';
+import logoMark from '../assets/logo-mark.svg';
 import { useTheme } from '../contexts/ThemeContext';
+import { MEDIA_QUERIES } from '../styles/breakpoints';
 
 const StyledHeaderLogo = styled.span`
   display: block;
@@ -18,6 +20,12 @@ const StyledHeaderLogo = styled.span`
   mask-position: left center;
   -webkit-mask-size: contain;
   mask-size: contain;
+
+  @media ${MEDIA_QUERIES.tablet} {
+    width: calc(28px * 64 / 98);
+    -webkit-mask-image: url(${logoMark});
+    mask-image: url(${logoMark});
+  }
 `;
 
 export default function HeaderLogo() {
