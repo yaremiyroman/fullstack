@@ -16,7 +16,7 @@ export const COLORS = {
     error: '#b91c1c',
   },
   night: {
-    appBackground: '#0f172a',
+    appBackground: '#111827',
     surface: '#111827',
     surfaceAlt: '#1e293b',
     border: '#334155',
@@ -82,6 +82,7 @@ export const createMuiAppTheme = (mode) => {
         styleOverrides: {
           body: {
             backgroundColor: colors.appBackground,
+
             color: colors.textPrimary,
           },
         },
