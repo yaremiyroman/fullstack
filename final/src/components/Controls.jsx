@@ -41,22 +41,23 @@ const ControlsMobile = styled.div`
 
 const DrawerBody = styled(Box)`
   padding: 16px;
-  min-width: 280px;
-  max-width: 92vw;
+  width: 100%;
 `;
 
 const DrawerHeader = styled(Box)`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-bottom: 16px;
-  font-size: 1rem;
-  font-weight: 700;
 `;
 
 const DrawerControlsContainer = styled(ControlsContainer)`
   flex-direction: column;
   align-items: stretch;
+`;
+
+const DrawerTopControls = styled(ControlsContainer)`
+  justify-content: space-between;
 `;
 
 const HamburgerButton = styled(IconButton)`
@@ -141,6 +142,7 @@ export default function Controls({
         onClose={closeDrawer}
         PaperProps={{
           sx: {
+            width: '75vw',
             backgroundColor: theme === 'night' ? '#0f172a' : '#ffffff',
             color: theme === 'night' ? '#e2e8f0' : '#1e293b',
             borderLeft: `1px solid ${theme === 'night' ? '#334155' : '#cbd5e1'}`,
@@ -149,7 +151,6 @@ export default function Controls({
       >
         <DrawerBody>
           <DrawerHeader>
-            <span>Controls</span>
             <IconButton
               onClick={closeDrawer}
               aria-label="close controls menu"
@@ -160,12 +161,14 @@ export default function Controls({
           </DrawerHeader>
 
           <DrawerControlsContainer>
-            <LanguageControls
-              theme={theme}
-              language={language}
-              changeLanguage={handleLanguageChange}
-            />
-            <ThemeControl theme={theme} toggleTheme={handleThemeChange} />
+            <DrawerTopControls>
+              <LanguageControls
+                theme={theme}
+                language={language}
+                changeLanguage={handleLanguageChange}
+              />
+              <ThemeControl theme={theme} toggleTheme={handleThemeChange} />
+            </DrawerTopControls>
             <AuthControl
               theme={theme}
               authSession={authSession}
@@ -177,6 +180,7 @@ export default function Controls({
               credentials={credentials}
               credentialsChangeHandler={credentialsChangeHandler}
               openAuthMenuHandler={openAuthMenuHandler}
+              variant="inline"
             />
           </DrawerControlsContainer>
         </DrawerBody>

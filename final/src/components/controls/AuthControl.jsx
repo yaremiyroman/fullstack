@@ -18,12 +18,12 @@ const SessionInfo = styled(Box)`
 
 const MenuContent = styled(Box)`
   padding: 16px;
-  width: 320px;
+  width: ${({ $isInline }) => ($isInline ? '100%' : '320px')};
 `;
 
 const AuthForm = styled(Box)`
   padding: 16px;
-  width: 320px;
+  width: ${({ $isInline }) => ($isInline ? '100%' : '320px')};
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -46,7 +46,58 @@ function AuthControl({
   authorizeHandler,
   credentialsChangeHandler,
   logoutHandler,
+  variant = 'menu',
 }) {
+  if (variant === 'inline') {
+    return authSession ? (
+      <MenuContent $isInline>
+        <Box sx={{ mb: 1, fontSize: '0.9rem', opacity: 0.85 }}>
+          Authorized as: {authSession.email}
+        </Box>
+        <SessionInfo>
+          JWT: {authSession.token}
+        </SessionInfo>
+        <SessionInfo>
+          <Link to="/user">User Page</Link>
+        </SessionInfo>
+        <Button onClick={logoutHandler} variant="contained" fullWidth>
+          Logout
+        </Button>
+      </MenuContent>
+    ) : (
+      <AuthForm
+        component="form"
+        onSubmit={authorizeHandler}
+        $isInline
+      >
+        <TextField
+          label="Email"
+          name="email"
+          type="email"
+          value={credentials.email}
+          onChange={credentialsChangeHandler}
+          size="small"
+          autoComplete="email"
+          required
+        />
+        <TextField
+          label="Password"
+          name="password"
+          type="password"
+          value={credentials.password}
+          onChange={credentialsChangeHandler}
+          size="small"
+          autoComplete="current-password"
+          required
+        />
+        {authError ? (
+          <AuthError>{authError}</AuthError>
+        ) : null}
+        <Button type="submit" variant="contained">Authorize</Button>
+      </AuthForm>
+    );
+  }
+
   return (
     <>
       <ControlButton
