@@ -13,13 +13,24 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
 import { AUTH_STORAGE_KEY } from '../data/constants';
+import { BREAKPOINTS, MEDIA_QUERIES } from '../styles/breakpoints';
 
 const AppShell = styled.div`
   margin: 0 auto;
+  width: 100%;
+  max-width: ${BREAKPOINTS.desktop};
   min-height: 100vh;
   color: ${({ $colors }) => $colors.textPrimary};
   background: ${({ $colors }) => $colors.appBackground};
   transition: background 0.2s ease, color 0.2s ease;
+
+  @media ${MEDIA_QUERIES.tablet} {
+    max-width: ${BREAKPOINTS.tablet};
+  }
+
+  @media ${MEDIA_QUERIES.phone} {
+    max-width: ${BREAKPOINTS.phone};
+  }
 `;
 
 const Header = styled(AppBar)`
@@ -33,12 +44,27 @@ const Header = styled(AppBar)`
 
 const HeaderToolbar = styled(Toolbar)`
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  @media ${MEDIA_QUERIES.phone} {
+    gap: 8px;
+  }
 `;
 
 const Main = styled.main`
   background: ${({ $colors }) => $colors.surface};
-  padding: 0 12px 16px;
+  padding: 0 20px 20px;
   min-height: calc(100vh - 64px);
+
+  @media ${MEDIA_QUERIES.tablet} {
+    padding: 0 16px 16px;
+  }
+
+  @media ${MEDIA_QUERIES.phone} {
+    padding: 0 12px 12px;
+  }
 `;
 
 function MainLayout() {

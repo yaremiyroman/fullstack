@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { BREAKPOINT_VALUES } from './breakpoints';
 
 export const COLORS = {
   day: {
@@ -36,6 +37,15 @@ export const createMuiAppTheme = (mode) => {
   const paletteMode = mode === 'night' ? 'dark' : 'light';
 
   return createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: BREAKPOINT_VALUES.phone,
+        md: BREAKPOINT_VALUES.tablet,
+        lg: BREAKPOINT_VALUES.desktop,
+        xl: 1920,
+      },
+    },
     palette: {
       mode: paletteMode,
       primary: {

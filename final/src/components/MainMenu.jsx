@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import Button from '@mui/material/Button';
 
 import styled from 'styled-components';
+import { MEDIA_QUERIES } from '../styles/breakpoints';
 
 const MenuContainer = styled.div`
   flex-grow: 1;
@@ -14,6 +15,10 @@ const Nav = styled.nav`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+
+  @media ${MEDIA_QUERIES.phone} {
+    gap: 8px;
+  }
 `;
 
 const MenuButton = styled(Button).attrs({
@@ -27,6 +32,13 @@ const MenuButton = styled(Button).attrs({
   text-decoration: none;
   transition: all 0.2s ease;
   min-width: auto;
+  }
+
+  @media ${MEDIA_QUERIES.phone} {
+    && {
+      padding: 6px 10px;
+      font-size: 0.85rem;
+    }
   }
 
   &:hover {

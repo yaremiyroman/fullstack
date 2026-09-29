@@ -5,6 +5,7 @@ import ThemeControl from './controls/ThemeControl';
 import AuthControl from './controls/AuthControl';
 
 import styled from 'styled-components';
+import { MEDIA_QUERIES } from '../styles/breakpoints';
 
 const ControlsContainer = styled.div`
   display: flex;
@@ -13,10 +14,10 @@ const ControlsContainer = styled.div`
 `;
 
 const ControlsDesktopOnly = styled.div`
-  display: none;
+  display: flex;
 
-  @media (min-width: 900px) {
-    display: flex;
+  @media ${MEDIA_QUERIES.phone} {
+    display: none;
   }
 `;
 
