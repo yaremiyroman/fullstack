@@ -9,12 +9,22 @@ import { MEDIA_QUERIES } from '../styles/breakpoints';
 
 const MenuContainer = styled.div`
   flex-grow: 1;
+  min-width: 0;
+
+  @media ${MEDIA_QUERIES.tablet} {
+    flex-grow: 0;
+    margin-left: auto;
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+
+  @media ${MEDIA_QUERIES.tablet} {
+    justify-content: flex-end;
+  }
 
   @media ${MEDIA_QUERIES.phone} {
     gap: 8px;

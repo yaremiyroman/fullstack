@@ -46,7 +46,12 @@ const HeaderToolbar = styled(Toolbar)`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
+
+  @media ${MEDIA_QUERIES.tablet} {
+    flex-wrap: nowrap;
+  }
 
   @media ${MEDIA_QUERIES.phone} {
     gap: 8px;
