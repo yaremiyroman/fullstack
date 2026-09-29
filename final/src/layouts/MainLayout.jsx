@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import logo from '../assets/logo.svg';
-import { MainMenu, Controls } from '../components';
+import { MainMenu, Controls, HeaderLogo } from '../components';
 
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -34,14 +33,6 @@ const Header = styled(AppBar)`
 
 const HeaderToolbar = styled(Toolbar)`
   width: 100%;
-`;
-
-const HeaderLogo = styled.img`
-  display: block;
-  width: auto;
-  height: 28px;
-  margin-right: 16px;
-  flex-shrink: 0;
 `;
 
 const Main = styled.main`
@@ -154,7 +145,7 @@ function MainLayout() {
     <AppShell $colors={colors}>
       <Header position="static">
         <HeaderToolbar>
-          <HeaderLogo src={logo} alt="devnotes logo" />
+          <HeaderLogo />
           <MainMenu $themeMode={theme} />
           <Controls
             $themeMode={theme}
