@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { MainMenu, Controls, HeaderLogo, MostViewed } from '../components';
+import { MainMenu, Controls, Footer, HeaderLogo, MostViewed } from '../components';
 import logoMark from '../assets/logo-mark.svg';
 
 import { useTheme } from '../contexts/ThemeContext';
@@ -18,6 +18,8 @@ import { AUTH_STORAGE_KEY } from '../data/constants';
 import { BREAKPOINTS, MEDIA_QUERIES } from '../styles/breakpoints';
 
 const AppShell = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   width: 100%;
   max-width: ${BREAKPOINTS.desktop};
@@ -92,9 +94,9 @@ const HeaderToolbarLayout = styled(HeaderToolbar)`
 `;
 
 const Main = styled.main`
+  flex: 1;
   background: ${({ $colors }) => $colors.surface};
   padding: 0 20px 20px;
-  min-height: calc(100vh - 64px);
 
   @media ${MEDIA_QUERIES.tablet} {
     padding: 0 16px 16px;
@@ -346,6 +348,7 @@ function MainLayout() {
           </ContentLayout>
         )}
       </Main>
+      <Footer />
     </AppShell>
   );
 }

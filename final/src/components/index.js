@@ -1,6 +1,7 @@
 export { default as Card } from './Card';
 export { default as Controls } from './Controls';
 export { default as Error } from './Error';
+export { default as Footer } from './Footer';
 export { default as HeaderLogo } from './HeaderLogo';
 export { default as Loader } from './Loader';
 export { default as MainMenu } from './MainMenu';
