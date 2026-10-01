@@ -120,6 +120,10 @@ const ContentLayout = styled.div`
 
 const ContentArea = styled.section`
   min-width: 0;
+
+  @media ${MEDIA_QUERIES.phone} {
+    order: 2;
+  }
 `;
 
 const Sidebar = styled.aside`
@@ -129,6 +133,7 @@ const Sidebar = styled.aside`
 
   @media ${MEDIA_QUERIES.phone} {
     position: static;
+    order: 1;
   }
 `;
 
