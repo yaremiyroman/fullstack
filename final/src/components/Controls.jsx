@@ -180,6 +180,7 @@ export default function Controls({
               credentials={credentials}
               credentialsChangeHandler={credentialsChangeHandler}
               openAuthMenuHandler={openAuthMenuHandler}
+              registerLinkClickHandler={closeDrawer}
               variant="inline"
             />
           </DrawerControlsContainer>

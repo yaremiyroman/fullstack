@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
@@ -35,6 +35,12 @@ const AuthError = styled.p`
   font-size: 0.8rem;
 `;
 
+const RegisterLinkText = styled.p`
+  margin: 0;
+  font-size: 0.85rem;
+  text-align: center;
+`;
+
 function AuthControl({
   theme,
   authSession,
@@ -46,8 +52,12 @@ function AuthControl({
   authorizeHandler,
   credentialsChangeHandler,
   logoutHandler,
+  registerLinkClickHandler,
   variant = 'menu',
 }) {
+  const { pathname } = useLocation();
+  const isRegistrationPage = pathname === '/register';
+
   if (variant === 'inline') {
     return authSession ? (
       <MenuContent $isInline>
@@ -94,6 +104,14 @@ function AuthControl({
           <AuthError>{authError}</AuthError>
         ) : null}
         <Button type="submit" variant="contained">Authorize</Button>
+        {!isRegistrationPage ? (
+          <RegisterLinkText>
+            Do not have an account?{' '}
+            <Link to="/register" onClick={registerLinkClickHandler}>
+              Register
+            </Link>
+          </RegisterLinkText>
+        ) : null}
       </AuthForm>
     );
   }
