@@ -4,6 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { MainMenu, Controls, HeaderLogo, MostViewed } from '../components';
+import logoMark from '../assets/logo-mark.svg';
 
 import { useTheme } from '../contexts/ThemeContext';
 import { fetchPosts } from '../slices/postsSlice';
@@ -135,6 +136,48 @@ const Sidebar = styled.aside`
     position: static;
     order: 1;
   }
+`;
+
+const SidebarStack = styled.div`
+  display: grid;
+  gap: 16px;
+`;
+
+const AdvertisementCard = styled.section`
+  border: 1px solid ${({ $colors }) => $colors.border};
+  border-radius: 12px;
+  background: ${({ $colors }) => $colors.surfaceAlt};
+  padding: 16px;
+`;
+
+const AdvertisementImage = styled.img`
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid ${({ $colors }) => $colors.border};
+  margin-bottom: 12px;
+  padding: 12px;
+  background: ${({ $colors }) => $colors.surface};
+`;
+
+const AdvertisementLabel = styled.p`
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${({ $colors }) => $colors.textSecondary};
+`;
+
+const AdvertisementTitle = styled.h3`
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: ${({ $colors }) => $colors.textPrimary};
+`;
+
+const AdvertisementText = styled.p`
+  margin: 0;
+  color: ${({ $colors }) => $colors.textSecondary};
 `;
 
 function MainLayout() {
@@ -281,7 +324,21 @@ function MainLayout() {
               <Outlet />
             </ContentArea>
             <Sidebar>
-              <MostViewed />
+              <SidebarStack>
+                <MostViewed />
+                <AdvertisementCard $colors={colors}>
+                  <AdvertisementImage
+                    src={logoMark}
+                    alt="Dummy advertisement visual"
+                    $colors={colors}
+                  />
+                  <AdvertisementLabel $colors={colors}>Advertisement</AdvertisementLabel>
+                  <AdvertisementTitle $colors={colors}>Your ad could be here</AdvertisementTitle>
+                  <AdvertisementText $colors={colors}>
+                    Dummy advertisement block for future sponsors.
+                  </AdvertisementText>
+                </AdvertisementCard>
+              </SidebarStack>
             </Sidebar>
           </ContentLayout>
         )}
