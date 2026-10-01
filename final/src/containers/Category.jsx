@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Card, Loader, Error, Pager, Plug } from '../components';
-
-import { fetchPosts } from '../slices/postsSlice';
 
 import { getCategoryByKey, getCategoryKeyFromPostValue } from '../utils/categoryUtils';
 
@@ -26,7 +24,6 @@ function Category() {
   const error = useSelector(state => state.posts.error);
   const [page, setPage] = useState(1);
 
-  const dispatch = useDispatch();
   const { catName } = useParams();
   const selectedCategory = getCategoryByKey(catName);
   const selectedCategoryTitle = selectedCategory?.title ?? catName;
@@ -35,10 +32,6 @@ function Category() {
 
     return postCategoryKey ? postCategoryKey === catName : post.category === catName;
   });
-
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
 
   useEffect(() => {
     setPage(1);

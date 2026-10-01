@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Card, Loader, Error, Pager, Plug } from '../components';
-
-import { fetchPosts } from '../slices/postsSlice';
 
 const POSTS_PER_PAGE = 10;
 
@@ -12,12 +10,6 @@ function Home() {
   const isLoading = useSelector(state => state.posts.loading);
   const error = useSelector(state => state.posts.error);
   const [page, setPage] = useState(1);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
 
   useEffect(() => {
     const totalPages = Math.max(1, Math.ceil((posts?.length || 0) / POSTS_PER_PAGE));
@@ -29,7 +21,7 @@ function Home() {
     return <Loader />;
   }
 
-  if (!!error) {
+  if (error) {
     return <Error message={error} />;
   }
 

@@ -4,6 +4,7 @@ export { default as Error } from './Error';
 export { default as HeaderLogo } from './HeaderLogo';
 export { default as Loader } from './Loader';
 export { default as MainMenu } from './MainMenu';
+export { default as MostViewed } from './MostViewed';
 export { default as Modal } from './Modal';
 export { default as Pager } from './Pager';
 export { default as Plug } from './Plug';

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { MainMenu, Controls, HeaderLogo } from '../components';
+import { MainMenu, Controls, HeaderLogo, MostViewed } from '../components';
 
 import { useTheme } from '../contexts/ThemeContext';
+import { fetchPosts } from '../slices/postsSlice';
 
 import { getUsers, addCurrentUser } from '../slices/usersSlice';
 
@@ -100,22 +101,62 @@ const Main = styled.main`
   }
 `;
 
+const ContentLayout = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 20px;
+  align-items: start;
+
+  @media ${MEDIA_QUERIES.tablet} {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 16px;
+  }
+
+  @media ${MEDIA_QUERIES.phone} {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+`;
+
+const ContentArea = styled.section`
+  min-width: 0;
+`;
+
+const Sidebar = styled.aside`
+  min-width: 0;
+  position: sticky;
+  top: 16px;
+
+  @media ${MEDIA_QUERIES.phone} {
+    position: static;
+  }
+`;
+
 function MainLayout() {
   const [authAnchorEl, setAuthAnchorEl] = useState(null);
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [authError, setAuthError] = useState('');
   const [authSession, setAuthSession] = useState(null);
 
+  const postsData = useSelector(state => state.posts.postsData);
+  const isPostsLoading = useSelector(state => state.posts.loading);
   const usersData = useSelector(state => state.users.usersData);
+  const { pathname } = useLocation();
   const { theme, colors } = useTheme();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!postsData.length && !isPostsLoading) {
+      dispatch(fetchPosts());
+    }
+  }, [dispatch, postsData.length, isPostsLoading]);
+
+  useEffect(() => {
     if (!usersData.length) {
       dispatch(getUsers());
     }
-  }, []);
+  }, [dispatch, usersData.length]);
 
   useEffect(() => {
     const savedSession = localStorage.getItem(AUTH_STORAGE_KEY);
@@ -134,7 +175,7 @@ function MainLayout() {
     } catch {
       localStorage.removeItem(AUTH_STORAGE_KEY);
     }
-  }, []);
+  }, [dispatch]);
 
 
   const handleOpenAuthMenu = event => {
@@ -200,6 +241,8 @@ function MainLayout() {
     setAuthAnchorEl(null);
   };
 
+  const isRegistrationPage = pathname === '/register' || pathname.startsWith('/register/');
+
   return (
     <AppShell $colors={colors}>
       <Header position="static">
@@ -225,7 +268,18 @@ function MainLayout() {
         </HeaderToolbarLayout>
       </Header>
       <Main $colors={colors}>
-        <Outlet />
+        {isRegistrationPage ? (
+          <Outlet />
+        ) : (
+          <ContentLayout>
+            <ContentArea>
+              <Outlet />
+            </ContentArea>
+            <Sidebar>
+              <MostViewed />
+            </Sidebar>
+          </ContentLayout>
+        )}
       </Main>
     </AppShell>
   );
