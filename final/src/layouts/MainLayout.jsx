@@ -72,6 +72,9 @@ const HeaderControls = styled.div`
 const MOBILE_HEADER_BREAKPOINT = '475px';
 
 const HeaderToolbarLayout = styled(HeaderToolbar)`
+  margin-bottom: 15px;
+  margin-top: 15px;
+
   @media (max-width: ${MOBILE_HEADER_BREAKPOINT}) {
     flex-wrap: wrap;
     align-items: flex-start;
