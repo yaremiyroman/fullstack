@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
+import AppLayout from './layouts/AppLayout'
 import MainLayout from './layouts/MainLayout'
 import { ProtectedRoute } from './components';
 
@@ -17,49 +18,54 @@ import {
 export const router = createBrowserRouter(
   [
     {
-      path: '/',
-      element: <MainLayout />,
+      element: <AppLayout />,
       children: [
         {
-          index: true,
-          element: <Home />
-        },
-        {
-          path: 'category/:catName',
-          element: <Category />
-        },
-        {
-          path: 'about', // => /about
-          element: <About />,
-        },
-        {
-          path: 'contact',
-          element: <Contact />
-        },
-        {
-          path: 'post/:id',
-          element: <Post />,
-        },
-        {
-          path: '/add-post',
-          element: <AddPost />,
-        },
-        {
-          path: '/register',
-          element: <Registration />,
-        },
-        {
-          element: <ProtectedRoute />,
+          path: '/',
+          element: <MainLayout />,
           children: [
             {
-              path: 'user',
-              element: <UserPage />,
+              index: true,
+              element: <Home />
+            },
+            {
+              path: 'category/:catName',
+              element: <Category />
+            },
+            {
+              path: 'about', // => /about
+              element: <About />,
+            },
+            {
+              path: 'contact',
+              element: <Contact />
+            },
+            {
+              path: 'post/:id',
+              element: <Post />,
+            },
+            {
+              path: '/add-post',
+              element: <AddPost />,
+            },
+            {
+              path: '/register',
+              element: <Registration />,
+            },
+            {
+              element: <ProtectedRoute />,
+              children: [
+                {
+                  path: 'user',
+                  element: <UserPage />,
+                },
+              ],
+            },
+            {
+              path: '*',
+              element: <NotFound />
             },
           ],
-        },
-        {
-          path: '*',
-          element: <NotFound />
         },
       ],
     },

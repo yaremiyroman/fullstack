@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { MainMenu, Controls, Footer, HeaderLogo, MostViewed } from '../components';
+import { MainMenu, Controls, HeaderLogo, MostViewed } from '../components';
 import logoMark from '../assets/logo-mark.svg';
 
 import { useTheme } from '../contexts/ThemeContext';
@@ -348,7 +348,6 @@ function MainLayout() {
           </ContentLayout>
         )}
       </Main>
-      <Footer />
     </AppShell>
   );
 }

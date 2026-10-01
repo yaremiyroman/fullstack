@@ -7,13 +7,24 @@ import { BREAKPOINTS, MEDIA_QUERIES } from '../styles/breakpoints';
 
 const FooterRoot = styled.footer`
   margin-top: 20px;
-  border-top: 1px solid ${({ $colors }) => $colors.border};
-  background: ${({ $colors }) => $colors.surfaceAlt};
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    border-top: 1px solid ${({ $colors }) => $colors.border};
+    background: ${({ $colors }) => $colors.surfaceAlt};
+    pointer-events: none;
+    z-index: 0;
+  }
 `;
 
 const FooterInner = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 14px;
