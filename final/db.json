@@ -1902,6 +1902,26 @@
       "id": 2,
       "name": "Maksym",
       "email": "maksym@example.com"
+    },
+    {
+      "firstName": "asdfasdf",
+      "userName": "asdfasdf",
+      "secondName": "asdfasdfasfd",
+      "dateOfBirth": "2026-10-20",
+      "email": "asdf@asdf.com",
+      "password": "asdf",
+      "phone": "12312342",
+      "id": 3
+    },
+    {
+      "firstName": "фіваіфва",
+      "userName": "фіваіфва",
+      "secondName": "фівафівафіва",
+      "dateOfBirth": "124124-03-12",
+      "email": "yaremiyroman@gmail.com",
+      "password": "1",
+      "phone": "12312312",
+      "id": 4
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
@@ -348,6 +349,7 @@ function MainLayout() {
           </ContentLayout>
         )}
       </Main>
+      <ToastContainer />
     </AppShell>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Alert,
@@ -11,6 +12,7 @@ import {
   Typography,
 } from '@mui/material';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 
 import { addUser } from '../slices/usersSlice';
 
@@ -48,12 +50,12 @@ const FormContainer = styled(Box)`
 function Register() {
   const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES);
   const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
+  
   const isLoading = useSelector(state => state.users.loading);
   const { theme } = useTheme();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -75,7 +77,6 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsSubmitted(false);
 
     if (!validateRegisterForm(formValues, setErrors)) {
       return;
@@ -91,7 +92,9 @@ function Register() {
       phone: formValues.phone,
     }));
 
-    setIsSubmitted(true);
+    navigate(`/`);
+    toast('Юзер зареєстрований!')
+
   };
 
   return (
@@ -106,12 +109,6 @@ function Register() {
           <Typography variant="h4" component="h1">
             Register
           </Typography>
-
-          {isSubmitted && (
-            <Alert severity="success" variant="outlined">
-              Registration form was submitted successfully (simulated submit).
-            </Alert>
-          )}
 
           <TextField
             required
