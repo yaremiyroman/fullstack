@@ -126,6 +126,7 @@ export default function Controls({
             credentials={credentials}
             credentialsChangeHandler={credentialsChangeHandler}
             openAuthMenuHandler={openAuthMenuHandler}
+            registerLinkClickHandler={closeAuthMenuHandler}
           />
         </ControlsContainer>
       </ControlsDesktop>

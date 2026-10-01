@@ -177,6 +177,14 @@ function AuthControl({
               <AuthError>{authError}</AuthError>
             ) : null}
             <Button type="submit" variant="contained">Login</Button>
+            {!isRegistrationPage ? (
+              <RegisterLinkText>
+                Do not have an account?{' '}
+                <Link to="/register" onClick={registerLinkClickHandler}>
+                  Register
+                </Link>
+              </RegisterLinkText>
+            ) : null}
           </AuthForm>
         )}
       </Menu>
