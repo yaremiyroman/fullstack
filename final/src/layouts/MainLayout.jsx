@@ -58,6 +58,34 @@ const HeaderToolbar = styled(Toolbar)`
   }
 `;
 
+const HeaderMenu = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
+const HeaderControls = styled.div`
+  flex-shrink: 0;
+`;
+
+const MOBILE_HEADER_BREAKPOINT = '475px';
+
+const HeaderToolbarLayout = styled(HeaderToolbar)`
+  @media (max-width: ${MOBILE_HEADER_BREAKPOINT}) {
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    ${HeaderMenu} {
+      order: 3;
+      flex: 0 0 100%;
+      width: 100%;
+    }
+
+    ${HeaderControls} {
+      margin-left: auto;
+    }
+  }
+`;
+
 const Main = styled.main`
   background: ${({ $colors }) => $colors.surface};
   padding: 0 20px 20px;
@@ -175,22 +203,26 @@ function MainLayout() {
   return (
     <AppShell $colors={colors}>
       <Header position="static">
-        <HeaderToolbar>
+        <HeaderToolbarLayout>
           <HeaderLogo />
-          <MainMenu $themeMode={theme} />
-          <Controls
-            $themeMode={theme}
-            openAuthMenuHandler={handleOpenAuthMenu}
-            authSession={authSession}
-            credentials={credentials}
-            authError={authError}
-            authAnchorEl={authAnchorEl}
-            closeAuthMenuHandler={handleCloseAuthMenu}
-            authorizeHandler={handleAuthorize}
-            credentialsChangeHandler={handleCredentialsChange}
-            logoutHandler={handleLogout}
-          />
-        </HeaderToolbar>
+          <HeaderMenu>
+            <MainMenu $themeMode={theme} />
+          </HeaderMenu>
+          <HeaderControls>
+            <Controls
+              $themeMode={theme}
+              openAuthMenuHandler={handleOpenAuthMenu}
+              authSession={authSession}
+              credentials={credentials}
+              authError={authError}
+              authAnchorEl={authAnchorEl}
+              closeAuthMenuHandler={handleCloseAuthMenu}
+              authorizeHandler={handleAuthorize}
+              credentialsChangeHandler={handleCredentialsChange}
+              logoutHandler={handleLogout}
+            />
+          </HeaderControls>
+        </HeaderToolbarLayout>
       </Header>
       <Main $colors={colors}>
         <Outlet />

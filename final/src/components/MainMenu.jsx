@@ -14,7 +14,7 @@ const MenuContainer = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
 
   @media ${MEDIA_QUERIES.phone} {
@@ -39,6 +39,7 @@ const MenuButton = styled(Button).attrs({
     && {
       padding: 6px 10px;
       font-size: 0.85rem;
+      white-space: nowrap;
     }
   }
 
