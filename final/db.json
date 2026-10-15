@@ -1890,6 +1890,15 @@
       "createdDate": "2024-01-18T06:43:23Z",
       "publishedDate": "2026-03-29T05:56:33Z",
       "viewsCount": 7427
+    },
+    {
+      "userID": 1,
+      "title": "post",
+      "body": "addd",
+      "category": "Розробка",
+      "imagePaths": [],
+      "uuid": "4cbb006f-9dee-40df-b104-c03c9c64cb2a",
+      "id": 187
     }
   ],
   "users": [
@@ -1902,26 +1911,6 @@
       "id": 2,
       "name": "Maksym",
       "email": "maksym@example.com"
-    },
-    {
-      "firstName": "asdfasdf",
-      "userName": "asdfasdf",
-      "secondName": "asdfasdfasfd",
-      "dateOfBirth": "2026-10-20",
-      "email": "asdf@asdf.com",
-      "password": "asdf",
-      "phone": "12312342",
-      "id": 3
-    },
-    {
-      "firstName": "фіваіфва",
-      "userName": "фіваіфва",
-      "secondName": "фівафівафіва",
-      "dateOfBirth": "124124-03-12",
-      "email": "yaremiyroman@gmail.com",
-      "password": "1",
-      "phone": "12312312",
-      "id": 4
     }
   ]
 }
